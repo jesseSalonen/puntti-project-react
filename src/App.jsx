@@ -6,13 +6,15 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Dashboard />}>
+    <Route path="/" element={<Header />}>
+      <Route index element={<Dashboard />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
     </Route>
@@ -20,5 +22,11 @@ const router = createBrowserRouter(
 );
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <div className="container">
+        <RouterProvider router={router} />
+      </div>
+    </>
+  );
 }
