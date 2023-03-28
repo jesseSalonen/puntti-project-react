@@ -47,6 +47,25 @@ export const getExercises = createAsyncThunk(
   }
 );
 
+// Delete user exercise
+export const deleteExercise = createAsyncThunk(
+  "exercises/delete",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await exerciseService.deleteExercise(id, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const exerciseSlice = createSlice({
   name: "exercise",
   initialState,
@@ -77,6 +96,21 @@ export const exerciseSlice = createSlice({
         state.exercises = action.payload;
       })
       .addCase(getExercises.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(deleteExercise.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteExercise.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.exercises = state.exercises.filter(
+          (exercise) => exercise._id !== action.payload.id
+        );
+      })
+      .addCase(deleteExercise.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

@@ -5,6 +5,6 @@ import exerciseReducer from "../features/exercises/exerciseSlice";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    exercise: exerciseReducer,
+    exercises: exerciseReducer,
   },
 });
