@@ -19,4 +19,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: latest, ${{ github.run_number }}
+          tags: jekuskebab/puntti-project-react:latest, jekuskebab/puntti-project-react:${{ github.run_number }}
