@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY ./package*.json ./
 
-RUN npm install
+RUN npm ci
 
 COPY . .
 
@@ -12,4 +12,8 @@ ENV NODE_ENV production
 
 EXPOSE 5173
 
-CMD ["npm", "run", "build"]
+RUN npm run build
+
+RUN npm install -g serve
+
+CMD ["serve", "-s", "dist", "5173"]
