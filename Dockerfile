@@ -8,9 +8,9 @@ RUN npm ci
 
 COPY . .
 
-ENV VITE_REACT_ENV = production
+ENV VITE_REACT_ENV production
 
-ENV VITE_API_URL = https://punttiapi.jessenprojekti.fi
+ENV VITE_API_URL https://punttiapi.jessenprojekti.fi
 
 EXPOSE 5173
 
