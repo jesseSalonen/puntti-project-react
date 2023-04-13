@@ -13,7 +13,7 @@ function ExerciseForm() {
     dispatch(createExercise({ name }));
     setName("");
   };
-
+  console.log("testi");
   return (
     <section className="form">
       <form onSubmit={onSubmit}>
