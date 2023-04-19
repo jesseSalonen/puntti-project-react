@@ -18,7 +18,9 @@ function Header() {
     <div>
       <header className="header">
         <div className="logo">
-          <Link to="/">Puntti</Link>
+          <Link to="/">
+            <img src="puntti-emblem.svg" alt="logo" width={64} height={64}/>
+          </Link>
         </div>
         <ul>
           {user ? (
