@@ -37,12 +37,12 @@ function Dashboard() {
 
   return (
     <>
-      <section className="heading">
+      <section className="text-4xl font-bold mb-12 py-0 px-5">
         <h1>Welcome {user && user.name}</h1>
-        <p>Exercise Dashboard</p>
+        <p className="max-sm:text-2xl text-gray-400">Exercise Dashboard</p>
       </section>
       <ExerciseForm />
-      <section className="content">
+      <section className="w-3/4 my-0 mx-auto">
         {exercises.length > 0 ? (
           <div className="exercises">
             {exercises.map((exercise) => (

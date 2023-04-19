@@ -64,19 +64,21 @@ function Register() {
 
   return (
     <>
-      <section className="heading">
+      <section className="text-4xl font-bold mb-12 py-0 px-5">
         <h1>
           <FaUser /> Register
         </h1>
-        <p>Please create an account</p>
+        <p className="max-sm:text-2xl text-gray-400">
+          Please create an account
+        </p>
       </section>
 
-      <section className="form">
+      <section className="max-sm:w-11/12 w-3/4 my-0 mx-auto">
         <form onSubmit={onSubmit}>
-          <div className="form-group">
+          <div className="mb-3">
             <input
               type="text"
-              className="form-control"
+              className="w-full p-3 border border-solid border-gray-200 rounded-md mb-3"
               id="name"
               name="name"
               value={name}
@@ -84,10 +86,10 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
+          <div className="mb-3">
             <input
               type="email"
-              className="form-control"
+              className="w-full p-3 border border-solid border-gray-200 rounded-md mb-3"
               id="email"
               name="email"
               value={email}
@@ -95,10 +97,10 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
+          <div className="mb-3">
             <input
               type="password"
-              className="form-control"
+              className="w-full p-3 border border-solid border-gray-200 rounded-md mb-3"
               id="password"
               name="password"
               value={password}
@@ -106,10 +108,10 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
+          <div className="mb-3">
             <input
               type="password"
-              className="form-control"
+              className="w-full p-3 border border-solid border-gray-200 rounded-md mb-3"
               id="password2"
               name="password2"
               value={password2}
@@ -117,8 +119,30 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-block">
+          <div className="mb-3">
+            <button
+              type="submit"
+              className="
+                py-3 
+                px-5 
+                border 
+                border-solid 
+                border-black 
+                rounded-md 
+                bg-black 
+                text-white 
+                text-base 
+                font-bold 
+                cursor-pointer 
+                text-center 
+                flex 
+                items-center 
+                justify-center 
+                w-full 
+                mb-5
+                hover:scale-95
+              "
+            >
               Submit
             </button>
           </div>

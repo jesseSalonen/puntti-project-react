@@ -16,27 +16,47 @@ function Header() {
 
   return (
     <div>
-      <header className="header">
+      <header className="flex justify-between items-center py-1 px-0 border-b border-solid border-gray-200 mb-16">
         <div className="logo">
           <Link to="/">
-            <img src="puntti-emblem.svg" alt="logo" width={64} height={64}/>
+            <img src="puntti-emblem.svg" alt="logo" width={64} height={64} />
           </Link>
         </div>
-        <ul>
+        <ul className="flex items-center justify-between">
           {user ? (
-            <li>
-              <button className="btn" onClick={onLogout}>
-                <FaSignOutAlt /> Logout
+            <li className="ml-5">
+              <button
+                className="
+                  py-3 
+                  px-5 
+                  border 
+                  border-solid 
+                  border-black 
+                  rounded-md 
+                  bg-black 
+                  text-white 
+                  text-base 
+                  font-bold 
+                  cursor-pointer 
+                  text-center 
+                  flex 
+                  items-center 
+                  justify-center
+                  hover:scale-95
+                "
+                onClick={onLogout}
+              >
+                <FaSignOutAlt className="mr-2" /> Logout
               </button>
             </li>
           ) : (
             <>
-              <li>
+              <li className="ml-5">
                 <Link to="/login">
                   <FaSignInAlt /> Login
                 </Link>
               </li>
-              <li>
+              <li className="ml-5">
                 <Link to="/register">
                   <FaUser /> Register
                 </Link>
