@@ -57,21 +57,21 @@ function Login() {
 
   return (
     <>
-      <section className="text-4xl font-bold mb-12 py-0 px-5">
+      <section className="mb-12 py-0 px-5 text-4xl font-bold">
         <h1>
-          <FaSignInAlt /> Login
+          <FaSignInAlt className="inline" /> Login
         </h1>
-        <p className="max-sm:text-2xl text-gray-400">
+        <p className="text-gray-400 max-sm:text-2xl">
           Login and start creating exercises
         </p>
       </section>
 
-      <section className="max-sm:w-11/12 w-3/4 my-0 mx-auto">
+      <section className="my-0 mx-auto w-3/4 max-sm:w-11/12">
         <form onSubmit={onSubmit}>
           <div className="mb-3">
             <input
               type="email"
-              className="w-full p-3 border border-solid border-gray-200 rounded-md mb-3"
+              className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
               id="email"
               name="email"
               value={email}
@@ -82,7 +82,7 @@ function Login() {
           <div className="mb-3">
             <input
               type="password"
-              className="w-full p-3 border border-solid border-gray-200 rounded-md mb-3"
+              className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
               id="password"
               name="password"
               value={password}
@@ -94,23 +94,23 @@ function Login() {
             <button
               type="submit"
               className="
-                py-3 
-                px-5 
+                mb-5 
+                flex 
+                w-full 
+                cursor-pointer 
+                items-center 
+                justify-center 
+                rounded-md 
                 border 
                 border-solid 
                 border-black 
-                rounded-md 
                 bg-black 
-                text-white 
+                py-3 
+                px-5 
+                text-center 
                 text-base 
                 font-bold 
-                cursor-pointer 
-                text-center 
-                flex 
-                items-center 
-                justify-center 
-                w-full 
-                mb-5
+                text-white
                 hover:scale-95
               "
             >

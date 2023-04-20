@@ -4,7 +4,7 @@ import { deleteExercise } from "../features/exercises/exerciseSlice";
 function ExerciseItem({ exercise }) {
   const dispatch = useDispatch();
   return (
-    <div className="bg-gray-50 my-3 mx-0 pt-5 pr-0 pb-3 relative">
+    <div className="relative my-3 mx-0 bg-gray-50 pt-5 pr-0 pb-3">
       <div>{new Date(exercise.createdAt).toLocaleString()}</div>
       <h2>{exercise.name}</h2>
       <button

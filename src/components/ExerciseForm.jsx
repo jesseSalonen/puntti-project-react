@@ -15,14 +15,14 @@ function ExerciseForm() {
   };
   console.log("testi");
   return (
-    <section className="max-sm:w-11/12 w-3/4 my-0 mx-auto">
+    <section className="my-0 mx-auto w-3/4 max-sm:w-11/12">
       <form onSubmit={onSubmit}>
         <div className="mb-3">
-          <label className="text-left block mt-0 mr-0 mb-1 ml-1" htmlFor="name">
+          <label className="mt-0 mr-0 mb-1 ml-1 block text-left" htmlFor="name">
             Exercise
           </label>
           <input
-            className="w-full p-3 border border-solid border-gray-200 rounded-md mb-3"
+            className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
             type="name"
             name="name"
             id="name"
@@ -33,23 +33,23 @@ function ExerciseForm() {
         <div className="mb-3">
           <button
             className="
-              py-3 
-              px-5 
+              mb-5 
+              flex 
+              w-full 
+              cursor-pointer 
+              items-center 
+              justify-center 
+              rounded-md 
               border 
               border-solid 
               border-black 
-              rounded-md 
               bg-black 
-              text-white 
+              py-3 
+              px-5 
+              text-center 
               text-base 
               font-bold 
-              cursor-pointer 
-              text-center 
-              flex 
-              items-center 
-              justify-center 
-              w-full 
-              mb-5
+              text-white
               hover:scale-95
             "
             type="submit"
