@@ -16,7 +16,19 @@ function Header() {
 
   return (
     <div>
-      <header className="flex justify-between items-center py-1 px-0 border-b border-solid border-gray-200 mb-16">
+      <header
+        className="
+          flex 
+          justify-between 
+          items-center 
+          py-1 
+          px-0 
+          border-b 
+          border-solid 
+          border-gray-200 
+          mb-16
+        "
+      >
         <div className="logo">
           <Link to="/">
             <img src="puntti-emblem.svg" alt="logo" width={64} height={64} />
