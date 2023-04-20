@@ -27,6 +27,11 @@ function Header() {
           border-solid 
           border-gray-200 
           mb-16
+          [&>ul>li]:ml-5
+          [&>ul>li>a]:flex
+          [&>ul>li>a]:items-center
+          [&>ul>li>a:hover]:text-gray-400
+          [&>ul>li>a>svg]:mr-1
         "
       >
         <div className="logo">
@@ -36,7 +41,7 @@ function Header() {
         </div>
         <ul className="flex items-center justify-between">
           {user ? (
-            <li className="ml-5">
+            <li>
               <button
                 className="
                   py-3
@@ -56,7 +61,6 @@ function Header() {
                   justify-center
                   hover:scale-95
                 "
-                {/*If you want to style the children of a parent you can use [&>*]:bg-red-500 and it'll set a red background to all the children, and you can even use it like every css selector [&>div>ul]*/}
                 onClick={onLogout}
               >
                 <FaSignOutAlt className="mr-2" /> Logout
@@ -64,12 +68,12 @@ function Header() {
             </li>
           ) : (
             <>
-              <li className="ml-5">
+              <li>
                 <Link to="/login">
                   <FaSignInAlt /> Login
                 </Link>
               </li>
-              <li className="ml-5">
+              <li>
                 <Link to="/register">
                   <FaUser /> Register
                 </Link>

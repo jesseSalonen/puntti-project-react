@@ -44,7 +44,7 @@ function Dashboard() {
       <ExerciseForm />
       <section className="w-3/4 my-0 mx-auto">
         {exercises.length > 0 ? (
-          <div className="exercises">
+          <div className="grid grid-cols-2 gap-3">
             {exercises.map((exercise) => (
               <ExerciseItem key={exercise._id} exercise={exercise} />
             ))}
