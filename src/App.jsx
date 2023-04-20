@@ -26,7 +26,7 @@ const router = createBrowserRouter(
 export default function App() {
   return (
     <>
-      <div className="w-full max-w-screen-lg my-0 mx-auto py-0 px-5 text-center">
+      <div className="my-0 mx-auto w-full max-w-screen-lg py-0 px-5 text-center">
         <RouterProvider router={router} />
       </div>
       <ToastContainer />

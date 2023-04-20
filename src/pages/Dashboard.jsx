@@ -37,14 +37,18 @@ function Dashboard() {
 
   return (
     <>
-      <section className="text-4xl font-bold mb-12 py-0 px-5">
-        <h1>Welcome {user && user.name}</h1>
-        <p className="max-sm:text-2xl text-gray-400">Exercise Dashboard</p>
+      <section className="mb-12 py-0 px-5 font-bold">
+        <h1 className="mb-4 flex items-center justify-center text-5xl max-sm:text-4xl">
+          Welcome {user && user.name}
+        </h1>
+        <p className="text-4xl text-gray-400 max-sm:text-2xl">
+          Exercise Dashboard
+        </p>
       </section>
       <ExerciseForm />
-      <section className="w-3/4 my-0 mx-auto">
+      <section className="my-0 mx-auto w-3/4">
         {exercises.length > 0 ? (
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
             {exercises.map((exercise) => (
               <ExerciseItem key={exercise._id} exercise={exercise} />
             ))}

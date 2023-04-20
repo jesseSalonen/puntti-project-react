@@ -18,20 +18,20 @@ function Header() {
     <div>
       <header
         className="
+          mb-16 
           flex 
-          justify-between 
           items-center 
-          py-1 
-          px-0 
+          justify-between 
           border-b 
           border-solid 
           border-gray-200 
-          mb-16
-          [&>ul>li]:ml-5
-          [&>ul>li>a]:flex
-          [&>ul>li>a]:items-center
+          py-1 
+          px-0
           [&>ul>li>a:hover]:text-gray-400
           [&>ul>li>a>svg]:mr-1
+          [&>ul>li>a]:flex
+          [&>ul>li>a]:items-center
+          [&>ul>li]:ml-5
         "
       >
         <div className="logo">
@@ -44,21 +44,21 @@ function Header() {
             <li>
               <button
                 className="
-                  py-3
-                  px-5
+                  flex
+                  cursor-pointer
+                  items-center
+                  justify-center
+                  rounded-md
                   border
                   border-solid
                   border-black
-                  rounded-md
                   bg-black
-                  text-white
+                  py-3
+                  px-5
+                  text-center
                   text-base
                   font-bold
-                  cursor-pointer
-                  text-center
-                  flex
-                  items-center
-                  justify-center
+                  text-white
                   hover:scale-95
                 "
                 onClick={onLogout}

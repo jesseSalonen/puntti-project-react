@@ -7,25 +7,25 @@ function Spinner() {
         right-0
         bottom-0
         left-0
-        bg-black
-        bg-opacity-50
         z-50
         flex
-        justify-center
         items-center
+        justify-center
+        bg-black
+        bg-opacity-50
       "
     >
       <div
         className="
-          w-16 
           h-16 
+          w-16 
+          animate-spin 
+          rounded-full 
           border-8 
           border-solid 
-          border-t-black 
           border-x-transparent 
-          border-b-gray-500 
-          rounded-full 
-          animate-spin
+          border-t-black 
+          border-b-gray-500
         "
       ></div>
     </div>
