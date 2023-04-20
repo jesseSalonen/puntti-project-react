@@ -39,23 +39,24 @@ function Header() {
             <li className="ml-5">
               <button
                 className="
-                  py-3 
-                  px-5 
-                  border 
-                  border-solid 
-                  border-black 
-                  rounded-md 
-                  bg-black 
-                  text-white 
-                  text-base 
-                  font-bold 
-                  cursor-pointer 
-                  text-center 
-                  flex 
-                  items-center 
+                  py-3
+                  px-5
+                  border
+                  border-solid
+                  border-black
+                  rounded-md
+                  bg-black
+                  text-white
+                  text-base
+                  font-bold
+                  cursor-pointer
+                  text-center
+                  flex
+                  items-center
                   justify-center
                   hover:scale-95
                 "
+                {/*If you want to style the children of a parent you can use [&>*]:bg-red-500 and it'll set a red background to all the children, and you can even use it like every css selector [&>div>ul]*/}
                 onClick={onLogout}
               >
                 <FaSignOutAlt className="mr-2" /> Logout
