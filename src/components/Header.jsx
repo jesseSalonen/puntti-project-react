@@ -1,9 +1,11 @@
-import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { FaLanguage, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { logout, reset } from "../features/auth/authSlice";
+import { useTranslation } from "react-i18next";
 
 function Header() {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -80,6 +82,19 @@ function Header() {
               </li>
             </>
           )}
+          <li className="flex items-center">
+            <FaLanguage />
+            <div
+              className=`${i18n.resolvedLanguage === 'fi' ? ''}`
+              onClick={() => i18n.changeLanguage('fi')}
+            >
+              fi
+            </div>
+            /
+            <div>
+              en
+            </div>
+          </li>
         </ul>
       </header>
 
