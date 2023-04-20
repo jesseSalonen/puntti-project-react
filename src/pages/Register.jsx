@@ -64,11 +64,11 @@ function Register() {
 
   return (
     <>
-      <section className="mb-12 py-0 px-5 text-4xl font-bold">
-        <h1>
-          <FaUser /> Register
+      <section className="mb-12 py-0 px-5 font-bold">
+        <h1 className="mb-4 flex items-center justify-center text-5xl max-sm:text-4xl">
+          <FaUser className="inline" /> Register
         </h1>
-        <p className="text-gray-400 max-sm:text-2xl">
+        <p className="text-4xl text-gray-400 max-sm:text-2xl">
           Please create an account
         </p>
       </section>
