@@ -16,7 +16,24 @@ function Header() {
 
   return (
     <div>
-      <header className="flex justify-between items-center py-1 px-0 border-b border-solid border-gray-200 mb-16">
+      <header
+        className="
+          flex 
+          justify-between 
+          items-center 
+          py-1 
+          px-0 
+          border-b 
+          border-solid 
+          border-gray-200 
+          mb-16
+          [&>ul>li]:ml-5
+          [&>ul>li>a]:flex
+          [&>ul>li>a]:items-center
+          [&>ul>li>a:hover]:text-gray-400
+          [&>ul>li>a>svg]:mr-1
+        "
+      >
         <div className="logo">
           <Link to="/">
             <img src="puntti-emblem.svg" alt="logo" width={64} height={64} />
@@ -24,23 +41,23 @@ function Header() {
         </div>
         <ul className="flex items-center justify-between">
           {user ? (
-            <li className="ml-5">
+            <li>
               <button
                 className="
-                  py-3 
-                  px-5 
-                  border 
-                  border-solid 
-                  border-black 
-                  rounded-md 
-                  bg-black 
-                  text-white 
-                  text-base 
-                  font-bold 
-                  cursor-pointer 
-                  text-center 
-                  flex 
-                  items-center 
+                  py-3
+                  px-5
+                  border
+                  border-solid
+                  border-black
+                  rounded-md
+                  bg-black
+                  text-white
+                  text-base
+                  font-bold
+                  cursor-pointer
+                  text-center
+                  flex
+                  items-center
                   justify-center
                   hover:scale-95
                 "
@@ -51,12 +68,12 @@ function Header() {
             </li>
           ) : (
             <>
-              <li className="ml-5">
+              <li>
                 <Link to="/login">
                   <FaSignInAlt /> Login
                 </Link>
               </li>
-              <li className="ml-5">
+              <li>
                 <Link to="/register">
                   <FaUser /> Register
                 </Link>
