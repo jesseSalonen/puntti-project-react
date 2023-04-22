@@ -1,14 +1,34 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import
+import dashboard_en from "./en/Dashboard.json";
+import dashboard_fi from "./fi/Dashboard.json";
+import exercises_en from "./en/Exercises.json";
+import exercises_fi from "./fi/Exercises.json";
+import login_en from "./en/Login.json";
+import login_fi from "./fi/Login.json";
+import register_en from "./en/Register.json";
+import register_fi from "./fi/Register.json";
+import layout_en from "./en/Layout.json";
+import layout_fi from "./fi/Layout.json";
 
-const resources = {
-    en: {
-        // Namespaces
-        dashboard:
-    }
-}
+const translationResources = {
+  en: {
+    // Namespaces
+    dashboard: dashboard_en,
+    exercises: exercises_en,
+    login: login_en,
+    register: register_en,
+    layout: layout_en,
+  },
+  fi: {
+    dashboard: dashboard_fi,
+    exercises: exercises_fi,
+    login: login_fi,
+    register: register_fi,
+    layout: layout_fi,
+  },
+};
 
 i18n
   // detect user language
@@ -20,20 +40,11 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     debug: true,
-    fallbackLng: "en",
+    fallbackLng: "fi",
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
-    resources: {
-      en: {
-        translation: {
-          // here we will place our translations...
-        },
-      },
-      fi: {
-        translation: {},
-      },
-    },
+    resources: translationResources,
   });
 
 export default i18n;

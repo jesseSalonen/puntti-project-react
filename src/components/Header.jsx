@@ -1,11 +1,17 @@
-import { FaLanguage, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import {
+  FaFlag,
+  FaLanguage,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaUser,
+} from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { logout, reset } from "../features/auth/authSlice";
 import { useTranslation } from "react-i18next";
 
 function Header() {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation("layout");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -15,7 +21,6 @@ function Header() {
     dispatch(reset());
     navigate("/");
   };
-
   return (
     <div>
       <header
@@ -65,33 +70,47 @@ function Header() {
                 "
                 onClick={onLogout}
               >
-                <FaSignOutAlt className="mr-2" /> Logout
+                <FaSignOutAlt className="mr-2" />
+                {t("logout")}
               </button>
             </li>
           ) : (
             <>
               <li>
                 <Link to="/login">
-                  <FaSignInAlt /> Login
+                  <FaSignInAlt />
+                  {t("login")}
                 </Link>
               </li>
               <li>
                 <Link to="/register">
-                  <FaUser /> Register
+                  <FaUser />
+                  {t("register")}
                 </Link>
               </li>
             </>
           )}
-          <li className="flex items-center">
-            <FaLanguage />
+          <li
+            className="
+            flex 
+            items-center
+            [&>div:hover]:text-gray-400
+            [&>div]:cursor-pointer
+            [&>svg]:mr-1
+          "
+          >
+            <FaFlag />
             <div
-              className=`${i18n.resolvedLanguage === 'fi' ? ''}`
-              onClick={() => i18n.changeLanguage('fi')}
+              className={`${i18n.language === "fi" ? "text-green-600" : ""}`}
+              onClick={() => i18n.changeLanguage("fi")}
             >
               fi
             </div>
             /
-            <div>
+            <div
+              className={`${i18n.language === "en" ? "text-green-600" : ""}`}
+              onClick={() => i18n.changeLanguage("en")}
+            >
               en
             </div>
           </li>
