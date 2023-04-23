@@ -16,7 +16,7 @@ function Register() {
   });
 
   const { name, email, password, password2 } = formData;
-  const {t} = useTranslation("register");
+  const { t } = useTranslation("register");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -66,10 +66,7 @@ function Register() {
   return (
     <>
       <section className="mb-12 py-0 px-5 font-bold">
-        <h1 className="mb-4 flex items-center justify-center text-5xl max-sm:text-4xl">
-          <FaUser className="inline" />
-          {t("register")}
-        </h1>
+        <h1 className="mb-4 text-5xl max-sm:text-4xl">{t("register")}</h1>
         <p className="text-4xl text-gray-400 max-sm:text-2xl">
           {t("createAccount")}
         </p>
