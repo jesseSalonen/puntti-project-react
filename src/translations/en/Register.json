@@ -1,1 +1,9 @@
-{}
+{
+  "confirmPassword": "Confirm password",
+  "createAccount": "Please create an account",
+  "enterEmail": "Enter your email",
+  "enterName": "Enter your name",
+  "enterPassword": "Enter password",
+  "register": "Register",
+  "submit": "Submit"
+}

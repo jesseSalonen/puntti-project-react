@@ -1,1 +1,9 @@
-{}
+{
+  "confirmPassword": "Vahvista salasana",
+  "createAccount": "Luo tunnukset alta",
+  "enterEmail": "Syötä sähköposti",
+  "enterName": "Syötä nimi",
+  "enterPassword": "Syötä salasana",
+  "register": "Rekisteröidy",
+  "submit": "Lähetä"
+}

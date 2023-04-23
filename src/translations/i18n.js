@@ -9,8 +9,8 @@ import login_en from "./en/Login.json";
 import login_fi from "./fi/Login.json";
 import register_en from "./en/Register.json";
 import register_fi from "./fi/Register.json";
-import layout_en from "./en/Layout.json";
-import layout_fi from "./fi/Layout.json";
+import common_en from "./en/Common.json";
+import common_fi from "./fi/Common.json";
 
 const translationResources = {
   en: {
@@ -19,14 +19,14 @@ const translationResources = {
     exercises: exercises_en,
     login: login_en,
     register: register_en,
-    layout: layout_en,
+    common: common_en,
   },
   fi: {
     dashboard: dashboard_fi,
     exercises: exercises_fi,
     login: login_fi,
     register: register_fi,
-    layout: layout_fi,
+    common: common_fi,
   },
 };
 
@@ -39,7 +39,6 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    debug: true,
     fallbackLng: "fi",
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default

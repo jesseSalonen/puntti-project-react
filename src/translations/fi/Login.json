@@ -1,1 +1,7 @@
-{}
+{
+    "enterEmail": "Syötä sähköposti",
+    "enterPassword": "Syötä salasana",
+    "login": "Kirjaudu sisään",
+    "loginAndCreateExercises": "Kirjaudu ja ala luomaan treeniliikkeitä",
+    "submit": "Kirjaudu"
+}

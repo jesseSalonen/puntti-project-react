@@ -56,7 +56,7 @@ function Dashboard() {
             ))}
           </div>
         ) : (
-          <h3>You have not created any exercises</h3>
+          <h3>{t("noExercises")}</h3>
         )}
       </section>
     </>

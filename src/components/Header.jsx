@@ -11,7 +11,7 @@ import { logout, reset } from "../features/auth/authSlice";
 import { useTranslation } from "react-i18next";
 
 function Header() {
-  const { t, i18n } = useTranslation("layout");
+  const { t, i18n } = useTranslation("common");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -21,6 +21,7 @@ function Header() {
     dispatch(reset());
     navigate("/");
   };
+
   return (
     <div>
       <header

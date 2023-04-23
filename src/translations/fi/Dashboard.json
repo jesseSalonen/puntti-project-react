@@ -1,4 +1,7 @@
 {
+  "addExercise": "Lisää liike",
   "dashboard": "Liikkeiden hallintasivu",
+  "exercise": "Liike",
+  "noExercises": "Et ole vielä luonut liikkeitä",
   "welcome": "Tervetuloa {{name}}!"
 }

@@ -1,1 +1,7 @@
-{}
+{
+    "enterEmail": "Enter your email",
+    "enterPassword": "Enter password",
+    "login": "Login",
+    "loginAndCreateExercises": "Login and start creating exercises",
+    "submit": "Submit"
+}
