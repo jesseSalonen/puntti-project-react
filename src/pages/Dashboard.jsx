@@ -5,8 +5,10 @@ import ExerciseForm from "../components/ExerciseForm";
 import ExerciseItem from "../components/ExerciseItem";
 import Spinner from "../components/Spinner";
 import { getExercises, reset } from "../features/exercises/exerciseSlice";
+import { useTranslation } from "react-i18next";
 
 function Dashboard() {
+  const { t } = useTranslation("dashboard");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -39,10 +41,10 @@ function Dashboard() {
     <>
       <section className="mb-12 py-0 px-5 font-bold">
         <h1 className="mb-4 flex items-center justify-center text-5xl max-sm:text-4xl">
-          Welcome {user && user.name}
+          {t("welcome", { name: user && user.name })}
         </h1>
         <p className="text-4xl text-gray-400 max-sm:text-2xl">
-          Exercise Dashboard
+          {t("dashboard")}
         </p>
       </section>
       <ExerciseForm />
@@ -54,7 +56,7 @@ function Dashboard() {
             ))}
           </div>
         ) : (
-          <h3>You have not created any exercises</h3>
+          <h3>{t("noExercises")}</h3>
         )}
       </section>
     </>

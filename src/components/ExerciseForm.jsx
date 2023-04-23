@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createExercise } from "../features/exercises/exerciseSlice";
+import { useTranslation } from "react-i18next";
 
 function ExerciseForm() {
+  const {t} = useTranslation("dashboard");
   const [name, setName] = useState("");
 
   const dispatch = useDispatch();
@@ -19,7 +21,7 @@ function ExerciseForm() {
       <form onSubmit={onSubmit}>
         <div className="mb-3">
           <label className="mt-0 mr-0 mb-1 ml-1 block text-left" htmlFor="name">
-            Exercise
+            {t("exercise")}
           </label>
           <input
             className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
@@ -54,7 +56,7 @@ function ExerciseForm() {
             "
             type="submit"
           >
-            Add exercise
+            {t("addExercise")}
           </button>
         </div>
       </form>

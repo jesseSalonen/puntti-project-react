@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import { register, reset } from "../features/auth/authSlice";
+import { useTranslation } from "react-i18next";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ function Register() {
   });
 
   const { name, email, password, password2 } = formData;
-
+  const {t} = useTranslation("register");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -66,10 +67,11 @@ function Register() {
     <>
       <section className="mb-12 py-0 px-5 font-bold">
         <h1 className="mb-4 flex items-center justify-center text-5xl max-sm:text-4xl">
-          <FaUser className="inline" /> Register
+          <FaUser className="inline" />
+          {t("register")}
         </h1>
         <p className="text-4xl text-gray-400 max-sm:text-2xl">
-          Please create an account
+          {t("createAccount")}
         </p>
       </section>
 
@@ -82,7 +84,7 @@ function Register() {
               id="name"
               name="name"
               value={name}
-              placeholder="Enter your name"
+              placeholder={t("enterName")}
               onChange={onChange}
             />
           </div>
@@ -93,7 +95,7 @@ function Register() {
               id="email"
               name="email"
               value={email}
-              placeholder="Enter your email"
+              placeholder={t("enterEmail")}
               onChange={onChange}
             />
           </div>
@@ -104,7 +106,7 @@ function Register() {
               id="password"
               name="password"
               value={password}
-              placeholder="Enter password"
+              placeholder={t("enterPassword")}
               onChange={onChange}
             />
           </div>
@@ -115,7 +117,7 @@ function Register() {
               id="password2"
               name="password2"
               value={password2}
-              placeholder="Confirm password"
+              placeholder={t("confirmPassword")}
               onChange={onChange}
             />
           </div>
@@ -143,7 +145,7 @@ function Register() {
                 hover:scale-95
               "
             >
-              Submit
+              {t("submit")}
             </button>
           </div>
         </form>

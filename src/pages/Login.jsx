@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import { login, reset } from "../features/auth/authSlice";
+import { useTranslation } from "react-i18next";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -13,7 +14,7 @@ function Login() {
   });
 
   const { email, password } = formData;
-
+  const {t} = useTranslation("login");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -59,10 +60,11 @@ function Login() {
     <>
       <section className="mb-12 py-0 px-5 font-bold">
         <h1 className="mb-4 flex items-center justify-center text-5xl max-sm:text-4xl">
-          <FaSignInAlt className="inline" /> Login
+          <FaSignInAlt className="inline" />
+          {t("login")}
         </h1>
         <p className="text-4xl text-gray-400 max-sm:text-2xl">
-          Login and start creating exercises
+          {t("loginAndCreateExercises")}
         </p>
       </section>
 
@@ -75,7 +77,7 @@ function Login() {
               id="email"
               name="email"
               value={email}
-              placeholder="Enter your email"
+              placeholder={t("enterEmail")}
               onChange={onChange}
             />
           </div>
@@ -86,7 +88,7 @@ function Login() {
               id="password"
               name="password"
               value={password}
-              placeholder="Enter password"
+              placeholder={t("enterPassword")}
               onChange={onChange}
             />
           </div>
@@ -114,7 +116,7 @@ function Login() {
                 hover:scale-95
               "
             >
-              Submit
+              {t("submit")}
             </button>
           </div>
         </form>
