@@ -6,6 +6,7 @@ import ExerciseItem from "../components/ExerciseItem";
 import Spinner from "../components/Spinner";
 import { getExercises, reset } from "../features/exercises/exerciseSlice";
 import { useTranslation } from "react-i18next";
+import MobileSidebar from "../components/MobileSidebar";
 
 function Dashboard() {
   const { t } = useTranslation("dashboard");
@@ -36,6 +37,8 @@ function Dashboard() {
   if (isLoading) {
     return <Spinner />;
   }
+
+  <MobileSidebar />
 
   return (
     <>
