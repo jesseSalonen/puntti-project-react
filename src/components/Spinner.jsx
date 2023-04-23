@@ -15,19 +15,13 @@ function Spinner() {
         bg-opacity-50
       "
     >
-      <div
-        className="
-          h-16 
-          w-16 
-          animate-spin 
-          rounded-full 
-          border-8 
-          border-solid 
-          border-x-transparent 
-          border-t-black 
-          border-b-gray-500
-        "
-      ></div>
+      <img 
+        className="animate-[spin_2s_linear_infinite]"
+        src="puntti-emblem.svg" 
+        alt="spinnerLogo" 
+        width={128} 
+        height={128} 
+      />
     </div>
   );
 }
