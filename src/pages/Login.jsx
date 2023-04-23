@@ -14,7 +14,7 @@ function Login() {
   });
 
   const { email, password } = formData;
-  const {t} = useTranslation("login");
+  const { t } = useTranslation("login");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -59,10 +59,7 @@ function Login() {
   return (
     <>
       <section className="mb-12 py-0 px-5 font-bold">
-        <h1 className="mb-4 flex items-center justify-center text-5xl max-sm:text-4xl">
-          <FaSignInAlt className="inline" />
-          {t("login")}
-        </h1>
+        <h1 className="mb-4 text-5xl max-sm:text-4xl">{t("login")}</h1>
         <p className="text-4xl text-gray-400 max-sm:text-2xl">
           {t("loginAndCreateExercises")}
         </p>

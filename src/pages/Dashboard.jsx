@@ -38,8 +38,6 @@ function Dashboard() {
     return <Spinner />;
   }
 
-  <MobileSidebar />
-
   return (
     <>
       <section className="mb-12 py-0 px-5 font-bold">

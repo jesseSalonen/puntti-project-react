@@ -1,16 +1,22 @@
 import {
   FaFlag,
+  FaHamburger,
   FaLanguage,
   FaSignInAlt,
   FaSignOutAlt,
   FaUser,
 } from "react-icons/fa";
+import { AiOutlineMenu } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { logout, reset } from "../features/auth/authSlice";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import MobileSidebar from "./MobileSidebar";
 
 function Header() {
+  const [sidebarActive, setSidebarActive] = useState(false);
+
   const { t, i18n } = useTranslation("common");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,6 +27,9 @@ function Header() {
     dispatch(reset());
     navigate("/");
   };
+
+  const toggleSidebar = () =>
+    setSidebarActive((prevSidebarActive) => !prevSidebarActive);
 
   return (
     <div>
@@ -49,7 +58,7 @@ function Header() {
         </div>
         <ul className="flex items-center justify-between">
           {user ? (
-            <li>
+            <li className="max-sm:hidden">
               <button
                 className="
                   flex
@@ -77,13 +86,13 @@ function Header() {
             </li>
           ) : (
             <>
-              <li>
+              <li className="max-sm:hidden">
                 <Link to="/login">
                   <FaSignInAlt />
                   {t("login")}
                 </Link>
               </li>
-              <li>
+              <li className="max-sm:hidden">
                 <Link to="/register">
                   <FaUser />
                   {t("register")}
@@ -93,29 +102,30 @@ function Header() {
           )}
           <li
             className="
-            flex 
-            items-center
-            [&>div:hover]:text-gray-400
-            [&>div]:cursor-pointer
-            [&>svg]:mr-1
-          "
+              flex
+              items-center 
+              max-sm:hidden
+              [&>svg]:mr-1
+            "
           >
             <FaFlag />
-            <div
-              className={`${i18n.language === "fi" ? "text-green-600" : ""}`}
-              onClick={() => i18n.changeLanguage("fi")}
+            <select
+              name="languages"
+              onChange={(e) => i18n.changeLanguage(e.target.value)}
+              defaultValue={i18n.language === "fi" ? "fi" : "en"}
             >
-              fi
-            </div>
-            /
-            <div
-              className={`${i18n.language === "en" ? "text-green-600" : ""}`}
-              onClick={() => i18n.changeLanguage("en")}
-            >
-              en
-            </div>
+              <option value="fi">Finnish</option>
+              <option value="en">English</option>
+            </select>
+          </li>
+          <li className="cursor-pointer p-2 sm:hidden" onClick={toggleSidebar}>
+            <AiOutlineMenu />
           </li>
         </ul>
+
+        {sidebarActive ? (
+          <MobileSidebar toggleSidebar={toggleSidebar} onLogout={onLogout} />
+        ) : null}
       </header>
 
       <main>
