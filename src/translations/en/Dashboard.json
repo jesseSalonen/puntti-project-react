@@ -1,7 +1,8 @@
 {
   "addExercise": "Add exercise",
   "dashboard": "Exercise Dashboard",
-  "exercise": "Exercise",
+  "exerciseDesc": "Exercise description",
+  "exerciseName": "Exercise name",
   "noExercises": "You have not created any exercises",
   "welcome": "Welcome {{name}}!"
 }

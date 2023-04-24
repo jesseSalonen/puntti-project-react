@@ -122,10 +122,11 @@ function Header() {
             <AiOutlineMenu />
           </li>
         </ul>
-
-        {sidebarActive ? (
-          <MobileSidebar toggleSidebar={toggleSidebar} onLogout={onLogout} />
-        ) : null}
+        <MobileSidebar 
+          toggleSidebar={toggleSidebar} 
+          onLogout={onLogout} 
+          active={sidebarActive}
+        />
       </header>
 
       <main>

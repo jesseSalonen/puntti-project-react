@@ -6,30 +6,49 @@ import { useTranslation } from "react-i18next";
 function ExerciseForm() {
   const {t} = useTranslation("dashboard");
   const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
 
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createExercise({ name }));
-    setName("");
+    dispatch(createExercise({ name, description }));
+    clearFields();
   };
+
+  const clearFields = () => {
+    setName("");
+    setDescription("");
+  }
   
   return (
     <section className="my-0 mx-auto w-3/4 max-sm:w-11/12">
       <form onSubmit={onSubmit}>
         <div className="mb-3">
           <label className="mt-0 mr-0 mb-1 ml-1 block text-left" htmlFor="name">
-            {t("exercise")}
+            {t("exerciseName")}
           </label>
           <input
             className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
-            type="name"
+            type="text"
             name="name"
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="mt-0 mr-0 mb-1 ml-1 block text-left" htmlFor="description">
+            {t("exerciseDesc")}
+          </label>
+          <textarea
+            className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
+            name="description"
+            id="description"
+            rows="4"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <div className="mb-3">
