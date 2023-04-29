@@ -12,21 +12,42 @@ import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Header />}>
-      <Route index element={<Dashboard />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-    </Route>
-  )
-);
+import { useEffect, useState } from "react";
 
 export default function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {}, []);
+
+  const toggleDarkMode = () => setDarkMode((prevDarkMode) => !prevDarkMode);
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route
+        path="/"
+        element={<Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
+      >
+        <Route index element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Route>
+    )
+  );
+
   return (
     <>
-      <div className="my-0 mx-auto w-full max-w-screen-lg py-0 px-5 text-center">
+      <div
+        className={`
+          ${darkMode ? "dark" : ""}
+          my-0 
+          mx-auto 
+          w-full 
+          max-w-screen-lg 
+          py-0 
+          px-5 
+          text-center
+        `}
+      >
         <RouterProvider router={router} />
       </div>
       <ToastContainer />

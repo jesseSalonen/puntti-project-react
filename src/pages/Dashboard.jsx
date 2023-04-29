@@ -7,6 +7,7 @@ import Spinner from "../components/Spinner";
 import { getExercises, reset } from "../features/exercises/exerciseSlice";
 import { useTranslation } from "react-i18next";
 import MobileSidebar from "../components/MobileSidebar";
+import { toast } from "react-toastify";
 
 function Dashboard() {
   const { t } = useTranslation("dashboard");
@@ -20,7 +21,7 @@ function Dashboard() {
 
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      toast.error(message);
     }
 
     if (!user) {
