@@ -86,6 +86,7 @@ function Header({ darkMode, toggleDarkMode }) {
               justify-between
               rounded-md
               bg-gray-300
+              text-gray-700
               max-sm:hidden
               [&>svg]:flex
               [&>svg]:h-full

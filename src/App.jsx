@@ -35,22 +35,27 @@ export default function App() {
   );
 
   return (
-    <>
+    <div className={`${darkMode ? "dark" : ""}`}>
       <div
-        className={`
-          ${darkMode ? "dark" : ""}
+        className={`h-screen w-screen dark:bg-gradient-to-br dark:from-[#1b242c] dark:to-[#05121a]`}
+      >
+        <div
+          className={`
           my-0 
           mx-auto 
-          w-full 
+          w-full
           max-w-screen-lg 
           py-0 
-          px-5 
+          px-5
           text-center
+          text-gray-700
+          dark:text-gray-300
         `}
-      >
-        <RouterProvider router={router} />
+        >
+          <RouterProvider router={router} />
+        </div>
+        <ToastContainer />
       </div>
-      <ToastContainer />
-    </>
+    </div>
   );
 }

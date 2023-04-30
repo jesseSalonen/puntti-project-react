@@ -4,7 +4,7 @@ import { createExercise } from "../features/exercises/exerciseSlice";
 import { useTranslation } from "react-i18next";
 
 function ExerciseForm() {
-  const {t} = useTranslation("dashboard");
+  const { t } = useTranslation("dashboard");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
@@ -20,17 +20,17 @@ function ExerciseForm() {
   const clearFields = () => {
     setName("");
     setDescription("");
-  }
-  
+  };
+
   return (
     <section className="my-0 mx-auto w-3/4 max-sm:w-11/12">
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="[&>div>input]:">
         <div className="mb-3">
           <label className="mt-0 mr-0 mb-1 ml-1 block text-left" htmlFor="name">
             {t("exerciseName")}
           </label>
           <input
-            className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
+            className="mb-3 w-full rounded-md border border-solid border-gray-600 p-3 dark:bg-[#1b252e]"
             type="text"
             name="name"
             id="name"
@@ -39,11 +39,14 @@ function ExerciseForm() {
           />
         </div>
         <div className="mb-3">
-          <label className="mt-0 mr-0 mb-1 ml-1 block text-left" htmlFor="description">
+          <label
+            className="mt-0 mr-0 mb-1 ml-1 block text-left"
+            htmlFor="description"
+          >
             {t("exerciseDesc")}
           </label>
           <textarea
-            className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
+            className="mb-3 w-full rounded-md border border-solid border-gray-600 p-3 dark:bg-[#1b252e]"
             name="description"
             id="description"
             rows="4"
