@@ -80,13 +80,13 @@ function ExerciseForm() {
         max-sm:p-5
       "
     >
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="[&>div>input]:">
         <div className="mb-3">
           <label className="mt-0 mr-0 mb-1 ml-1 block text-left" htmlFor="name">
             {t("exerciseName")}
           </label>
           <input
-            className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
+            className="mb-3 w-full rounded-md border border-solid border-gray-600 p-3 dark:bg-[#1b252e]"
             type="text"
             name="name"
             id="name"

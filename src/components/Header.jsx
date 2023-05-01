@@ -1,4 +1,5 @@
 import { FaFlag, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
@@ -8,7 +9,7 @@ import { useState } from "react";
 import MobileSidebar from "./MobileSidebar";
 import { IconContext } from "react-icons";
 
-function Header() {
+function Header({ darkMode, toggleDarkMode }) {
   const [sidebarActive, setSidebarActive] = useState(false);
 
   const { t, i18n } = useTranslation("common");
@@ -51,6 +52,52 @@ function Header() {
           </Link>
         </div>
         <ul className="flex items-center justify-between">
+          <li
+            className="
+              flex
+              items-center 
+              max-sm:hidden
+              [&>svg]:mr-1
+            "
+          >
+            <FaFlag />
+            <select
+              name="languages"
+              onChange={(e) => i18n.changeLanguage(e.target.value)}
+              defaultValue={i18n.language === "fi" ? "fi" : "en"}
+            >
+              <option value="fi">Finnish</option>
+              <option value="en">English</option>
+            </select>
+          </li>
+          <li
+            className="
+              flex
+              h-6
+              w-16
+              cursor-pointer
+              items-center
+              justify-between
+              rounded-md
+              bg-gray-300
+              text-gray-700
+              max-sm:hidden
+              [&>svg]:flex
+              [&>svg]:h-full
+              [&>svg]:w-full
+              [&>svg]:items-center
+              [&>svg]:justify-center
+              [&>svg]:p-1
+            "
+            onClick={toggleDarkMode}
+          >
+            <MdOutlineLightMode
+              className={`${!darkMode ? "rounded-md bg-green-400" : ""}`}
+            />
+            <MdOutlineDarkMode
+              className={`${darkMode ? "rounded-md bg-green-400" : ""}`}
+            />
+          </li>
           {user ? (
             <li className="max-sm:hidden">
               <button
@@ -82,36 +129,60 @@ function Header() {
             <>
               <li className="max-sm:hidden">
                 <Link to="/login">
-                  <FaSignInAlt />
-                  {t("login")}
+                  <button
+                    className="
+                      flex
+                      cursor-pointer
+                      items-center
+                      justify-center
+                      rounded-md
+                      border
+                      border-solid
+                      border-black
+                      bg-black
+                      py-3
+                      px-5
+                      text-center
+                      text-base
+                      font-bold
+                      text-white
+                      hover:scale-95
+                    "
+                  >
+                    <FaSignInAlt />
+                    {t("login")}
+                  </button>
                 </Link>
               </li>
               <li className="max-sm:hidden">
                 <Link to="/register">
-                  <FaUser />
-                  {t("register")}
+                  <button
+                    className="
+                      flex
+                      cursor-pointer
+                      items-center
+                      justify-center
+                      rounded-md
+                      border
+                      border-solid
+                      border-black
+                      bg-black
+                      py-3
+                      px-5
+                      text-center
+                      text-base
+                      font-bold
+                      text-white
+                      hover:scale-95
+                    "
+                  >
+                    <FaUser />
+                    {t("register")}
+                  </button>
                 </Link>
               </li>
             </>
           )}
-          <li
-            className="
-              flex
-              items-center 
-              max-sm:hidden
-              [&>svg]:mr-1
-            "
-          >
-            <FaFlag />
-            <select
-              name="languages"
-              onChange={(e) => i18n.changeLanguage(e.target.value)}
-              defaultValue={i18n.language === "fi" ? "fi" : "en"}
-            >
-              <option value="fi">Finnish</option>
-              <option value="en">English</option>
-            </select>
-          </li>
           <li className="cursor-pointer p-2 sm:hidden" onClick={toggleSidebar}>
             <IconContext.Provider value={{ size: 25 }}>
               <AiOutlineMenu />
@@ -122,6 +193,8 @@ function Header() {
           toggleSidebar={toggleSidebar}
           onLogout={onLogout}
           active={sidebarActive}
+          toggleDarkMode={toggleDarkMode}
+          darkMode={darkMode}
         />
       </header>
 

@@ -7,6 +7,7 @@ import {
   FaSignOutAlt,
   FaUser,
 } from "react-icons/fa";
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
@@ -15,7 +16,13 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { IconContext } from "react-icons";
 
-function MobileSidebar({ toggleSidebar, onLogout, active }) {
+function MobileSidebar({
+  toggleSidebar,
+  onLogout,
+  active,
+  toggleDarkMode,
+  darkMode,
+}) {
   const { user } = useSelector((state) => state.auth);
   const { t, i18n } = useTranslation("common");
 
@@ -120,6 +127,32 @@ function MobileSidebar({ toggleSidebar, onLogout, active }) {
             <option value="fi">Finnish</option>
             <option value="en">English</option>
           </select>
+        </li>
+        <li
+          className="
+              flex
+              h-6
+              w-16
+              cursor-pointer
+              items-center
+              justify-between
+              rounded-md
+              bg-gray-300
+              [&>svg]:flex
+              [&>svg]:h-full
+              [&>svg]:w-full
+              [&>svg]:items-center
+              [&>svg]:justify-center
+              [&>svg]:p-1
+            "
+          onClick={toggleDarkMode}
+        >
+          <MdOutlineLightMode
+            className={`${!darkMode ? "rounded-md bg-green-400" : ""}`}
+          />
+          <MdOutlineDarkMode
+            className={`${darkMode ? "rounded-md bg-green-400" : ""}`}
+          />
         </li>
       </ul>
     </div>
