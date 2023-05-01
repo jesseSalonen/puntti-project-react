@@ -51,7 +51,7 @@ function Register() {
     } else {
       const userData = {
         name,
-        email,
+        email: email.toLowerCase(),
         password,
       };
 

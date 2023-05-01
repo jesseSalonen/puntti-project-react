@@ -1,7 +1,9 @@
 {
   "addExercise": "Add exercise",
+  "ChooseExerciseMuscle": "Choose a muscle",
   "dashboard": "Exercise Dashboard",
   "exerciseDesc": "Exercise description",
+  "exerciseMuscles": "Exercise muscles",
   "exerciseName": "Exercise name",
   "noExercises": "You have not created any exercises",
   "welcome": "Welcome {{name}}!"

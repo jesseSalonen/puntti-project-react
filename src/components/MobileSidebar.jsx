@@ -13,6 +13,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { logout, reset } from "../features/auth/authSlice";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { IconContext } from "react-icons";
 
 function MobileSidebar({ toggleSidebar, onLogout, active }) {
   const { user } = useSelector((state) => state.auth);
@@ -30,23 +31,23 @@ function MobileSidebar({ toggleSidebar, onLogout, active }) {
         bg-gray-600
         px-2
         text-white
+        duration-300
+        ease-in-out
         sm:hidden
         [&>ul>li>a:hover]:text-gray-400
         [&>ul>li>a>svg]:mr-1
-        [&>ul>li]:mt-4
         [&>ul>li>a]:flex
         [&>ul>li>a]:items-center
-        ease-in-out
-        duration-300
+        [&>ul>li]:mt-4
         ${active ? "translate-x-0" : "translate-x-full"}
       `}
     >
       <div className="flex justify-end border-b border-solid border-gray-50">
-        <RxCross1
-          className="m-6 cursor-pointer"
-          onClick={toggleSidebar}
-          color="white"
-        />
+        <IconContext.Provider
+          value={{ className: "m-6 cursor-pointer", size: 25, color: "white" }}
+        >
+          <RxCross1 onClick={toggleSidebar} />
+        </IconContext.Provider>
       </div>
       <ul className="flex flex-col items-center justify-between">
         {user ? (
@@ -82,19 +83,13 @@ function MobileSidebar({ toggleSidebar, onLogout, active }) {
         ) : (
           <>
             <li>
-              <Link 
-                to="/login"
-                onClick={toggleSidebar}
-                >
+              <Link to="/login" onClick={toggleSidebar}>
                 <FaSignInAlt />
                 {t("login")}
               </Link>
             </li>
             <li>
-              <Link 
-                to="/register"
-                onClick={toggleSidebar}
-              >
+              <Link to="/register" onClick={toggleSidebar}>
                 <FaUser />
                 {t("register")}
               </Link>
@@ -106,10 +101,10 @@ function MobileSidebar({ toggleSidebar, onLogout, active }) {
               mt-4
               flex 
               items-center
-              [&>select]:bg-gray-600
-              [&>select]:border 
-              [&>select]:border-solid
+              [&>select]:border
+              [&>select]:border-solid 
               [&>select]:border-gray-50
+              [&>select]:bg-gray-600
               [&>svg]:mr-1
             "
         >

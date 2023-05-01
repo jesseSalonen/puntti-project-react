@@ -1,11 +1,4 @@
-import {
-  FaFlag,
-  FaHamburger,
-  FaLanguage,
-  FaSignInAlt,
-  FaSignOutAlt,
-  FaUser,
-} from "react-icons/fa";
+import { FaFlag, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
@@ -13,6 +6,7 @@ import { logout, reset } from "../features/auth/authSlice";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import MobileSidebar from "./MobileSidebar";
+import { IconContext } from "react-icons";
 
 function Header() {
   const [sidebarActive, setSidebarActive] = useState(false);
@@ -119,12 +113,14 @@ function Header() {
             </select>
           </li>
           <li className="cursor-pointer p-2 sm:hidden" onClick={toggleSidebar}>
-            <AiOutlineMenu />
+            <IconContext.Provider value={{ size: 25 }}>
+              <AiOutlineMenu />
+            </IconContext.Provider>
           </li>
         </ul>
-        <MobileSidebar 
-          toggleSidebar={toggleSidebar} 
-          onLogout={onLogout} 
+        <MobileSidebar
+          toggleSidebar={toggleSidebar}
+          onLogout={onLogout}
           active={sidebarActive}
         />
       </header>
