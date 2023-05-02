@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import { deleteExercise } from "../features/exercises/exerciseSlice";
-import CommonHelpers from "../helpers/CommonHelpers";
+import { deleteExercise } from "../../features/exercises/exerciseSlice";
+import CommonHelpers from "../../helpers/CommonHelpers";
 
 function ExerciseItem({ exercise }) {
   const dispatch = useDispatch();

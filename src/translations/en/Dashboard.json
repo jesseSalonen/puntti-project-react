@@ -1,10 +1,15 @@
 {
   "addExercise": "Add exercise",
+  "addMuscle": "Add muscle",
   "ChooseExerciseMuscle": "Choose a muscle",
   "dashboard": "Exercise Dashboard",
-  "exerciseDesc": "Exercise description",
+  "desc": "Description",
   "exerciseMuscles": "Exercise muscles",
-  "exerciseName": "Exercise name",
+  "genericInfo": "General exercise information",
+  "muscleInfo": "Muscle information",
+  "name": "Name",
+  "noMuscle": "Muscle not on the list?",
   "noExercises": "You have not created any exercises",
+  "selectedMuscles": "Selected muscles",
   "welcome": "Welcome {{name}}!"
 }

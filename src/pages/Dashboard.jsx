@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import ExerciseForm from "../components/ExerciseForm";
-import ExerciseItem from "../components/ExerciseItem";
+import ExerciseForm from "../components/exercises/ExerciseForm";
+import ExerciseItem from "../components/exercises/ExerciseItem";
 import Spinner from "../components/Spinner";
 import { getExercises, reset } from "../features/exercises/exerciseSlice";
 import { useTranslation } from "react-i18next";

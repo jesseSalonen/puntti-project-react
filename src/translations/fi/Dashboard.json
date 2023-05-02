@@ -1,10 +1,15 @@
 {
   "addExercise": "Lisää liike",
+  "addMuscle": "Lisää lihas",
   "ChooseExerciseMuscle": "Valitse lihas",
   "dashboard": "Liikkeiden hallintasivu",
-  "exerciseDesc": "Liikkeen kuvaus",
+  "desc": "Kuvaus",
   "exerciseMuscles": "Liikkeen lihakset",
-  "exerciseName": "Liikkeen nimi",
+  "genericInfo": "Liikkeen yleistiedot",
+  "muscleInfo": "Liikkeen lihastiedot",
+  "name": "Nimi",
+  "noMuscle": "Eikö lihas ole listalla?",
   "noExercises": "Et ole vielä luonut liikkeitä",
+  "selectedMuscles": "Valitut lihakset",
   "welcome": "Tervetuloa {{name}}!"
 }
