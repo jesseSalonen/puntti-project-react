@@ -4,12 +4,17 @@
   "ChooseExerciseMuscle": "Choose a muscle",
   "dashboard": "Exercise Dashboard",
   "desc": "Description",
+  "exerciseMuscleInfo": "Exercise muscle information",
   "exerciseMuscles": "Exercise muscles",
   "genericInfo": "General exercise information",
+  "lower": "Lower",
   "muscleInfo": "Muscle information",
   "name": "Name",
   "noMuscle": "Muscle not on the list?",
   "noExercises": "You have not created any exercises",
+  "pull": "Pull",
+  "push": "Push",
   "selectedMuscles": "Selected muscles",
+  "upper": "Upper body",
   "welcome": "Welcome {{name}}!"
 }

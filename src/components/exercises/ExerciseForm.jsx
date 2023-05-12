@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createExercise } from "../../features/exercises/exerciseSlice";
 import { useTranslation } from "react-i18next";
+
+import { createExercise } from "../../features/exercises/exerciseSlice";
 import GenericInfo from "./GenericInfo";
 import MuscleInfo from "./MuscleInfo";
+import Modal from "../Modal";
+import MuscleForm from "./MuscleForm";
 
 function ExerciseForm() {
   const { t } = useTranslation("dashboard");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [exerciseMuscles, setExerciseMuscles] = useState([]);
+  const [addMuscleModalOpen, setAddMuscleModalOpen] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -42,6 +46,10 @@ function ExerciseForm() {
     setExerciseMuscles([]);
   };
 
+  const closeAddMuscleModal = () => {
+    setAddMuscleModalOpen(false);
+  };
+
   return (
     <section
       className="
@@ -58,7 +66,11 @@ function ExerciseForm() {
           setDescription={setDescription}
           description={description}
         />
-        <MuscleInfo addMuscle={addMuscle} removeMuscle={removeMuscle} />
+        <MuscleInfo
+          addMuscle={addMuscle}
+          removeMuscle={removeMuscle}
+          setAddMuscleModalOpen={setAddMuscleModalOpen}
+        />
         <div className="mb-3">
           <button
             className="
@@ -69,16 +81,15 @@ function ExerciseForm() {
               items-center 
               justify-center 
               rounded-md 
-              border 
-              border-solid 
-              border-black 
-              bg-black 
+              bg-gradient-to-r
+              from-green-400
+              to-green-500
               py-3 
               px-5 
               text-center 
               text-base 
               font-bold 
-              text-white
+              text-green-800
               hover:scale-95
             "
             type="submit"
@@ -87,6 +98,13 @@ function ExerciseForm() {
           </button>
         </div>
       </form>
+      <Modal
+        isOpen={addMuscleModalOpen}
+        closeModal={closeAddMuscleModal}
+        title={t("muscleInfo")}
+      >
+        <MuscleForm />
+      </Modal>
     </section>
   );
 }

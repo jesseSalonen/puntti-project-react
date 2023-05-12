@@ -37,7 +37,15 @@ export default function App() {
   return (
     <div className={`${darkMode ? "dark" : ""}`}>
       <div
-        className={`h-screen w-screen dark:bg-gradient-to-br dark:from-[#1b242c] dark:to-[#05121a]`}
+        className={`
+          min-h-screen
+          bg-gradient-to-br
+          from-gray-200
+          to-white
+          dark:bg-gradient-to-br 
+          dark:from-[#1b242c] 
+          dark:to-[#05121a]
+        `}
       >
         <div
           className={`

@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+
 import ExerciseForm from "../components/exercises/ExerciseForm";
 import ExerciseItem from "../components/exercises/ExerciseItem";
 import Spinner from "../components/Spinner";
 import { getExercises, reset } from "../features/exercises/exerciseSlice";
-import { useTranslation } from "react-i18next";
-import MobileSidebar from "../components/MobileSidebar";
-import { toast } from "react-toastify";
 
 function Dashboard() {
   const { t } = useTranslation("dashboard");
@@ -51,6 +51,7 @@ function Dashboard() {
       </section>
       <ExerciseForm />
       <section className="my-0 mx-auto w-3/4">
+        <div className={`bg-green- h-9 w-9`}></div>
         {exercises.length > 0 ? (
           <div className="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
             {exercises.map((exercise) => (

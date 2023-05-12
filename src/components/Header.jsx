@@ -60,9 +60,9 @@ function Header({ darkMode, toggleDarkMode }) {
               [&>svg]:mr-1
             "
           >
-            <FaFlag />
             <select
               name="languages"
+              className="rounded-md border border-solid dark:border-gray-600 dark:bg-[#1b252e]"
               onChange={(e) => i18n.changeLanguage(e.target.value)}
               defaultValue={i18n.language === "fi" ? "fi" : "en"}
             >

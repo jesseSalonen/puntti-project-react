@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 import { getMuscles, reset } from "../../features/muscles/muscleSlice";
 import Spinner from "../Spinner";
 
-function MuscleInfo() {
+function MuscleInfo({ setAddMuscleModalOpen }) {
   const { t } = useTranslation("dashboard");
   const { muscles, isLoading, isError, message } = useSelector(
     (state) => state.muscles
@@ -14,7 +15,7 @@ function MuscleInfo() {
 
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      toast.error(message);
     }
 
     dispatch(getMuscles());
@@ -43,7 +44,7 @@ function MuscleInfo() {
       "
     >
       <h2 className="mb-3 block w-full text-left text-lg font-semibold">
-        {t("muscleInfo")}
+        {t("exerciseMuscleInfo")}
       </h2>
       <div className="flex gap-6 p-4 max-sm:flex-col max-sm:gap-0">
         <div className="mb-3 w-full">
@@ -79,18 +80,19 @@ function MuscleInfo() {
               items-center 
               justify-center 
               rounded-md 
-              border 
-              border-solid 
-              border-black 
-              bg-black 
+              bg-gradient-to-r
+              from-green-300
+              to-green-100 
               py-2
               px-3
               text-center 
               text-base 
               font-bold 
-              text-white
+              text-green-800
               hover:scale-95
             "
+            onClick={() => setAddMuscleModalOpen(true)}
+            type="button"
           >
             {t("addMuscle")}
           </button>
