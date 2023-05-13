@@ -26,9 +26,10 @@ function ExerciseForm() {
 
   const addMuscle = (muscle) => {
     let originalList = [...exerciseMuscles];
-
+    console.log(exerciseMuscles);
+    console.log(originalList);
     originalList.push(muscle);
-
+    console.log(originalList);
     setExerciseMuscles(originalList);
   };
 
@@ -70,6 +71,7 @@ function ExerciseForm() {
           addMuscle={addMuscle}
           removeMuscle={removeMuscle}
           setAddMuscleModalOpen={setAddMuscleModalOpen}
+          exerciseMuscles={exerciseMuscles}
         />
         <div className="mb-3">
           <button
@@ -103,7 +105,7 @@ function ExerciseForm() {
         closeModal={closeAddMuscleModal}
         title={t("muscleInfo")}
       >
-        <MuscleForm />
+        <MuscleForm closeModal={closeAddMuscleModal} />
       </Modal>
     </section>
   );

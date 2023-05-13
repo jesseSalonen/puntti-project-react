@@ -4,7 +4,7 @@ import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { createMuscle } from "../../features/muscles/muscleSlice";
 
-function MuscleForm() {
+function MuscleForm({ closeModal }) {
   const [name, setName] = useState("");
   const [upper, setUpper] = useState(true);
   const [push, setPush] = useState(true);
@@ -18,8 +18,17 @@ function MuscleForm() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createMuscle());
+    const newMuscle = {
+      name,
+      upper: upper,
+      lower: !upper,
+      pushing: push,
+      pulling: !push,
+    };
+
+    dispatch(createMuscle(newMuscle));
     clearFields();
+    closeModal();
   };
 
   const clearFields = () => {

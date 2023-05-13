@@ -6,7 +6,12 @@ import { toast } from "react-toastify";
 import { getMuscles, reset } from "../../features/muscles/muscleSlice";
 import Spinner from "../Spinner";
 
-function MuscleInfo({ setAddMuscleModalOpen }) {
+function MuscleInfo({
+  addMuscle,
+  removeMuscle,
+  setAddMuscleModalOpen,
+  exerciseMuscles,
+}) {
   const { t } = useTranslation("dashboard");
   const { muscles, isLoading, isError, message } = useSelector(
     (state) => state.muscles
@@ -58,12 +63,14 @@ function MuscleInfo({ setAddMuscleModalOpen }) {
             className="mb-3 w-full rounded-md border border-solid dark:border-gray-600 dark:bg-[#1b252e]"
             name="muscleList"
             id="muscleList"
-            onChange={(e) => addMuscle(e.target.value)}
+            onChange={(e) => handleAddMuscle(e.target.value)}
             defaultValue={"default"}
           >
             <option value={"default"}>{t("ChooseExerciseMuscle")}</option>
             {muscles.map((muscle) => (
-              <option value={muscle.id}>{muscle.name}</option>
+              <option key={`muscle_${muscle._id}`} value={muscle._id}>
+                {muscle.name}
+              </option>
             ))}
           </select>
           <label
@@ -108,7 +115,13 @@ function MuscleInfo({ setAddMuscleModalOpen }) {
             className="h-full rounded-md border border-solid dark:border-gray-600 dark:bg-[#1b252e]"
             name="muscleList"
             id="muscleList"
-          ></div>
+          >
+            {exerciseMuscles.map((muscle) => {
+              <span className="rounded-md border border-solid dark:border-gray-600 dark:bg-[#1b252e]">
+                {muscle}
+              </span>;
+            })}
+          </div>
         </div>
       </div>
     </div>

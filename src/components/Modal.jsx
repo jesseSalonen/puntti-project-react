@@ -32,6 +32,7 @@ function Modal({ isOpen, closeModal, title, children }) {
         rounded-md
         p-4
         drop-shadow-lg 
+        backdrop:bg-black/30
         dark:bg-gradient-to-br
         dark:from-[#18222b] 
         dark:to-[#05121a]
