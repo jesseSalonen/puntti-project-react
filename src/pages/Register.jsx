@@ -47,11 +47,11 @@ function Register() {
     e.preventDefault();
 
     if (password !== password2) {
-      toast.error("Password do not match");
+      toast.error("Passwords do not match");
     } else {
       const userData = {
         name,
-        email,
+        email: email.toLowerCase(),
         password,
       };
 

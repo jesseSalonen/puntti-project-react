@@ -1,7 +1,20 @@
 {
   "addExercise": "Lisää liike",
+  "addMuscle": "Lisää lihas",
+  "ChooseExerciseMuscle": "Valitse lihas",
   "dashboard": "Liikkeiden hallintasivu",
-  "exercise": "Liike",
+  "desc": "Kuvaus",
+  "exerciseMuscleInfo": "Liikkeen lihastiedot",
+  "exerciseMuscles": "Liikkeen lihakset",
+  "genericInfo": "Liikkeen yleistiedot",
+  "lower": "Alavartalo",
+  "muscleInfo": "Lihastiedot",
+  "name": "Nimi",
+  "noMuscle": "Eikö lihas ole listalla?",
   "noExercises": "Et ole vielä luonut liikkeitä",
+  "pull": "Vetävä",
+  "push": "Työntävä",
+  "selectedMuscles": "Valitut lihakset",
+  "upper": "Ylävartalo",
   "welcome": "Tervetuloa {{name}}!"
 }
