@@ -24,19 +24,21 @@ function ExerciseForm() {
     clearFields();
   };
 
-  const addMuscle = (muscle) => {
+  const addMuscle = (muscleId) => {
     let originalList = [...exerciseMuscles];
-    console.log(exerciseMuscles);
-    console.log(originalList);
-    originalList.push(muscle);
-    console.log(originalList);
-    setExerciseMuscles(originalList);
+    if (!originalList.includes(muscleId)) {
+      originalList.push(muscleId);
+      setExerciseMuscles(originalList);
+    }
   };
 
-  const removeMuscle = (muscle) => {
+  const removeMuscle = (muscleId) => {
     let originalList = [...exerciseMuscles];
 
-    originalList.push(muscle);
+    const index = originalList.indexOf(muscleId);
+    if (index > -1) {
+      originalList.splice(index, 1);
+    }
 
     setExerciseMuscles(originalList);
   };

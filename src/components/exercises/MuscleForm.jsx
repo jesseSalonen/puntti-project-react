@@ -22,8 +22,8 @@ function MuscleForm({ closeModal }) {
       name,
       upper: upper,
       lower: !upper,
-      pushing: push,
-      pulling: !push,
+      pushing: upper ? push : false,
+      pulling: upper ? !push : false,
     };
 
     dispatch(createMuscle(newMuscle));
