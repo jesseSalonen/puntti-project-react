@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
-import { login, reset } from "../features/auth/authSlice";
+import { login, reset, selectAuth } from "../features/auth/authSlice";
 import { useTranslation } from "react-i18next";
 
 function Login() {
@@ -18,9 +18,8 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
+  const { user, isLoading, isError, isSuccess, message } =
+    useSelector(selectAuth);
 
   useEffect(() => {
     if (isError) {

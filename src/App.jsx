@@ -8,16 +8,18 @@ import {
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "./components/Header";
+import Header from "./components/layout/Header";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ExerciseSearch from "./pages/exercises/ExerciseSearch";
+import Exercise from "./pages/exercises/Exercise";
+import AddExercise from "./pages/exercises/AddExercise";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {}, []);
 
   const toggleDarkMode = () => setDarkMode((prevDarkMode) => !prevDarkMode);
 
@@ -27,9 +29,16 @@ export default function App() {
         path="/"
         element={<Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
       >
-        <Route index element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route element={<ProtectedRoute />}>
+          <Route index element={<Dashboard />} />
+          <Route path="/exercises">
+            <Route index element={<ExerciseSearch />} />
+            <Route path=":alias" element={<Exercise />} />
+            <Route path="add" element={<AddExercise />} />
+          </Route>
+        </Route>
       </Route>
     )
   );

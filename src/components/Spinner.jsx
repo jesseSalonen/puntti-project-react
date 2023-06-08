@@ -15,12 +15,12 @@ function Spinner() {
         bg-opacity-50
       "
     >
-      <img 
+      <img
         className="animate-[spin_2s_linear_infinite]"
-        src="puntti-emblem.svg" 
-        alt="spinnerLogo" 
-        width={128} 
-        height={128} 
+        src="/puntti-emblem.svg"
+        alt="spinnerLogo"
+        width={128}
+        height={128}
       />
     </div>
   );

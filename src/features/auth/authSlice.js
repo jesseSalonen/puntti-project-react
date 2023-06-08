@@ -44,7 +44,7 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
 });
 
 export const logout = createAsyncThunk("auth/logout", async () => {
-  await authService.logout();
+  authService.logout();
 });
 
 export const authSlice = createSlice({
@@ -93,4 +93,9 @@ export const authSlice = createSlice({
 });
 
 export const { reset } = authSlice.actions;
+
+export const selectUserLogged = (state) => !!state.auth.user;
+export const selectUserName = (state) => state.auth.user?.name;
+export const selectAuth = (state) => state.auth;
+
 export default authSlice.reducer;
