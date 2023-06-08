@@ -4,7 +4,11 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { AiOutlineCheck } from "react-icons/ai";
 
-import { getMuscles, reset } from "../../features/muscles/muscleSlice";
+import {
+  getMuscles,
+  reset,
+  selectMuscles,
+} from "../../features/muscles/muscleSlice";
 import Spinner from "../Spinner";
 
 function MuscleInfo({
@@ -14,22 +18,22 @@ function MuscleInfo({
   exerciseMuscles,
 }) {
   const { t } = useTranslation("dashboard");
-  const { muscles, isLoading, isError, message } = useSelector(
-    (state) => state.muscles
-  );
+  const { muscles, isLoading, isError, message } = useSelector(selectMuscles);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isError) {
-      toast.error(message);
-    }
-
     dispatch(getMuscles());
 
     return () => {
       dispatch(reset());
     };
-  }, [isError, message, dispatch]);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+  }, [isError, message]);
 
   const getMuscleNameFromId = (id) => {
     const muscleWithId = muscles.find((muscle) => muscle._id === id);
@@ -128,7 +132,7 @@ function MuscleInfo({
             {exerciseMuscles.map((muscleId) => (
               <div
                 key={`exerciseMuscle_${muscleId}`}
-                className="m-1 flex w-fit items-center justify-center gap-y-0 rounded-md border border-solid bg-green-400 p-1 dark:border-gray-600"
+                className="m-1 flex w-fit items-center justify-center gap-y-0 rounded-md border border-solid bg-green-400 py-1 px-2 dark:border-gray-600"
               >
                 <div className="mr-2">{getMuscleNameFromId(muscleId)}</div>
                 <div

@@ -119,4 +119,6 @@ export const muscleSlice = createSlice({
 });
 
 export const { reset } = muscleSlice.actions;
+
+export const selectMuscles = (state) => state.muscles;
 export default muscleSlice.reducer;

@@ -119,4 +119,7 @@ export const exerciseSlice = createSlice({
 });
 
 export const { reset } = exerciseSlice.actions;
+
+export const selectExercises = (state) => state.exercises;
+
 export default exerciseSlice.reducer;

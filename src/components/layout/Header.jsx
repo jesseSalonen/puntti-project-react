@@ -3,7 +3,7 @@ import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { logout, reset } from "../features/auth/authSlice";
+import { logout, reset, selectUserLogged } from "../../features/auth/authSlice";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import MobileSidebar from "./MobileSidebar";
@@ -15,7 +15,7 @@ function Header({ darkMode, toggleDarkMode }) {
   const { t, i18n } = useTranslation("common");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const isLogged = useSelector(selectUserLogged);
 
   const onLogout = () => {
     dispatch(logout());
@@ -48,7 +48,7 @@ function Header({ darkMode, toggleDarkMode }) {
       >
         <div className="logo">
           <Link to="/">
-            <img src="puntti-emblem.svg" alt="logo" width={64} height={64} />
+            <img src="/puntti-emblem.svg" alt="logo" width={64} height={64} />
           </Link>
         </div>
         <ul className="flex items-center justify-between">
@@ -98,7 +98,7 @@ function Header({ darkMode, toggleDarkMode }) {
               className={`${darkMode ? "rounded-md bg-green-400" : ""}`}
             />
           </li>
-          {user ? (
+          {isLogged ? (
             <li className="max-sm:hidden">
               <button
                 className="

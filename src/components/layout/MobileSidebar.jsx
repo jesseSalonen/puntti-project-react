@@ -11,7 +11,7 @@ import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { logout, reset } from "../features/auth/authSlice";
+import { logout, reset, selectAuth } from "../../features/auth/authSlice";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { IconContext } from "react-icons";
@@ -23,7 +23,7 @@ function MobileSidebar({
   toggleDarkMode,
   darkMode,
 }) {
-  const { user } = useSelector((state) => state.auth);
+  const isLogged = useSelector(selectAuth);
   const { t, i18n } = useTranslation("common");
 
   return (
@@ -57,7 +57,7 @@ function MobileSidebar({
         </IconContext.Provider>
       </div>
       <ul className="flex flex-col items-center justify-between">
-        {user ? (
+        {isLogged ? (
           <li>
             <button
               className="
