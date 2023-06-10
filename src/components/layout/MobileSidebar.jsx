@@ -15,6 +15,8 @@ import { logout, reset, selectAuth } from "../../features/auth/authSlice";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { IconContext } from "react-icons";
+import ThemeSwitch from "./ThemeSwitch";
+import { FormControl, MenuItem, Select } from "@mui/material";
 
 function MobileSidebar({
   toggleSidebar,
@@ -105,54 +107,26 @@ function MobileSidebar({
         )}
         <li
           className="
-              mt-4
-              flex 
-              items-center
-              [&>select]:border
-              [&>select]:border-solid 
-              [&>select]:border-gray-50
-              [&>select]:bg-gray-600
-              [&>svg]:mr-1
-            "
+            mt-4
+            flex 
+            items-center
+          "
         >
-          <FaFlag />
-          <select
-            name="sideBarLanguages"
-            onChange={(e) => {
-              i18n.changeLanguage(e.target.value);
-              toggleSidebar();
-            }}
-            defaultValue={i18n.language === "fi" ? "fi" : "en"}
-          >
-            <option value="fi">Finnish</option>
-            <option value="en">English</option>
-          </select>
+          <FormControl fullWidth>
+            <Select
+              value={i18n.language === "fi" ? "fi" : "en"}
+              onChange={(e) => {
+                i18n.changeLanguage(e.target.value);
+                toggleSidebar();
+              }}
+            >
+              <MenuItem value="fi">Finnish</MenuItem>
+              <MenuItem value="en">English</MenuItem>
+            </Select>
+          </FormControl>
         </li>
-        <li
-          className="
-              flex
-              h-6
-              w-16
-              cursor-pointer
-              items-center
-              justify-between
-              rounded-md
-              bg-gray-300
-              [&>svg]:flex
-              [&>svg]:h-full
-              [&>svg]:w-full
-              [&>svg]:items-center
-              [&>svg]:justify-center
-              [&>svg]:p-1
-            "
-          onClick={toggleDarkMode}
-        >
-          <MdOutlineLightMode
-            className={`${!darkMode ? "rounded-md bg-green-400" : ""}`}
-          />
-          <MdOutlineDarkMode
-            className={`${darkMode ? "rounded-md bg-green-400" : ""}`}
-          />
+        <li>
+          <ThemeSwitch toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
         </li>
       </ul>
     </div>
