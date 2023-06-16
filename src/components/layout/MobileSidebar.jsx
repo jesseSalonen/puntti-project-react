@@ -38,6 +38,9 @@ function MobileSidebar({
         h-full
         w-52
         bg-gray-600
+        bg-gradient-to-r
+        from-[#1c262e]
+        to-[#1d262e]
         px-2
         text-white
         duration-300
