@@ -16,6 +16,7 @@ import {
   Switch,
 } from "@mui/material";
 import ThemeSwitch from "./ThemeSwitch";
+import Sidebar from "./Sidebar";
 
 function Header({ darkMode, toggleDarkMode }) {
   const [sidebarActive, setSidebarActive] = useState(false);
@@ -42,11 +43,11 @@ function Header({ darkMode, toggleDarkMode }) {
           flex 
           items-center 
           justify-between 
-          border-b 
-          border-solid 
-          border-gray-200 
+          border-b-4
+          border-solid
+          border-[#1E2831]
           py-1 
-          px-0
+          px-7
           [&>ul>li>a:hover]:text-gray-400
           [&>ul>li>a>svg]:mr-1
           [&>ul>li>a]:flex
@@ -54,9 +55,9 @@ function Header({ darkMode, toggleDarkMode }) {
           [&>ul>li]:ml-5
         "
       >
-        <div className="logo">
+        <div>
           <Link to="/">
-            <img src="/puntti-emblem.svg" alt="logo" width={64} height={64} />
+            <img src="/puntti-emblem.svg" alt="logo" width={90} height={90} />
           </Link>
         </div>
         <ul className="flex items-center justify-between">
@@ -180,10 +181,12 @@ function Header({ darkMode, toggleDarkMode }) {
           darkMode={darkMode}
         />
       </header>
-
-      <main>
-        <Outlet />
-      </main>
+      <div className="relative">
+        <main>
+          <Outlet />
+        </main>
+        <Sidebar />
+      </div>
     </div>
   );
 }

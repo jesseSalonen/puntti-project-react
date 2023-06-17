@@ -12,16 +12,30 @@ import Header from "./components/layout/Header";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExerciseSearch from "./pages/exercises/ExerciseSearch";
 import Exercise from "./pages/exercises/Exercise";
 import AddExercise from "./pages/exercises/AddExercise";
 import ProtectedRoute from "./components/ProtectedRoute";
+import SessionHelpers from "./helpers/SessionHelpers";
+import { SESSION, THEME_MODE } from "./helpers/constants";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
 
-  const toggleDarkMode = () => setDarkMode((prevDarkMode) => !prevDarkMode);
+  useEffect(() => {
+    const storedTheme = SessionHelpers.getTheme();
+    if (storedTheme) {
+      if (storedTheme === THEME_MODE.dark) {
+        setDarkMode(true);
+      }
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    SessionHelpers.saveTheme(!darkMode ? THEME_MODE.dark : THEME_MODE.light);
+    setDarkMode((prevDarkMode) => !prevDarkMode);
+  };
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -48,12 +62,10 @@ export default function App() {
       <div
         className={`
           min-h-screen
-          bg-gradient-to-br
-          from-gray-200
-          to-white
+          bg-[#FAFBFA]
           dark:bg-gradient-to-br 
-          dark:from-[#1b242c] 
-          dark:to-[#05121a]
+          dark:from-[#1A242D] 
+          dark:to-[#09151E]
         `}
       >
         <div
@@ -61,10 +73,7 @@ export default function App() {
           my-0 
           mx-auto 
           w-full
-          max-w-screen-lg 
-          py-0 
-          px-5
-          text-center
+          p-0
           text-gray-700
           dark:text-gray-300
         `}
