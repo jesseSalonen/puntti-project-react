@@ -34,7 +34,7 @@ function MobileSidebar({
         fixed
         top-0
         right-0
-        z-10
+        z-40
         h-full
         w-52
         bg-gray-600

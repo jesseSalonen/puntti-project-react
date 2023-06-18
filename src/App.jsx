@@ -19,6 +19,7 @@ import AddExercise from "./pages/exercises/AddExercise";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SessionHelpers from "./helpers/SessionHelpers";
 import { SESSION, THEME_MODE } from "./helpers/constants";
+import Layout from "./components/layout/Layout";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -41,7 +42,7 @@ export default function App() {
     createRoutesFromElements(
       <Route
         path="/"
-        element={<Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
+        element={<Layout darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
       >
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
