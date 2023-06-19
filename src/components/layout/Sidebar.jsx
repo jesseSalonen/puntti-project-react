@@ -70,7 +70,7 @@ function Sidebar({
                   bg-gradient-to-r
                   from-green-50
                   to-green-400
-                  py-3
+                  py-2
                   px-6
                   text-green-900
                 "
