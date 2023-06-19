@@ -43,7 +43,7 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
         </Link>
       </div>
       <ul className="flex items-center justify-between">
-        <li className="cursor-pointer p-2 sm:hidden" onClick={toggleSidebar}>
+        <li className="cursor-pointer p-2 md:hidden" onClick={toggleSidebar}>
           <IconContext.Provider value={{ size: 25 }}>
             <AiOutlineMenu />
           </IconContext.Provider>

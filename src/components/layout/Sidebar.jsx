@@ -6,6 +6,8 @@ import { FormControl, MenuItem, Select } from "@mui/material";
 import ThemeSwitch from "./ThemeSwitch";
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { IconContext } from "react-icons";
+import { RxCross1 } from "react-icons/rx";
 
 function Sidebar({
   toggleSidebar,
@@ -25,15 +27,25 @@ function Sidebar({
         right-0
         z-20
         h-screen
-        w-96
+        w-80
         bg-[#1E2831]
         px-6
-        pt-28
         text-white
         drop-shadow-lg
+        duration-300
+        ease-in-out
+        max-md:z-40
+        ${active ? "max-md:translate-x-0" : "max-md:translate-x-full"}
         [&>*]:mb-7
       `}
     >
+      <div className="flex justify-end border-b border-solid border-gray-50">
+        <IconContext.Provider
+          value={{ className: "m-6 cursor-pointer", size: 25, color: "white" }}
+        >
+          <RxCross1 onClick={toggleSidebar} />
+        </IconContext.Provider>
+      </div>
       <div className="flex items-center">
         <FormControl fullWidth>
           <Select
