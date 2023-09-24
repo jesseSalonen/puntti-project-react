@@ -1,4 +1,5 @@
 {
   "addExercisesFromBelow": "Add exercises from below",
-  "dashboard": "Exercise Dashboard"
+  "dashboard": "Exercise Dashboard",
+  "noExercises": "You have not created any exercises"
 }

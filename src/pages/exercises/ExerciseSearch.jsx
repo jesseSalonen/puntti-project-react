@@ -12,7 +12,7 @@ import {
 import Spinner from "../../components/Spinner";
 
 function ExerciseSearch() {
-  const { t } = useTranslation("Exercises");
+  const { t } = useTranslation("exercises");
   const dispatch = useDispatch();
 
   const { exercises, isLoading, isError, message } =
