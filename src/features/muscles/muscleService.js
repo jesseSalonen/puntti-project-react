@@ -1,4 +1,5 @@
 import axios from "../../AxiosConfig";
+import CommonHelpers from "../../helpers/CommonHelpers";
 
 const API_URL = "api/muscles/";
 

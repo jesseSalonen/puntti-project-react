@@ -9,7 +9,7 @@ import {
   reset,
   selectExercises,
 } from "../../features/exercises/exerciseSlice";
-import Spinner from "../../components/Spinner";
+import Spinner from "../../components/common/Spinner";
 
 function ExerciseSearch() {
   const { t } = useTranslation("exercises");
@@ -38,8 +38,7 @@ function ExerciseSearch() {
 
   return (
     <>
-      <div className="my-0 mx-auto w-3/4">
-        <div className={`bg-green- h-9 w-9`}></div>
+      <div className="mx-auto w-3/4 max-sm:w-11/12">
         {exercises.length > 0 ? (
           <div className="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
             {exercises.map((exercise) => (

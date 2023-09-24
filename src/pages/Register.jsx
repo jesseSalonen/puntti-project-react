@@ -3,7 +3,7 @@ import { FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/common/Spinner";
 import { register, reset, selectAuth } from "../features/auth/authSlice";
 import { useTranslation } from "react-i18next";
 
@@ -63,15 +63,15 @@ function Register() {
   }
 
   return (
-    <>
-      <section className="mb-12 py-0 px-5 font-bold">
+    <div className="mx-auto w-3/4 max-sm:w-11/12">
+      <section className="mb-12 py-0 font-bold">
         <h1 className="mb-4 text-5xl max-sm:text-4xl">{t("register")}</h1>
         <p className="text-4xl text-gray-400 max-sm:text-2xl">
           {t("createAccount")}
         </p>
       </section>
 
-      <section className="my-0 mx-auto w-3/4 max-sm:w-11/12">
+      <section>
         <form onSubmit={onSubmit}>
           <div className="mb-3">
             <input
@@ -146,7 +146,7 @@ function Register() {
           </div>
         </form>
       </section>
-    </>
+    </div>
   );
 }
 
