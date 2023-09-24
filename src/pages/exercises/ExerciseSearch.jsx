@@ -9,7 +9,7 @@ import {
   reset,
   selectExercises,
 } from "../../features/exercises/exerciseSlice";
-import Spinner from "../../components/Spinner";
+import Spinner from "../../components/common/Spinner";
 
 function ExerciseSearch() {
   const { t } = useTranslation("exercises");

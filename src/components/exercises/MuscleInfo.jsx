@@ -9,7 +9,7 @@ import {
   reset,
   selectMuscles,
 } from "../../features/muscles/muscleSlice";
-import Spinner from "../Spinner";
+import Spinner from "../common/Spinner";
 
 function MuscleInfo({
   addMuscle,

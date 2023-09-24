@@ -76,7 +76,7 @@ export default function App() {
           w-full
           p-0
           text-gray-700
-          dark:text-gray-300
+          dark:text-gray-
         `}
         >
           <RouterProvider router={router} />

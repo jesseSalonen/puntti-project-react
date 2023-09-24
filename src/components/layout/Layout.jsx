@@ -33,6 +33,7 @@ function Layout({ darkMode, toggleDarkMode }) {
           pr-96
           pl-16
           pt-36
+          pb-6
           max-lg:pr-80
           max-lg:pl-0
           max-md:pr-0
