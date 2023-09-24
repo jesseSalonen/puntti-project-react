@@ -1,4 +1,5 @@
 {
   "addExercisesFromBelow": "Lisää liikkeitä alapuolelta",
-  "dashboard": "Liikkeiden hallintasivu"
+  "dashboard": "Liikkeiden hallintasivu",
+  "noExercises": "Et ole vielä luonut liikkeitä"
 }

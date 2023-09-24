@@ -1,14 +1,11 @@
 import axios from "../../AxiosConfig";
+import CommonHelpers from "../../helpers/CommonHelpers";
 
 const API_URL = "api/exercises/";
 
 // Create new exercise
 const createExercise = async (exerciseData, token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
+  const config = CommonHelpers.getAuthHeader(token);
 
   const response = await axios.post(API_URL, exerciseData, config);
 
@@ -17,11 +14,7 @@ const createExercise = async (exerciseData, token) => {
 
 // Get user exercises
 const getExercises = async (token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
+  const config = CommonHelpers.getAuthHeader(token);
 
   const response = await axios.get(API_URL, config);
 
@@ -30,11 +23,7 @@ const getExercises = async (token) => {
 
 // Delete user exercise
 const deleteExercise = async (exerciseId, token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
+  const config = CommonHelpers.getAuthHeader(token);
 
   const response = await axios.delete(API_URL + exerciseId, config);
 

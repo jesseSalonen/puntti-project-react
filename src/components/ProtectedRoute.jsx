@@ -1,13 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
-import { selectUserLogged } from "../features/auth/authSlice";
+import { checkLogin, selectUserLogged } from "../features/auth/authSlice";
 
 function ProtectedRoute() {
   const isLogged = useSelector(selectUserLogged);
+  const dispatch = useDispatch();
 
   if (!isLogged) {
     return <Navigate to="/login" replace />;
+  } else {
+    dispatch(checkLogin());
   }
   return <Outlet />;
 }

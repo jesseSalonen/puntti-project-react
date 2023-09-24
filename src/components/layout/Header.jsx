@@ -1,17 +1,8 @@
-import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectUserLogged } from "../../features/auth/authSlice";
-import { useTranslation } from "react-i18next";
 import { IconContext } from "react-icons";
-import { FormControl, MenuItem, Select } from "@mui/material";
-import ThemeSwitch from "./ThemeSwitch";
 
 function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
-  const { t, i18n } = useTranslation("common");
-  const isLogged = useSelector(selectUserLogged);
-
   return (
     <header
       className="
