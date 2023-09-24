@@ -5,7 +5,7 @@ import CommonHelpers from "../../helpers/CommonHelpers";
 function ExerciseItem({ exercise }) {
   const dispatch = useDispatch();
   return (
-    <div className="relative my-3 mx-0 bg-gray-100 pt-5 pr-0 pb-3 drop-shadow-md">
+    <div className="relative my-3 mx-0 bg-gray-100 p-5 drop-shadow-lg dark:bg-gradient-to-br dark:from-[#18222A] dark:to-[#05121A]">
       <div>{CommonHelpers.getDateTimeText(new Date(exercise.createdAt))}</div>
       <h2>{exercise.name}</h2>
       <button

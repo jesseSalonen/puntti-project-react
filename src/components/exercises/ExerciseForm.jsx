@@ -54,14 +54,7 @@ function ExerciseForm() {
   };
 
   return (
-    <section
-      className="
-        my-0
-        mx-auto
-        w-3/4
-        max-sm:w-11/12
-      "
-    >
+    <section>
       <form onSubmit={onSubmit}>
         <GenericInfo
           setName={setName}

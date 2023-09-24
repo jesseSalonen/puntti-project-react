@@ -56,15 +56,15 @@ function Login() {
   }
 
   return (
-    <>
-      <section className="mb-12 py-0 px-5 font-bold">
+    <div className="mx-auto w-3/4 max-sm:w-11/12">
+      <section className="mb-12 py-0 font-bold">
         <h1 className="mb-4 text-5xl max-sm:text-4xl">{t("login")}</h1>
         <p className="text-4xl text-gray-400 max-sm:text-2xl">
           {t("loginAndCreateExercises")}
         </p>
       </section>
 
-      <section className="my-0 mx-auto w-3/4 max-sm:w-11/12">
+      <section>
         <form onSubmit={onSubmit}>
           <div className="mb-3">
             <input
@@ -117,7 +117,7 @@ function Login() {
           </div>
         </form>
       </section>
-    </>
+    </div>
   );
 }
 

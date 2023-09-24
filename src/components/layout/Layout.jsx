@@ -31,7 +31,10 @@ function Layout({ darkMode, toggleDarkMode }) {
       <main
         className="
           pr-96
+          pl-16
           pt-36
+          max-lg:pr-80
+          max-lg:pl-0
           max-md:pr-0
         "
       >
