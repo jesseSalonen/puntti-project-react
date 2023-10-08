@@ -2,12 +2,12 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { selectAuth } from "../../features/auth/authSlice";
-import { FormControl, MenuItem, Select } from "@mui/material";
-import ThemeSwitch from "./ThemeSwitch";
-import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { ThemeSwitch } from "./ThemeSwitch";
+import { FaSignInAlt, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { RxCross1 } from "react-icons/rx";
+import CustomSelect from "./CustomSelect";
 
 function Sidebar({
   toggleSidebar,
@@ -17,7 +17,7 @@ function Sidebar({
   darkMode,
 }) {
   const isLogged = useSelector(selectAuth);
-  const { t, i18n } = useTranslation("common");
+  const { t } = useTranslation("common");
 
   return (
     <div
@@ -47,16 +47,13 @@ function Sidebar({
         </IconContext.Provider>
       </div>
       <div className="flex items-center">
-        <FormControl fullWidth>
-          <Select
-            value={i18n.language === "fi" ? "fi" : "en"}
-            onChange={(e) => i18n.changeLanguage(e.target.value)}
-          >
-            <MenuItem value="fi">Finnish</MenuItem>
-            <MenuItem value="en">English</MenuItem>
-          </Select>
-        </FormControl>
-        <ThemeSwitch toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+        <CustomSelect />
+        <ThemeSwitch
+          sx={{ m: 1 }}
+          onChange={toggleDarkMode}
+          checked={darkMode}
+          darkMode={darkMode}
+        />
       </div>
       {isLogged ? (
         <button

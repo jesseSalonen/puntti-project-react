@@ -59,6 +59,7 @@ function ExerciseForm() {
         my-0
         mx-auto
         w-3/4
+        max-w-3xl
         max-sm:w-11/12
       "
     >

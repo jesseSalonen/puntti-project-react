@@ -1,6 +1,9 @@
 {
+  "addExercise": "Lisää liike",
+  "exercises": "Liikkeet",
   "intlDateTime": "{{val, datetime}}",
   "login": "Kirjaudu",
   "logout": "Kirjaudu ulos",
-  "register": "Luo tunnus"
+  "register": "Luo tunnus",
+  "startWorkout": "Aloita treeni!"
 }

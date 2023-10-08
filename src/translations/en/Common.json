@@ -1,6 +1,9 @@
 {
+  "addExercise": "Add exercise",
+  "exercises": "Exercises",
   "intlDateTime": "{{val, datetime}}",
   "login": "Login",
   "logout": "Logout",
-  "register": "Register"
+  "register": "Register",
+  "startWorkout": "Start workout!"
 }

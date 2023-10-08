@@ -1,8 +1,9 @@
-import React from "react";
 import { styled } from "@mui/material/styles";
 import { Switch } from "@mui/material";
 
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+export const ThemeSwitch = styled(Switch, {
+  shouldForwardProp: (prop) => prop !== "darkMode",
+})(({ theme, darkMode }) => ({
   width: 62,
   height: 34,
   padding: 7,
@@ -20,7 +21,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
       },
       "& + .MuiSwitch-track": {
         opacity: 1,
-        backgroundColor: theme.palette.mode === "dark" ? "#8796A5" : "#aab4be",
+        backgroundColor: darkMode ? "#8796A5" : "#aab4be",
       },
     },
   },
@@ -44,19 +45,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
   "& .MuiSwitch-track": {
     opacity: 1,
-    backgroundColor: theme.palette.mode === "dark" ? "#8796A5" : "#aab4be",
+    backgroundColor: darkMode ? "#8796A5" : "#aab4be",
     borderRadius: 20 / 2,
   },
 }));
-
-function ThemeSwitch({ toggleDarkMode, darkMode }) {
-  return (
-    <MaterialUISwitch
-      sx={{ m: 1 }}
-      onChange={toggleDarkMode}
-      checked={darkMode}
-    />
-  );
-}
-
-export default ThemeSwitch;
