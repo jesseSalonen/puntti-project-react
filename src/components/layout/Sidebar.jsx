@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { RxCross1 } from "react-icons/rx";
 import { CustomSelect } from "../common/CustomSelect";
+import { FormControl, MenuItem, Select } from "@mui/material";
 
 function Sidebar({
   toggleSidebar,
@@ -17,7 +18,7 @@ function Sidebar({
   darkMode,
 }) {
   const isLogged = useSelector(selectAuth);
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
 
   return (
     <div
@@ -58,8 +59,6 @@ function Sidebar({
             <MenuItem value="en">English</MenuItem>
           </Select>
         </FormControl>
-        <ThemeSwitch toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-        <CustomSelect />
         <ThemeSwitch
           sx={{ m: 1 }}
           onChange={toggleDarkMode}

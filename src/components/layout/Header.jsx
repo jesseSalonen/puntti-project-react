@@ -1,6 +1,7 @@
 import { AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
+import { useTranslation } from "react-i18next";
 
 function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
   const { t, i18n } = useTranslation("common");
