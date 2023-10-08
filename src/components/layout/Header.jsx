@@ -6,6 +6,30 @@ import { useTranslation } from "react-i18next";
 function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
   const { t, i18n } = useTranslation("common");
 
+  const linkButton = (buttonText) => {
+    return (
+      <button
+        className="
+          flex 
+          cursor-pointer
+          items-center 
+          justify-center 
+          rounded-md 
+          bg-[#222C34]
+          py-3 
+          px-5 
+          text-center 
+          text-white
+          hover:bg-[#3A4549]
+          hover:text-green-700
+          max-md:hidden
+        "
+      >
+        {t(buttonText)}
+      </button>
+    );
+  };
+
   return (
     <header
       className="
@@ -37,29 +61,12 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
             <img src="/puntti-emblem.svg" alt="logo" width={90} height={90} />
           </Link>
         </li>
-        {["exercises", "addExercise"].map((buttonText) => (
-          <li>
-            <button
-              className="
-              flex 
-              cursor-pointer
-              items-center 
-              justify-center 
-              rounded-md 
-              bg-[#222C34]
-              py-3 
-              px-5 
-              text-center 
-              text-white
-              hover:bg-[#3A4549]
-              hover:text-green-700
-              max-md:hidden
-            "
-            >
-              {t(buttonText)}
-            </button>
-          </li>
-        ))}
+        <li>
+          <Link to="/exercises">{linkButton("exercises")}</Link>
+        </li>
+        <li>
+          <Link to="/exercises/add">{linkButton("addExercise")}</Link>
+        </li>
       </ul>
       <ul className="flex items-center justify-between">
         <li
