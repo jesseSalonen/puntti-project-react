@@ -1,8 +1,5 @@
 import { AiOutlineMenu } from "react-icons/ai";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectUserLogged } from "../../features/auth/authSlice";
-import { useTranslation } from "react-i18next";
 import { IconContext } from "react-icons";
 
 function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {

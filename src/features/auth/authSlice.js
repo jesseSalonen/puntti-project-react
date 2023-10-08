@@ -43,6 +43,20 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   }
 });
 
+// Check user login
+export const checkLogin = createAsyncThunk(
+  "auth/check",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await authService.checkLogin(token);
+    } catch (error) {
+      thunkAPI.dispatch(logout());
+      return thunkAPI.rejectWithValue();
+    }
+  }
+);
+
 export const logout = createAsyncThunk("auth/logout", async () => {
   authService.logout();
 });
@@ -88,6 +102,21 @@ export const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
+      })
+      .addCase(checkLogin.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(checkLogin.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = {
+          token: state.user.token,
+          ...action.payload,
+        };
+      })
+      .addCase(checkLogin.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = false;
       });
   },
 });
@@ -96,6 +125,7 @@ export const { reset } = authSlice.actions;
 
 export const selectUserLogged = (state) => !!state.auth.user;
 export const selectUserName = (state) => state.auth.user?.name;
+export const selectToken = (state) => state.auth.user?.token;
 export const selectAuth = (state) => state.auth;
 
 export default authSlice.reducer;

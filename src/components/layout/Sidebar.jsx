@@ -7,7 +7,7 @@ import { FaSignInAlt, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { RxCross1 } from "react-icons/rx";
-import CustomSelect from "./CustomSelect";
+import { CustomSelect } from "../common/CustomSelect";
 
 function Sidebar({
   toggleSidebar,
@@ -47,6 +47,18 @@ function Sidebar({
         </IconContext.Provider>
       </div>
       <div className="flex items-center">
+        <FormControl fullWidth>
+          <Select
+            value={i18n.language === "fi" ? "fi" : "en"}
+            onChange={(e) => i18n.changeLanguage(e.target.value)}
+            MenuProps={{ disableScrollLock: true }}
+            input={<CustomSelect />}
+          >
+            <MenuItem value="fi">Finnish</MenuItem>
+            <MenuItem value="en">English</MenuItem>
+          </Select>
+        </FormControl>
+        <ThemeSwitch toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
         <CustomSelect />
         <ThemeSwitch
           sx={{ m: 1 }}
