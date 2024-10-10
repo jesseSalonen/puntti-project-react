@@ -1,8 +1,35 @@
 import { AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
+import { useTranslation } from "react-i18next";
 
 function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
+  const { t, i18n } = useTranslation("common");
+
+  const linkButton = (buttonText) => {
+    return (
+      <button
+        className="
+          flex 
+          cursor-pointer
+          items-center 
+          justify-center 
+          rounded-md 
+          bg-[#222C34]
+          py-3 
+          px-5 
+          text-center 
+          text-white
+          hover:bg-[#3A4549]
+          hover:text-green-700
+          max-md:hidden
+        "
+      >
+        {t(buttonText)}
+      </button>
+    );
+  };
+
   return (
     <header
       className="
@@ -28,11 +55,19 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
           [&>ul>li]:ml-5
         "
     >
-      <div>
-        <Link to="/">
-          <img src="/puntti-emblem.svg" alt="logo" width={90} height={90} />
-        </Link>
-      </div>
+      <ul className="flex items-center [&>li]:mr-4">
+        <li>
+          <Link to="/">
+            <img src="/puntti-emblem.svg" alt="logo" width={90} height={90} />
+          </Link>
+        </li>
+        <li>
+          <Link to="/exercises">{linkButton("exercises")}</Link>
+        </li>
+        <li>
+          <Link to="/exercises/add">{linkButton("addExercise")}</Link>
+        </li>
+      </ul>
       <ul className="flex items-center justify-between">
         <li
           className="cursor-pointer p-2 text-white md:hidden"
@@ -41,6 +76,30 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
           <IconContext.Provider value={{ size: 25 }}>
             <AiOutlineMenu />
           </IconContext.Provider>
+        </li>
+        <li>
+          <button
+            className="
+              flex 
+              w-96 
+              cursor-pointer
+              items-center 
+              justify-center 
+              rounded-md 
+              bg-gradient-to-r
+              from-green-500
+              to-green-100
+              py-3 
+              px-5 
+              text-center 
+              text-base 
+              font-bold 
+              text-green-800
+              max-md:hidden
+            "
+          >
+            {t("startWorkout")}
+          </button>
         </li>
       </ul>
     </header>
