@@ -4,6 +4,7 @@
   "intlDateTime": "{{val, datetime}}",
   "login": "Login",
   "logout": "Logout",
+  "notYetRegistered": "Don't have an account yet?",
   "register": "Register",
   "startWorkout": "Start workout!"
 }
