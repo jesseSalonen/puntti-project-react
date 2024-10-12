@@ -25,7 +25,6 @@ export const CustomSelect = styled(InputBase)(({ theme }) => ({
     ].join(","),
     "&:focus": {
       borderRadius: 13,
-      borderColor: "#19fa8f",
       boxShadow: "0 0 0 0.2rem rgba(25,250,143,.25)",
     },
   },
