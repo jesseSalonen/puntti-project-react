@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { selectAuth } from "../../features/auth/authSlice";
+import { selectUserLogged } from "../../features/auth/authSlice";
 import { ThemeSwitch } from "./ThemeSwitch";
 import { FaSignInAlt, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -17,8 +17,9 @@ function Sidebar({
   toggleDarkMode,
   darkMode,
 }) {
-  const isLogged = useSelector(selectAuth);
+  const isLogged = useSelector(selectUserLogged);
   const { t, i18n } = useTranslation("common");
+
 
   return (
     <div
