@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { toast } from "react-toastify";
-
-import ExerciseItem from "../../components/exercises/ExerciseItem";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,6 +8,7 @@ import {
   selectExercises,
 } from "../../features/exercises/exerciseSlice";
 import Spinner from "../../components/common/Spinner";
+import ExerciseTable from "./ExerciseTable";
 
 function ExerciseSearch() {
   const { t } = useTranslation("exercises");
@@ -37,19 +36,10 @@ function ExerciseSearch() {
   }
 
   return (
-    <>
-      <div className="mx-auto w-3/4 max-sm:w-11/12">
-        {exercises.length > 0 ? (
-          <div className="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
-            {exercises.map((exercise) => (
-              <ExerciseItem key={exercise._id} exercise={exercise} />
-            ))}
-          </div>
-        ) : (
-          <h3>{t("noExercises")}</h3>
-        )}
-      </div>
-    </>
+    <div>
+      <h1>{t("exerciseSearch")}</h1>
+      <ExerciseTable data={exercises} />
+    </div>
   );
 }
 

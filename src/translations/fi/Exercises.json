@@ -1,5 +1,8 @@
 {
   "addExercisesFromBelow": "Lisää liikkeitä alapuolelta",
+  "createdAt": "Luotu",
   "dashboard": "Liikkeiden hallintasivu",
+  "exerciseName": "Liikkeen nimi",
+  "exerciseSearch": "Etsi liikkeitä",
   "noExercises": "Et ole vielä luonut liikkeitä"
 }
