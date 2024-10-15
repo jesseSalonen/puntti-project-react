@@ -4,6 +4,7 @@
   "intlDateTime": "{{val, datetime}}",
   "login": "Kirjaudu",
   "logout": "Kirjaudu ulos",
-  "register": "Luo tunnus",
+  "notYetRegistered": "Eikö sinulla ole tunnuksia?",
+  "register": "Luo tunnukset",
   "startWorkout": "Aloita treeni!"
 }

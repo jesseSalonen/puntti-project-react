@@ -1,9 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { selectAuth } from "../../features/auth/authSlice";
+import { selectUserLogged } from "../../features/auth/authSlice";
 import { ThemeSwitch } from "./ThemeSwitch";
-import { FaSignInAlt, FaUser } from "react-icons/fa";
+import { FaSignInAlt, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { RxCross1 } from "react-icons/rx";
@@ -17,7 +17,7 @@ function Sidebar({
   toggleDarkMode,
   darkMode,
 }) {
-  const isLogged = useSelector(selectAuth);
+  const isLogged = useSelector(selectUserLogged);
   const { t, i18n } = useTranslation("common");
 
   return (
@@ -92,52 +92,47 @@ function Sidebar({
             <Link to="/login">
               <button
                 className="
-                      flex
-                      cursor-pointer
-                      items-center
-                      justify-center
-                      rounded-md
-                      border
-                      border-solid
-                      border-black
-                      bg-black
-                      py-3
-                      px-5
-                      text-center
-                      text-base
-                      font-bold
-                      text-white
-                      hover:scale-95
-                    "
+                  flex
+                  w-full
+                  cursor-pointer
+                  items-center
+                  rounded-full
+                  bg-black
+                  bg-gradient-to-r
+                  from-green-50
+                  to-green-400
+                  py-2
+                  px-6
+                  text-green-900
+                "
               >
-                <FaSignInAlt />
+                <FaSignInAlt className="mr-2" />
                 {t("login")}
               </button>
             </Link>
           </div>
+          <p className="font-bold text-gray-400 max-sm:text-2xl">
+            {t("notYetRegistered")}
+          </p>
           <div>
             <Link to="/register">
               <button
                 className="
-                      flex
-                      cursor-pointer
-                      items-center
-                      justify-center
-                      rounded-md
-                      border
-                      border-solid
-                      border-black
-                      bg-black
-                      py-3
-                      px-5
-                      text-center
-                      text-base
-                      font-bold
-                      text-white
-                      hover:scale-95
-                    "
+                  flex
+                  w-full
+                  cursor-pointer
+                  items-center
+                  rounded-full
+                  bg-black
+                  bg-gradient-to-r
+                  from-green-50
+                  to-green-400
+                  py-2
+                  px-6
+                  text-green-900
+                "
               >
-                <FaUser />
+                <FaUserPlus className="mr-2" />
                 {t("register")}
               </button>
             </Link>
