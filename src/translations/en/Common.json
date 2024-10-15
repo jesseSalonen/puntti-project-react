@@ -6,5 +6,6 @@
   "logout": "Logout",
   "notYetRegistered": "Don't have an account yet?",
   "register": "Register",
-  "startWorkout": "Start workout!"
+  "startWorkout": "Start workout!",
+  "workouts": "Workouts"
 }

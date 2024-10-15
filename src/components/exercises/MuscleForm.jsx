@@ -22,8 +22,8 @@ function MuscleForm({ closeModal }) {
       name,
       upper: upper,
       lower: !upper,
-      pushing: upper ? push : false,
-      pulling: upper ? !push : false,
+      pushing: push,
+      pulling: !push,
     };
 
     dispatch(createMuscle(newMuscle));
@@ -85,7 +85,7 @@ function MuscleForm({ closeModal }) {
           {t("lower")}
         </p>
       </div>
-      {upper ? (
+{/*      {upper ? (*/}
         <div
           className="
             mb-3
@@ -115,7 +115,7 @@ function MuscleForm({ closeModal }) {
             {t("pull")}
           </p>
         </div>
-      ) : null}
+{/*      ) : null}*/}
       <div className="mb-3 mt-7">
         <button
           className="

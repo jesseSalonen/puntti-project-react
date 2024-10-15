@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useEffect, useState } from "react";
 import ExerciseSearch from "./pages/exercises/ExerciseSearch";
+import WorkoutSearch from "./pages/workouts/WorkoutSearch";
 import Exercise from "./pages/exercises/Exercise";
 import AddExercise from "./pages/exercises/AddExercise";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -52,6 +53,9 @@ export default function App() {
             <Route index element={<ExerciseSearch />} />
             <Route path=":alias" element={<Exercise />} />
             <Route path="add" element={<AddExercise />} />
+          </Route>
+          <Route path="/workouts">
+            <Route index element={<WorkoutSearch />} />
           </Route>
         </Route>
       </Route>

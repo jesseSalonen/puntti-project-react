@@ -6,5 +6,6 @@
   "logout": "Kirjaudu ulos",
   "notYetRegistered": "Eikö sinulla ole tunnuksia?",
   "register": "Luo tunnukset",
-  "startWorkout": "Aloita treeni!"
+  "startWorkout": "Aloita treeni!",
+  "workouts": "Treenit"
 }
