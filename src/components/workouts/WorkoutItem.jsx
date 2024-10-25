@@ -1,15 +1,15 @@
 import { useDispatch } from "react-redux";
-import { deleteExercise } from "../../features/exercises/exerciseSlice";
+import { deleteWorkout } from "../../features/workouts/workoutSlice";
 import CommonHelpers from "../../helpers/CommonHelpers";
 
-function ExerciseItem({ exercise }) {
+function WorkoutItem({ workout }) {
   const dispatch = useDispatch();
   return (
     <div className="relative my-3 mx-0 bg-gray-100 p-5 drop-shadow-lg dark:bg-gradient-to-br dark:from-[#18222A] dark:to-[#05121A]">
-      <div>{CommonHelpers.getDateTimeText(new Date(exercise.createdAt))}</div>
-      <h2>{exercise.name}</h2>
+      <div>{CommonHelpers.getDateTimeText(new Date(workout.createdAt))}</div>
+      <h2>{workout.name}</h2>
       <button
-        onClick={() => dispatch(deleteExercise(exercise._id))}
+        onClick={() => dispatch(deleteWorkout(workout._id))}
         className="absolute top-3 right-4 cursor-pointer border-none bg-transparent"
       >
         X
@@ -18,4 +18,4 @@ function ExerciseItem({ exercise }) {
   );
 }
 
-export default ExerciseItem;
+export default WorkoutItem;

@@ -1,21 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import muscleService from "./muscleService";
+import workoutService from "./workoutService";
 
 const initialState = {
-  muscles: [],
+  workouts: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
   message: "",
 };
 
-// Create new muscle
-export const createMuscle = createAsyncThunk(
-  "muscles/create",
-  async (muscleData, thunkAPI) => {
+// Create new workout
+export const createWorkout = createAsyncThunk(
+  "workouts/create",
+  async (workoutData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await muscleService.createMuscle(muscleData, token);
+      return await workoutService.createWorkout(workoutData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -28,13 +28,13 @@ export const createMuscle = createAsyncThunk(
   }
 );
 
-// Get muscles
-export const getMuscles = createAsyncThunk(
-  "muscles/getAll",
+// Get workouts
+export const getWorkouts = createAsyncThunk(
+  "workouts/getAll",
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await muscleService.getMuscles(token);
+      return await workoutService.getWorkouts(token);
     } catch (error) {
       const message =
         (error.response &&
@@ -47,13 +47,13 @@ export const getMuscles = createAsyncThunk(
   }
 );
 
-// Delete muscle
-export const deleteMuscle = createAsyncThunk(
-  "muscles/delete",
+// Delete user workout
+export const deleteWorkout = createAsyncThunk(
+  "workouts/delete",
   async (id, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await muscleService.deleteMuscle(id, token);
+      return await workoutService.deleteWorkout(id, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -66,52 +66,51 @@ export const deleteMuscle = createAsyncThunk(
   }
 );
 
-export const muscleSlice = createSlice({
-  name: "muscle",
+export const workoutSlice = createSlice({
+  name: "workout",
   initialState,
   reducers: {
     reset: (state) => initialState,
   },
   extraReducers: (builder) => {
     builder
-      .addCase(createMuscle.pending, (state) => {
+      .addCase(createWorkout.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(createMuscle.fulfilled, (state, action) => {
+      .addCase(createWorkout.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.muscles.push(action.payload);
+        state.workouts.push(action.payload);
       })
-      .addCase(createMuscle.rejected, (state, action) => {
-        console.log(action)
+      .addCase(createWorkout.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
       })
-      .addCase(getMuscles.pending, (state) => {
+      .addCase(getWorkouts.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getMuscles.fulfilled, (state, action) => {
+      .addCase(getWorkouts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.muscles = action.payload;
+        state.workouts = action.payload;
       })
-      .addCase(getMuscles.rejected, (state, action) => {
+      .addCase(getWorkouts.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
       })
-      .addCase(deleteMuscle.pending, (state) => {
+      .addCase(deleteWorkout.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(deleteMuscle.fulfilled, (state, action) => {
+      .addCase(deleteWorkout.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.muscles = state.muscles.filter(
-          (muscle) => muscle._id !== action.payload.id
+        state.workouts = state.workouts.filter(
+          (workout) => workout._id !== action.payload.id
         );
       })
-      .addCase(deleteMuscle.rejected, (state, action) => {
+      .addCase(deleteWorkout.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -119,7 +118,8 @@ export const muscleSlice = createSlice({
   },
 });
 
-export const { reset } = muscleSlice.actions;
+export const { reset } = workoutSlice.actions;
 
-export const selectMuscles = (state) => state.muscles;
-export default muscleSlice.reducer;
+export const selectWorkouts = (state) => state.workouts;
+
+export default workoutSlice.reducer;

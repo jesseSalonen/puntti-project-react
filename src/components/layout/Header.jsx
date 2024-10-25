@@ -72,6 +72,9 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
             <li>
               <Link to="/exercises/add">{linkButton("addExercise")}</Link>
             </li>
+            <li>
+              <Link to="/workouts">{linkButton("workouts")}</Link>
+            </li>
           </>         
           )}
       </ul>
