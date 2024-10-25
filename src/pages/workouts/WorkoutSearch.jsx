@@ -66,13 +66,15 @@ function WorkoutSearch() {
         {workouts.length > 0 ? (
           <>
             <div className="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
-              {workouts.map((workouts) => (
-                <WorkoutItem key={workouts._id} workouts={workouts} />
+              {workouts.map((workout) => (
+                <WorkoutItem key={workout._id} workout={workout} />
               ))}
             </div>
-            <li>
-              <Link to="/workouts/add">{linkButton("addWorkouts")}</Link>
-            </li>
+            <ul>
+              <li>
+                <Link to="/workouts/add">{linkButton("addWorkouts")}</Link>
+              </li>
+            </ul>
           </>
         ) : (
           <>
