@@ -13,6 +13,14 @@ import { useTranslation } from 'react-i18next';
 import { rankItem, compareItems } from '@tanstack/match-sorter-utils';
 import { FaEdit, FaPlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getExercises,
+  reset,
+  selectExercises,
+} from "../../features/exercises/exerciseSlice";
+import { toast } from "react-toastify";
+import Spinner from "../../components/common/Spinner";
 
 const fuzzyFilter = (row, columnId, value, addMeta) => {
   const itemRank = rankItem(row.getValue(columnId), value);
@@ -31,10 +39,28 @@ const fuzzySort = (rowA, rowB, columnId) => {
   return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir;
 };
 
-const ExerciseTable = ({ data }) => {
+const ExerciseTable = () => {
   const [globalFilter, setGlobalFilter] = useState('');
 
   const { t } = useTranslation('exercises');
+  const dispatch = useDispatch();
+
+  const { exercises, isLoading, isError, message } =
+    useSelector(selectExercises);
+
+  useEffect(() => {
+    dispatch(getExercises());
+
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+  }, [isError, message]);
 
   // Set default column properties
   const defaultColumn = useMemo(
@@ -107,7 +133,7 @@ const ExerciseTable = ({ data }) => {
     [],
   );
 
-  const tableData = useMemo(() => data, [data]);
+  const tableData = useMemo(() => exercises, [exercises]);
 
   const table = useReactTable({
     data: tableData,
@@ -129,6 +155,10 @@ const ExerciseTable = ({ data }) => {
     debugColumns: false,
   });
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <div className="p-2">
       <div>
@@ -146,7 +176,11 @@ const ExerciseTable = ({ data }) => {
               <tr key={headerGroup.id} className="bg-gray-200">
                 {headerGroup.headers.map((header) => {
                   return (
-                    <th key={header.id} colSpan={header.colSpan} className="border p-2 text-left">
+                    <th
+                      key={header.id}
+                      colSpan={header.colSpan}
+                      className="border p-2 text-left"
+                    >
                       {header.isPlaceholder ? null : (
                         <>
                           <div
@@ -218,8 +252,8 @@ const ExerciseTable = ({ data }) => {
         <span className="flex items-center gap-1">
           <div>{t('page', { ns: 'common' })}</div>
           <strong>
-            {table.getState().pagination.pageIndex + 1} {t('of', { ns: 'common' })}{' '}
-            {table.getPageCount()}
+            {table.getState().pagination.pageIndex + 1}{' '}
+            {t('of', { ns: 'common' })} {table.getPageCount()}
           </strong>
         </span>
         <button
@@ -263,7 +297,8 @@ const ExerciseTable = ({ data }) => {
         </select>
       </div>
       <div className="mt-2">
-        {table.getPrePaginationRowModel().rows.length} {t('rows', { ns: 'common' })}
+        {table.getPrePaginationRowModel().rows.length}{' '}
+        {t('rows', { ns: 'common' })}
       </div>
     </div>
   );
