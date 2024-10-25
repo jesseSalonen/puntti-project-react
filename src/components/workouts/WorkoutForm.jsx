@@ -59,32 +59,7 @@ function WorkoutForm() {
           setDescription={setDescription}
           description={description}
         />
-        <div className="mb-3">
-          <button
-            className="
-              mb-5 
-              flex 
-              w-full 
-              cursor-pointer 
-              items-center 
-              justify-center 
-              rounded-md 
-              bg-gradient-to-r
-              from-green-400
-              to-green-500
-              py-3 
-              px-5 
-              text-center 
-              text-base 
-              font-bold 
-              text-green-800
-              hover:scale-95
-            "
-            type="submit"
-          >
-            {t("addWorkout")}
-          </button>
-        </div>
+
       </form>
     </section>
   );
