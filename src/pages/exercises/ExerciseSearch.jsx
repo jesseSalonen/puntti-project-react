@@ -1,39 +1,9 @@
-import React, { useEffect } from "react";
-import { toast } from "react-toastify";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getExercises,
-  reset,
-  selectExercises,
-} from "../../features/exercises/exerciseSlice";
-import Spinner from "../../components/common/Spinner";
 import ExerciseTable from "./ExerciseTable";
 
 function ExerciseSearch() {
   const { t } = useTranslation("exercises");
-  const dispatch = useDispatch();
-
-  const { exercises, isLoading, isError, message } =
-    useSelector(selectExercises);
-
-  useEffect(() => {
-    dispatch(getExercises());
-
-    return () => {
-      dispatch(reset());
-    };
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (isError) {
-      toast.error(message);
-    }
-  }, [isError, message]);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   return (
     <div className="mx-auto w-3/4 max-sm:w-11/12">
@@ -43,7 +13,7 @@ function ExerciseSearch() {
           {t("searchExercisesFromBelow")}
         </p>
       </div>
-      <ExerciseTable data={exercises} />
+      <ExerciseTable />
     </div>
   );
 }
