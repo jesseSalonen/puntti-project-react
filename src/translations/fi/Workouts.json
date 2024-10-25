@@ -1,6 +1,5 @@
 {
-    "addWorkoutsFromBelow": "Lisää treeni alapuolelta",
-    "dashboard": "Treenien hallintasivu",
-    "noWorkouts": "Et ole vielä luonut yhtään treeniä"
-  }
-  
+  "addWorkouts": "Lisää treeni",
+  "dashboard": "Treenin luominen",
+  "noWorkouts": "Et ole vielä luonut yhtään treeniä"
+}

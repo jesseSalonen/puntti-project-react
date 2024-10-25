@@ -15,6 +15,7 @@ import Register from "./pages/Register";
 import { useEffect, useState } from "react";
 import ExerciseSearch from "./pages/exercises/ExerciseSearch";
 import WorkoutSearch from "./pages/workouts/WorkoutSearch";
+import AddWorkout from "./pages/workouts/AddWorkout";
 import Exercise from "./pages/exercises/Exercise";
 import AddExercise from "./pages/exercises/AddExercise";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -56,6 +57,7 @@ export default function App() {
           </Route>
           <Route path="/workouts">
             <Route index element={<WorkoutSearch />} />
+            <Route path="add" element={<AddWorkout />} />
           </Route>
         </Route>
       </Route>
