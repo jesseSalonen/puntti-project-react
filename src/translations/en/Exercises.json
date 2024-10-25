@@ -1,5 +1,10 @@
 {
   "addExercisesFromBelow": "Add exercises from below",
+  "createdAt": "Created at",
   "dashboard": "Exercise Dashboard",
-  "noExercises": "You have not created any exercises"
+  "exerciseName": "Exercise name",
+  "exercises": "Exercises",
+  "exerciseSearch": "Search for exercises",
+  "noExercises": "You have not created any exercises",
+  "searchExercisesFromBelow": "Search exercises from below"
 }
