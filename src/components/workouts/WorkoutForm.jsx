@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 import { createWorkout } from "../../features/workouts/workoutSlice";
-import GenericInfo from "../exercises/GenericInfo";
-import MuscleInfo from "../exercises/MuscleInfo";
-import Modal from "../Modal";
-import MuscleForm from "../exercises/MuscleForm";
+import GenericWorkoutInfo from "../workouts/GenericWorkoutInfo";
 
 function WorkoutForm() {
   const { t } = useTranslation("dashboard");
@@ -56,17 +53,11 @@ function WorkoutForm() {
   return (
     <section>
       <form onSubmit={onSubmit}>
-        <GenericInfo
+        <GenericWorkoutInfo
           setName={setName}
           name={name}
           setDescription={setDescription}
           description={description}
-        />
-        <MuscleInfo
-          addMuscle={addMuscle}
-          removeMuscle={removeMuscle}
-          setAddMuscleModalOpen={setAddMuscleModalOpen}
-          exerciseMuscles={exerciseMuscles}
         />
         <div className="mb-3">
           <button
@@ -91,17 +82,10 @@ function WorkoutForm() {
             "
             type="submit"
           >
-            {t("addExercise")}
+            {t("addWorkout")}
           </button>
         </div>
       </form>
-      <Modal
-        isOpen={addMuscleModalOpen}
-        closeModal={closeAddMuscleModal}
-        title={t("muscleInfo")}
-      >
-        <MuscleForm closeModal={closeAddMuscleModal} />
-      </Modal>
     </section>
   );
 }

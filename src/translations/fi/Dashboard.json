@@ -1,11 +1,13 @@
 {
   "addExercise": "Lisää liike",
   "addMuscle": "Lisää lihas",
+  "addWorkout": "Lisää treeni", 
   "ChooseExerciseMuscle": "Valitse lihas",
   "desc": "Kuvaus",
   "exerciseMuscleInfo": "Liikkeen lihastiedot",
   "exerciseMuscles": "Liikkeen lihakset",
   "genericInfo": "Liikkeen yleistiedot",
+  "genericWorkoutInfo": "Treenin yleistiedot",
   "isWorkoutDone": "Onko päivän treeni tehty? ;)",
   "lower": "Alavartalo",
   "muscleInfo": "Lihastiedot",

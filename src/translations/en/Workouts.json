@@ -1,5 +1,5 @@
 {
-    "addWorkoutsFromBelow": "Add workouts from below",
-    "dashboard": "Workout Dashboard",
-    "noWorkouts": "You have not created any workouts"
-  }
+  "addWorkouts": "Add workout",
+  "dashboard": "Create Workout",
+  "noWorkouts": "You have not created any workouts"
+}
