@@ -3,6 +3,8 @@
   "createdAt": "Luotu",
   "dashboard": "Liikkeiden hallintasivu",
   "exerciseName": "Liikkeen nimi",
+  "exercises": "Liikkeet",
   "exerciseSearch": "Etsi liikkeitä",
-  "noExercises": "Et ole vielä luonut liikkeitä"
+  "noExercises": "Et ole vielä luonut liikkeitä",
+  "searchExercisesFromBelow": "Etsi liikkeitä alapuolelta"
 }

@@ -3,6 +3,8 @@
   "createdAt": "Created at",
   "dashboard": "Exercise Dashboard",
   "exerciseName": "Exercise name",
+  "exercises": "Exercises",
   "exerciseSearch": "Search for exercises",
-  "noExercises": "You have not created any exercises"
+  "noExercises": "You have not created any exercises",
+  "searchExercisesFromBelow": "Search exercises from below"
 }
