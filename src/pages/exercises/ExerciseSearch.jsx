@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import ExerciseTable from "./ExerciseTable";
+import ExerciseTable from "../../components/exercises/ExerciseTable";
 
 function ExerciseSearch() {
   const { t } = useTranslation("exercises");

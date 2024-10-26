@@ -52,7 +52,7 @@ export default function App() {
           <Route index element={<Dashboard />} />
           <Route path="/exercises">
             <Route index element={<ExerciseSearch />} />
-            <Route path=":alias" element={<Exercise />} />
+            <Route path=":id" element={<Exercise />} />
             <Route path="add" element={<AddExercise />} />
           </Route>
           <Route path="/workouts">

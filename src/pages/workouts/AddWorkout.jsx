@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import WorkoutForm from "../../components/workouts/WorkoutForm";
-import ExerciseTable from "../exercises/ExerciseTable";
+import ExerciseTable from "../../components/exercises/ExerciseTable";
 
 function AddWorkout() {
   const { t } = useTranslation("workouts");

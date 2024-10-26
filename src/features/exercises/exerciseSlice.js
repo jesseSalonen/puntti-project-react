@@ -3,6 +3,7 @@ import exerciseService from "./exerciseService";
 
 const initialState = {
   exercises: [],
+  currentExercise: null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -66,6 +67,44 @@ export const deleteExercise = createAsyncThunk(
   }
 );
 
+// Get single exercise
+export const getExercise = createAsyncThunk(
+  "exercises/getOne",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await exerciseService.getExercise(id, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Update exercise
+export const updateExercise = createAsyncThunk(
+  "exercises/update",
+  async ({ id, exerciseData }, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await exerciseService.updateExercise(id, exerciseData, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const exerciseSlice = createSlice({
   name: "exercise",
   initialState,
@@ -92,7 +131,6 @@ export const exerciseSlice = createSlice({
       })
       .addCase(getExercises.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = true;
         state.exercises = action.payload;
       })
       .addCase(getExercises.rejected, (state, action) => {
@@ -111,6 +149,31 @@ export const exerciseSlice = createSlice({
         );
       })
       .addCase(deleteExercise.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getExercise.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getExercise.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.currentExercise = action.payload;
+      })
+      .addCase(getExercise.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updateExercise.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateExercise.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.currentExercise = action.payload;
+      })
+      .addCase(updateExercise.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
