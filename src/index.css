@@ -9,3 +9,12 @@
     @apply font-poppins;
   }
 }
+
+::selection {
+  background-color: #12fea3; /* Using your green-400 color */
+}
+
+/* For Firefox */
+::-moz-selection {
+  background-color: #12fea3;
+}
