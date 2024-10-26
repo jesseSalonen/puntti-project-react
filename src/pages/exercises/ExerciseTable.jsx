@@ -11,7 +11,7 @@ import {
 } from "../../features/exercises/exerciseSlice";
 import { toast } from "react-toastify";
 import Spinner from "../../components/common/Spinner";
-import ReactTable from '../../components/common/ReactTable';
+import ReactTable from '../../components/table/ReactTable';
 
 const ExerciseTable = () => {
   const { t } = useTranslation('exercises');
