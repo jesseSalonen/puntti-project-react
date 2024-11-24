@@ -1,9 +1,17 @@
 {
   "addExercise": "Lisää liike",
   "exercises": "Liikkeet",
+  "goToPage": "Siirry sivulle",
   "intlDateTime": "{{val, datetime}}",
   "login": "Kirjaudu",
   "logout": "Kirjaudu ulos",
-  "register": "Luo tunnus",
-  "startWorkout": "Aloita treeni!"
+  "notYetRegistered": "Eikö sinulla ole tunnuksia?",
+  "of": "/ ",
+  "page": "Sivu",
+  "register": "Luo tunnukset",
+  "rows": "riviä",
+  "search": "Hae",
+  "show": "Näytä",
+  "startWorkout": "Aloita treeni!",
+  "workouts": "Treenit"
 }

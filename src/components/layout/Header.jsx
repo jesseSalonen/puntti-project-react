@@ -2,9 +2,12 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { useTranslation } from "react-i18next";
+import { selectUserLogged } from "../../features/auth/authSlice";
+import { useSelector } from "react-redux";
 
 function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
   const { t, i18n } = useTranslation("common");
+  const isLogged = useSelector(selectUserLogged);
 
   const linkButton = (buttonText) => {
     return (
@@ -61,12 +64,19 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
             <img src="/puntti-emblem.svg" alt="logo" width={90} height={90} />
           </Link>
         </li>
-        <li>
-          <Link to="/exercises">{linkButton("exercises")}</Link>
-        </li>
-        <li>
-          <Link to="/exercises/add">{linkButton("addExercise")}</Link>
-        </li>
+        {isLogged && (
+          <>
+            <li>
+              <Link to="/exercises">{linkButton("exercises")}</Link>
+            </li>
+            <li>
+              <Link to="/exercises/add">{linkButton("addExercise")}</Link>
+            </li>
+            <li>
+              <Link to="/workouts">{linkButton("workouts")}</Link>
+            </li>
+          </>         
+          )}
       </ul>
       <ul className="flex items-center justify-between">
         <li
@@ -77,30 +87,33 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
             <AiOutlineMenu />
           </IconContext.Provider>
         </li>
+        {isLogged && (
         <li>
-          <button
-            className="
-              flex 
-              w-96 
-              cursor-pointer
-              items-center 
-              justify-center 
-              rounded-md 
-              bg-gradient-to-r
-              from-green-500
-              to-green-100
-              py-3 
-              px-5 
-              text-center 
-              text-base 
-              font-bold 
-              text-green-800
-              max-md:hidden
-            "
-          >
-            {t("startWorkout")}
-          </button>
-        </li>
+        <button
+          className="
+            flex 
+            w-96 
+            cursor-pointer
+            items-center 
+            justify-center 
+            rounded-md 
+            bg-gradient-to-r
+            from-green-500
+            to-green-100
+            py-3 
+            px-5 
+            text-center 
+            text-base 
+            font-bold 
+            text-green-800
+            max-md:hidden
+          "
+        >
+          {t("startWorkout")}
+        </button>
+      </li>
+        )}
+
       </ul>
     </header>
   );

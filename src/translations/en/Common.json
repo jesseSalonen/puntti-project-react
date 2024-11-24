@@ -1,9 +1,17 @@
 {
   "addExercise": "Add exercise",
   "exercises": "Exercises",
+  "goToPage": "Go to page",
   "intlDateTime": "{{val, datetime}}",
   "login": "Login",
   "logout": "Logout",
+  "notYetRegistered": "Don't have an account yet?",
+  "of": "of",
+  "page": "Page",
   "register": "Register",
-  "startWorkout": "Start workout!"
+  "rows": "rows",
+  "search": "Search",
+  "show": "Show",
+  "startWorkout": "Start workout!",
+  "workouts": "Workouts"
 }
