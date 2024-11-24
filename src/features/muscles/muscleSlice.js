@@ -83,7 +83,6 @@ export const muscleSlice = createSlice({
         state.muscles.push(action.payload);
       })
       .addCase(createMuscle.rejected, (state, action) => {
-        console.log(action)
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

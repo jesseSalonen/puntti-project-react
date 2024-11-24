@@ -15,7 +15,6 @@ import Spinner from "../../components/common/Spinner";
 function WorkoutSearch() {
   const { t } = useTranslation("workouts");
   const dispatch = useDispatch();
-  console.log(useSelector(selectWorkouts));
   const { workouts, isLoading, isError, message } = useSelector(selectWorkouts);
 
   const linkButton = (buttonText) => {

@@ -21,6 +21,24 @@ const getExercises = async (token) => {
   return response.data;
 };
 
+// Get single exercise
+const getExercise = async (exerciseId, token) => {
+  const config = CommonHelpers.getAuthHeader(token);
+
+  const response = await axios.get(API_URL + exerciseId, config);
+
+  return response.data;
+};
+
+// Update exercise
+const updateExercise = async (exerciseId, exerciseData, token) => {
+  const config = CommonHelpers.getAuthHeader(token);
+
+  const response = await axios.put(API_URL + exerciseId, exerciseData, config);
+
+  return response.data;
+};
+
 // Delete user exercise
 const deleteExercise = async (exerciseId, token) => {
   const config = CommonHelpers.getAuthHeader(token);
@@ -33,6 +51,8 @@ const deleteExercise = async (exerciseId, token) => {
 const exerciseService = {
   createExercise,
   getExercises,
+  getExercise,
+  updateExercise,
   deleteExercise,
 };
 

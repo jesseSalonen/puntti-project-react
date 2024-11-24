@@ -2,6 +2,8 @@
   "addExercisesFromBelow": "Add exercises from below",
   "createdAt": "Created at",
   "dashboard": "Exercise Dashboard",
+  "exerciseAdded": "Exercise added",
+  "exerciseUpdated": "Exercise updated",
   "exerciseName": "Exercise name",
   "exercises": "Exercises",
   "exerciseSearch": "Search for exercises",

@@ -4,6 +4,7 @@
   "addWorkout": "Lisää treeni", 
   "ChooseExerciseMuscle": "Valitse lihas",
   "desc": "Kuvaus",
+  "editExercise": "Muokkaa liikettä",
   "exerciseMuscleInfo": "Liikkeen lihastiedot",
   "exerciseMuscles": "Liikkeen lihakset",
   "genericInfo": "Liikkeen yleistiedot",

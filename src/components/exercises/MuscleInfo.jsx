@@ -48,19 +48,7 @@ function MuscleInfo({
   }
 
   return (
-    <div
-      className="
-        mb-5
-        rounded-md
-        border
-        border-solid
-        border-gray-200
-        p-6
-        drop-shadow-md
-        dark:border-gray-600
-        max-sm:p-2
-      "
-    >
+    <div className="mb-5 rounded-md border border-solid border-gray-200 p-6 drop-shadow-md dark:border-gray-600 max-sm:p-2">
       <h2 className="mb-3 block w-full text-left text-lg font-semibold">
         {t("exerciseMuscleInfo")}
       </h2>
@@ -93,24 +81,7 @@ function MuscleInfo({
             {t("noMuscle")}
           </label>
           <button
-            className="
-              flex 
-              w-full 
-              cursor-pointer 
-              items-center 
-              justify-center 
-              rounded-md 
-              bg-gradient-to-r
-              from-green-300
-              to-green-100 
-              py-2
-              px-3
-              text-center 
-              text-base 
-              font-bold 
-              text-green-800
-              hover:scale-95
-            "
+            className="flex w-full cursor-pointer items-center justify-center rounded-md bg-gradient-to-r from-green-300 to-green-100 py-2 px-3 text-center text-base font-bold text-green-800 hover:scale-95"
             onClick={() => setAddMuscleModalOpen(true)}
             type="button"
           >
