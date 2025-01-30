@@ -8,7 +8,7 @@ RUN npm ci
 
 COPY . .
 
-ENV VITE_API_URL https://punttiapi.jessenprojekti.fi
+ENV VITE_API_URL https://punttiapi.saldev.fi
 
 EXPOSE 5173
 
