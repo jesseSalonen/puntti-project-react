@@ -50,7 +50,7 @@ function Sidebar({
       <div className="flex items-center">
         <FormControl fullWidth>
           <Select
-            value={i18n.language === "fi" ? "fi" : "en"}
+            value={i18n.language.includes("fi") ? "fi" : "en"}
             onChange={(e) => i18n.changeLanguage(e.target.value)}
             MenuProps={{ disableScrollLock: true }}
             input={<CustomSelect />}
