@@ -6,7 +6,7 @@ import { selectUserLogged } from "../../features/auth/authSlice";
 import { useSelector } from "react-redux";
 
 function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
-  const { t, i18n } = useTranslation("common");
+  const { t } = useTranslation("common");
   const isLogged = useSelector(selectUserLogged);
 
   const linkButton = (buttonText) => {
