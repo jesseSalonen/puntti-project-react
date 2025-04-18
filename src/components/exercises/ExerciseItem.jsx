@@ -41,67 +41,71 @@ const ExerciseItem = ({ exercise, onDelete, showAddButton }) => {
           </div>
         )}
         <div className="mt-2 flex flex-wrap gap-2">
-          <Link to={`/exercises/${exercise._id}`}>
-            <button
-              className="
-                flex
-                cursor-pointer 
-                items-center 
-                justify-center 
-                rounded-md
-                py-2
-                px-4
-                text-center 
-                transition-colors
-                duration-200
-                bg-white 
-                text-gray-800 
-                border 
-                border-green-200
-                shadow-sm
-                hover:bg-green-50 
-                hover:text-green-700
-                dark:border-none
-                dark:bg-[#2A3540]
-                dark:text-[#CFD7E5]
-                dark:hover:bg-[#3A4549]
-                dark:hover:text-green-400
-              "
-              aria-label={t('editExercise')}
-            >
-              <FaEdit className="mr-1" /> {t('editExercise')}
-            </button>
-          </Link>
-          <button
-            onClick={handleDelete}
-            className="
-              flex
-              cursor-pointer 
-              items-center 
-              justify-center 
-              rounded-md
-              py-2
-              px-4
-              text-center 
-              transition-colors
-              duration-200
-              bg-white 
-              text-gray-800 
-              border 
-              border-red-200
-              shadow-sm
-              hover:bg-red-50 
-              hover:text-red-700
-              dark:border-none
-              dark:bg-[#2A3540]
-              dark:text-[#CFD7E5]
-              dark:hover:bg-[#3A4549]
-              dark:hover:text-red-400
-            "
-            aria-label={t('deleteExercise')}
-          >
-            <FaTrash className="mr-1" /> {t('deleteExercise')}
-          </button>
+          {!showAddButton && (
+            <>
+              <Link to={`/exercises/${exercise._id}`}>
+                <button
+                  className="
+                    flex
+                    cursor-pointer 
+                    items-center 
+                    justify-center 
+                    rounded-md
+                    py-2
+                    px-4
+                    text-center 
+                    transition-colors
+                    duration-200
+                    bg-white 
+                    text-gray-800 
+                    border 
+                    border-green-200
+                    shadow-sm
+                    hover:bg-green-50 
+                    hover:text-green-700
+                    dark:border-none
+                    dark:bg-[#2A3540]
+                    dark:text-[#CFD7E5]
+                    dark:hover:bg-[#3A4549]
+                    dark:hover:text-green-400
+                  "
+                  aria-label={t('editExercise')}
+                >
+                  <FaEdit className="mr-1" /> {t('editExercise')}
+                </button>
+              </Link>
+              <button
+                onClick={handleDelete}
+                className="
+                  flex
+                  cursor-pointer 
+                  items-center 
+                  justify-center 
+                  rounded-md
+                  py-2
+                  px-4
+                  text-center 
+                  transition-colors
+                  duration-200
+                  bg-white 
+                  text-gray-800 
+                  border 
+                  border-red-200
+                  shadow-sm
+                  hover:bg-red-50 
+                  hover:text-red-700
+                  dark:border-none
+                  dark:bg-[#2A3540]
+                  dark:text-[#CFD7E5]
+                  dark:hover:bg-[#3A4549]
+                  dark:hover:text-red-400
+                "
+                aria-label={t('deleteExercise')}
+              >
+                <FaTrash className="mr-1" /> {t('deleteExercise')}
+              </button>
+            </>
+          )}
           {showAddButton && (
             <button
               className="
