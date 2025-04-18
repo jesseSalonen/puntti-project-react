@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
-import { AiOutlineCheck } from "react-icons/ai";
 
 import {
   getMuscles,
@@ -61,7 +60,7 @@ function MuscleInfo({
             {t("exerciseMuscles")}
           </label>
           <select
-            className="mb-3 w-full rounded-md border border-solid dark:border-gray-600 dark:bg-[#1b252e]"
+            className="mb-3 w-full rounded-md border border-solid px-4 dark:border-gray-600 dark:bg-[#1b252e]"
             name="muscleList"
             id="muscleList"
             onChange={(e) => addMuscle(e.target.value)}
@@ -103,7 +102,7 @@ function MuscleInfo({
             {exerciseMuscles.map((muscleId) => (
               <div
                 key={`exerciseMuscle_${muscleId}`}
-                className="m-1 flex w-fit items-center justify-center gap-y-0 rounded-md border border-solid bg-green-400 py-1 px-2 dark:border-gray-600"
+                className="m-1 flex w-fit items-center justify-center gap-y-0 rounded-md border border-solid bg-green-400 py-1 px-2 text-green-800 dark:border-gray-600"
               >
                 <div className="mr-2">{getMuscleNameFromId(muscleId)}</div>
                 <div
