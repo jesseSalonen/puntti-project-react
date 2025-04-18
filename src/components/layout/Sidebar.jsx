@@ -20,6 +20,33 @@ function Sidebar({
   const isLogged = useSelector(selectUserLogged);
   const { t, i18n } = useTranslation("common");
 
+  const navigationButton = (to, buttonText) => {
+    return (
+      <Link to={to} onClick={toggleSidebar}>
+        <button
+          className="
+            flex
+            w-full
+            cursor-pointer
+            items-center
+            rounded-md
+            bg-[#2A3540]
+            py-3
+            px-5
+            text-center
+            text-white
+            dark:text-[#CFD7E5]
+            hover:bg-[#3A4549]
+            hover:text-green-700
+            mb-4
+          "
+        >
+          {t(buttonText)}
+        </button>
+      </Link>
+    );
+  };
+
   return (
     <>
       {/* Overlay to detect clicks outside sidebar */}
@@ -75,6 +102,16 @@ function Sidebar({
             darkMode={darkMode}
           />
         </div>
+        
+        {/* Mobile navigation buttons */}
+        {isLogged && (
+          <div className="md:hidden">
+            {navigationButton("/exercises", "exercises")}
+            {navigationButton("/exercises/add", "addExercise")}
+            {navigationButton("/workouts", "workouts")}
+          </div>
+        )}
+        
         {isLogged ? (
           <button
             className="

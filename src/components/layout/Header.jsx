@@ -68,33 +68,24 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
         </li>
         {isLogged && (
           <>
-            <li>
+            <li className="max-md:hidden">
               <Link to="/exercises">{linkButton("exercises")}</Link>
             </li>
-            <li>
+            <li className="max-md:hidden">
               <Link to="/exercises/add">{linkButton("addExercise")}</Link>
             </li>
-            <li>
+            <li className="max-md:hidden">
               <Link to="/workouts">{linkButton("workouts")}</Link>
             </li>
           </>
           )}
       </ul>
       <ul className="flex items-center justify-between">
-        <li
-          className="cursor-pointer p-2 text-white dark:text-[#CFD7E5] md:hidden"
-          onClick={toggleSidebar}
-        >
-          <IconContext.Provider value={{ size: 25 }}>
-            <AiOutlineMenu />
-          </IconContext.Provider>
-        </li>
         {isLogged && (
         <li>
         <button
           className="
             flex 
-            w-96 
             cursor-pointer
             items-center 
             justify-center 
@@ -108,14 +99,21 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
             text-base 
             font-bold 
             text-green-800
-            max-md:hidden
+            max-w-xs
           "
         >
           {t("startWorkout")}
         </button>
       </li>
         )}
-
+        <li
+          className="cursor-pointer p-2 text-white dark:text-[#CFD7E5] md:hidden ml-2"
+          onClick={toggleSidebar}
+        >
+          <IconContext.Provider value={{ size: 25 }}>
+            <AiOutlineMenu />
+          </IconContext.Provider>
+        </li>
       </ul>
     </header>
   );
