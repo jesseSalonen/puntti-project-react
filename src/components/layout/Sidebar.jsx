@@ -32,6 +32,7 @@ function Sidebar({
         bg-[#1E2831]
         px-6
         text-white
+        dark:text-[#CFD7E5]
         drop-shadow-lg
         duration-300
         ease-in-out
@@ -111,7 +112,7 @@ function Sidebar({
               </button>
             </Link>
           </div>
-          <p className="font-bold text-gray-400 max-sm:text-2xl">
+          <p className="font-bold text-[#CFD7E5] max-sm:text-2xl">
             {t("notYetRegistered")}
           </p>
           <div>

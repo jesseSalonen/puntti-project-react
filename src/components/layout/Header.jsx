@@ -23,6 +23,7 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
           px-5 
           text-center 
           text-white
+          dark:text-[#CFD7E5]
           hover:bg-[#3A4549]
           hover:text-green-700
           max-md:hidden
@@ -36,22 +37,23 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
   return (
     <header
       className="
-          fixed 
-          top-0 
+          fixed
+          top-0
           z-30
           flex
           min-h-fit
           w-full
           items-center
-          justify-between 
+          justify-between
           border-b-4
           border-solid
           border-[#1E2831]
           bg-current
           py-1
-          px-7 
+          px-7
           dark:bg-gradient-to-br
           [&>ul>li>a:hover]:text-gray-400
+          dark:[&>ul>li>a:hover]:text-[#CFD7E5]
           [&>ul>li>a>svg]:mr-1
           [&>ul>li>a]:flex
           [&>ul>li>a]:items-center
@@ -75,12 +77,12 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
             <li>
               <Link to="/workouts">{linkButton("workouts")}</Link>
             </li>
-          </>         
+          </>
           )}
       </ul>
       <ul className="flex items-center justify-between">
         <li
-          className="cursor-pointer p-2 text-white md:hidden"
+          className="cursor-pointer p-2 text-white dark:text-[#CFD7E5] md:hidden"
           onClick={toggleSidebar}
         >
           <IconContext.Provider value={{ size: 25 }}>
