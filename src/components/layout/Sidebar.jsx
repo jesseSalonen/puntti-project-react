@@ -24,22 +24,24 @@ function Sidebar({
     return (
       <Link to={to} onClick={toggleSidebar}>
         <button
-          className="
+          className={`
             flex
             w-full
             cursor-pointer
             items-center
             rounded-md
-            bg-[#2A3540]
             py-3
             px-5
             text-center
-            text-white
-            dark:text-[#CFD7E5]
-            hover:bg-[#3A4549]
-            hover:text-green-700
             mb-4
-          "
+            border
+            transition-colors
+            duration-200
+            ${darkMode 
+              ? 'bg-gray-800 text-white border-green-800/40 hover:bg-gray-700 hover:text-green-400' 
+              : 'bg-white text-gray-800 border-green-300 hover:bg-green-50 hover:text-green-700'
+            }
+          `}
         >
           {t(buttonText)}
         </button>
@@ -64,27 +66,44 @@ function Sidebar({
           z-20
           h-screen
           w-80
-          bg-[#1E2831]
+          ${darkMode 
+            ? 'bg-gradient-to-b from-gray-800 to-gray-900 text-white border-green-800/30' 
+            : 'bg-gradient-to-b from-white to-gray-100 text-gray-800 border-green-300/50'
+          }
           px-6
-          text-white
-          dark:text-[#CFD7E5]
           drop-shadow-lg
           duration-300
           ease-in-out
           max-md:z-40
           ${active ? 'max-md:translate-x-0' : 'max-md:translate-x-full'}
           [&>*]:mb-7
+          border-l
         `}
       >
-        <div className="flex justify-end border-b border-solid border-gray-50">
+        <div className={`flex justify-end border-b border-solid ${darkMode ? 'border-green-800/30' : 'border-green-300'} pb-2`}>
           <IconContext.Provider
-            value={{className: 'm-6 cursor-pointer', size: 25, color: 'white'}}
+            value={{
+              className: 'm-6 cursor-pointer hover:text-green-400 transition-colors duration-200', 
+              size: 25, 
+              color: darkMode ? 'white' : '#1b6742'
+            }}
           >
             <RxCross1 onClick={toggleSidebar}/>
           </IconContext.Provider>
         </div>
-        <div className="flex items-center">
-          <FormControl fullWidth>
+        <div className={`
+          flex 
+          items-center 
+          justify-between 
+          p-3 
+          rounded-lg 
+          border 
+          ${darkMode 
+            ? 'bg-gray-800/50 border-green-800/30' 
+            : 'bg-green-50/70 border-green-200'
+          }
+        `}>
+          <FormControl fullWidth className="mr-3">
             <Select
               value={i18n.language.includes('fi') ? 'fi' : 'en'}
               onChange={(e) => i18n.changeLanguage(e.target.value)}
@@ -119,14 +138,20 @@ function Sidebar({
                   w-full
                   cursor-pointer
                   items-center
+                  justify-center
                   rounded-full
                   bg-black
                   bg-gradient-to-r
-                  from-green-50
-                  to-green-400
+                  from-green-400
+                  to-green-600
                   py-2
                   px-6
-                  text-green-900
+                  text-white
+                  font-medium
+                  shadow-md
+                  hover:shadow-green-400/20
+                  transition-shadow
+                  duration-300
                 "
             onClick={() => {
               onLogout();
@@ -160,7 +185,19 @@ function Sidebar({
                 </button>
               </Link>
             </div>
-            <p className="font-bold text-[#CFD7E5] max-sm:text-2xl">
+            <p className={`
+              font-bold 
+              max-sm:text-2xl 
+              text-center 
+              my-4 
+              border-t 
+              border-b 
+              py-3
+              ${darkMode 
+                ? 'text-[#CFD7E5] border-green-800/30' 
+                : 'text-gray-700 border-green-300'
+              }
+            `}>
               {t('notYetRegistered')}
             </p>
             <div>
@@ -174,11 +211,16 @@ function Sidebar({
                   rounded-full
                   bg-black
                   bg-gradient-to-r
-                  from-green-50
-                  to-green-400
+                  from-green-400
+                  to-green-600
                   py-2
                   px-6
-                  text-green-900
+                  text-white
+                  font-medium
+                  shadow-md
+                  hover:shadow-green-400/20
+                  transition-shadow
+                  duration-300
                 "
                 >
                   <FaUserPlus className="mr-2"/>

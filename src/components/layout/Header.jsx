@@ -12,22 +12,23 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
   const linkButton = (buttonText) => {
     return (
       <button
-        className="
+        className={`
           flex 
           cursor-pointer
           items-center 
           justify-center 
           rounded-md 
-          bg-[#222C34]
           py-3 
           px-5 
           text-center 
-          text-white
-          dark:text-[#CFD7E5]
-          hover:bg-[#3A4549]
-          hover:text-green-700
+          transition-colors
+          duration-200
           max-md:hidden
-        "
+          ${darkMode 
+            ? 'bg-[#222C34] text-white hover:bg-[#3A4549] hover:text-green-400' 
+            : 'bg-white text-gray-800 shadow-sm hover:bg-green-50 hover:text-green-700 border border-green-200'
+          }
+        `}
       >
         {t(buttonText)}
       </button>
@@ -36,7 +37,7 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
 
   return (
     <header
-      className="
+      className={`
           fixed
           top-0
           z-30
@@ -47,19 +48,22 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
           justify-between
           border-b-4
           border-solid
-          border-[#1E2831]
-          bg-current
           py-1
           px-7
-          dark:bg-gradient-to-br
-          [&>ul>li>a:hover]:text-gray-400
-          dark:[&>ul>li>a:hover]:text-[#CFD7E5]
+          ${darkMode 
+            ? 'border-[#1E2831] bg-gradient-to-br from-gray-800 to-gray-900' 
+            : 'border-green-600 bg-gradient-to-r from-white to-green-100'
+          }
           [&>ul>li>a>svg]:mr-1
           [&>ul>li>a]:flex
           [&>ul>li>a]:items-center
           [&>ul>li]:ml-5
           max-md:[&>ul>li]:ml-2
-        "
+          ${darkMode
+            ? '[&>ul>li>a:hover]:text-[#CFD7E5]'
+            : '[&>ul>li>a:hover]:text-green-600'
+          }
+        `}
     >
       <ul className="flex items-center [&>li]:mr-4 max-md:[&>li]:mr-2">
         <li>
