@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaPlus, FaTrash, FaUser, FaClock } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import CommonHelpers from '../../helpers/CommonHelpers';
 
@@ -15,9 +15,16 @@ const ExerciseItem = ({ exercise, onDelete, showAddButton }) => {
     <div className="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
       <div className="flex flex-col">
         <h3 className="mb-2 text-xl font-bold">{exercise.name}</h3>
-        <div className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-          {t('createdAt')}: {CommonHelpers.getDateTimeText(new Date(exercise.createdAt))}
+        <div className="mb-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
+          <FaClock className="mr-1" />
+          <span>{t('createdAt')}: {CommonHelpers.getDateTimeText(new Date(exercise.createdAt))}</span>
         </div>
+        {exercise.user && (
+          <div className="mb-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <FaUser className="mr-1" /> 
+            <span>{t('createdBy')}: {exercise.user.name}</span>
+          </div>
+        )}
         {exercise.muscles && exercise.muscles.length > 0 && (
           <div className="mb-3">
             <span className="text-sm font-medium">{t('muscles')}: </span>

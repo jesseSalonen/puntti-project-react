@@ -6,6 +6,7 @@
   "confirmDeleteExercise": "Are you sure you want to delete this exercise?",
   "createExercise": "Create Exercise",
   "createdAt": "Created at",
+  "createdBy": "Created by",
   "dashboard": "Exercise Dashboard",
   "deleteExercise": "Delete",
   "editExercise": "Edit",
