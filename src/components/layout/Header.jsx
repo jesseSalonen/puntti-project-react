@@ -58,12 +58,13 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
           [&>ul>li>a]:flex
           [&>ul>li>a]:items-center
           [&>ul>li]:ml-5
+          max-md:[&>ul>li]:ml-2
         "
     >
-      <ul className="flex items-center [&>li]:mr-4">
+      <ul className="flex items-center [&>li]:mr-4 max-md:[&>li]:mr-2">
         <li>
           <Link to="/">
-            <img src="/puntti-emblem.svg" alt="logo" width={90} height={90} />
+            <img src="/puntti-emblem.svg" alt="logo" className="w-[90px] h-[90px] max-md:w-[70px] max-md:h-[70px]" />
           </Link>
         </li>
         {isLogged && (
@@ -80,9 +81,9 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
           </>
           )}
       </ul>
-      <ul className="flex items-center justify-between">
+      <ul className="flex items-center justify-between max-md:ml-1">
         {isLogged && (
-        <li>
+        <li className="max-md:mr-1">
         <button
           className="
             flex 
@@ -93,13 +94,16 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
             bg-gradient-to-r
             from-green-500
             to-green-100
-            py-3 
-            px-5 
+            py-3
+            px-5
+            max-md:py-2 
+            max-md:px-3
             text-center 
             text-base 
             font-bold 
             text-green-800
             max-w-xs
+            whitespace-nowrap
           "
         >
           {t("startWorkout")}
