@@ -17,7 +17,7 @@ function ExerciseSearch() {
       </div>
       
       <div className="mb-6 flex justify-end">
-        <Link to="/exercises/new">
+        <Link to="/exercises/add">
           <button className="
             flex
             cursor-pointer

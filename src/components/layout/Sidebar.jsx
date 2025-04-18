@@ -107,8 +107,38 @@ function Sidebar({
             <Select
               value={i18n.language.includes('fi') ? 'fi' : 'en'}
               onChange={(e) => i18n.changeLanguage(e.target.value)}
-              MenuProps={{disableScrollLock: true}}
-              input={<CustomSelect/>}
+              MenuProps={{
+                disableScrollLock: true,
+                PaperProps: {
+                  sx: {
+                    bgcolor: darkMode ? 'rgb(31, 41, 55)' : 'rgb(255, 255, 255)',
+                    borderRadius: '10px',
+                    border: darkMode 
+                      ? '1px solid rgba(74, 222, 128, 0.2)' 
+                      : '1px solid rgba(5, 150, 105, 0.3)',
+                    boxShadow: darkMode 
+                      ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
+                      : '0 4px 20px rgba(0, 0, 0, 0.1)',
+                    '& .MuiMenuItem-root': {
+                      bgcolor: 'transparent',
+                      color: darkMode ? 'rgb(209, 213, 219)' : 'rgb(55, 65, 81)',
+                      transition: 'all 0.2s ease',
+                      '&:hover': {
+                        bgcolor: darkMode ? 'rgb(55, 65, 81)' : 'rgb(243, 244, 246)',
+                        color: darkMode ? 'rgb(74, 222, 128)' : 'rgb(5, 150, 105)',
+                      },
+                      '&.Mui-selected': {
+                        bgcolor: darkMode ? 'rgb(55, 65, 81)' : 'rgb(243, 244, 246)',
+                        color: darkMode ? 'rgb(74, 222, 128)' : 'rgb(5, 150, 105)',
+                        '&:hover': {
+                          bgcolor: darkMode ? 'rgb(75, 85, 99)' : 'rgb(229, 231, 235)',
+                        },
+                      },
+                    }
+                  }
+                }
+              }}
+              input={<CustomSelect darkMode={darkMode} />}
             >
               <MenuItem value="fi">Finnish</MenuItem>
               <MenuItem value="en">English</MenuItem>
