@@ -42,14 +42,22 @@ const ExerciseItem = ({ exercise, onDelete, showAddButton }) => {
                 items-center 
                 justify-center 
                 rounded-md
-                bg-[#2A3540]
                 py-2
                 px-4
                 text-center 
-                text-white
-                dark:text-[#CFD7E5]
-                hover:bg-[#3A4549]
+                transition-colors
+                duration-200
+                bg-white 
+                text-gray-800 
+                border 
+                border-green-200
+                shadow-sm
+                hover:bg-green-50 
                 hover:text-green-700
+                dark:border-none
+                dark:bg-[#2A3540]
+                dark:text-[#CFD7E5]
+                dark:hover:bg-[#3A4549]
                 dark:hover:text-green-400
               "
               aria-label={t('editExercise')}
@@ -65,14 +73,22 @@ const ExerciseItem = ({ exercise, onDelete, showAddButton }) => {
               items-center 
               justify-center 
               rounded-md
-              bg-[#2A3540]
               py-2
               px-4
               text-center 
-              text-white
+              transition-colors
+              duration-200
+              bg-white 
+              text-gray-800 
+              border 
+              border-red-200
+              shadow-sm
+              hover:bg-red-50 
+              hover:text-red-700
+              dark:border-none
+              dark:bg-[#2A3540]
               dark:text-[#CFD7E5]
-              hover:bg-[#3A4549]
-              hover:text-red-600
+              dark:hover:bg-[#3A4549]
               dark:hover:text-red-400
             "
             aria-label={t('deleteExercise')}
