@@ -16,5 +16,6 @@
   "muscles": "Lihakset",
   "noExercises": "Et ole vielä luonut liikkeitä",
   "noExercisesFound": "Liikkeitä ei löytynyt",
-  "searchExercisesFromBelow": "Etsi liikkeitä alapuolelta"
+  "searchExercisesFromBelow": "Etsi liikkeitä alapuolelta",
+  "cancel": "Peruuta"
 }

@@ -8,9 +8,7 @@ const ExerciseItem = ({ exercise, onDelete, showAddButton }) => {
   const { t } = useTranslation('exercises');
   
   const handleDelete = () => {
-    if (window.confirm(t('confirmDeleteExercise'))) {
-      onDelete(exercise._id);
-    }
+    onDelete(exercise._id);
   };
   
   return (
