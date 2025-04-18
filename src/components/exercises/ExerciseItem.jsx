@@ -51,7 +51,8 @@ const ExerciseItem = ({ exercise, onDelete, showAddButton }) => {
                 text-white
                 dark:text-[#CFD7E5]
                 hover:bg-[#3A4549]
-                hover:text-green-400
+                hover:text-green-700
+                dark:hover:text-green-400
               "
               aria-label={t('editExercise')}
             >
@@ -73,7 +74,8 @@ const ExerciseItem = ({ exercise, onDelete, showAddButton }) => {
               text-white
               dark:text-[#CFD7E5]
               hover:bg-[#3A4549]
-              hover:text-red-400
+              hover:text-red-600
+              dark:hover:text-red-400
             "
             aria-label={t('deleteExercise')}
           >
@@ -86,15 +88,17 @@ const ExerciseItem = ({ exercise, onDelete, showAddButton }) => {
                 cursor-pointer 
                 items-center 
                 justify-center 
-                rounded-full
-                bg-black
+                rounded-md
                 bg-gradient-to-r
-                from-green-50
-                to-green-400
+                from-green-500
+                to-green-100
                 py-2
                 px-4
                 text-center 
-                text-green-900
+                text-green-800
+                hover:from-green-600
+                hover:to-green-200
+                dark:hover:text-white
               "
               aria-label={t('addToWorkout')}
             >
