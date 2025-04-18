@@ -1,6 +1,7 @@
 {
   "addExercisesFromBelow": "Add exercises from below",
   "addToWorkout": "Add to workout",
+  "allMuscles": "All Muscles",
   "cancel": "Cancel",
   "confirmDeleteExercise": "Are you sure you want to delete this exercise?",
   "createExercise": "Create Exercise",
@@ -14,8 +15,12 @@
   "exerciseSearch": "Search for exercises",
   "exerciseUpdated": "Exercise updated",
   "exercises": "Exercises",
+  "filterByMuscle": "Filter by Muscle",
+  "filterExercises": "Filter Exercises",
   "muscles": "Muscles",
   "noExercises": "You have not created any exercises",
   "noExercisesFound": "No exercises found",
+  "searchByName": "Search by Name",
+  "searchExercises": "Search exercises...",
   "searchExercisesFromBelow": "Search exercises from below"
 }

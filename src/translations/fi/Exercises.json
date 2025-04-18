@@ -1,6 +1,8 @@
 {
   "addExercisesFromBelow": "Lisää liikkeitä alapuolelta",
   "addToWorkout": "Lisää treeniin",
+  "allMuscles": "Kaikki lihakset",
+  "cancel": "Peruuta",
   "confirmDeleteExercise": "Haluatko varmasti poistaa tämän liikkeen?",
   "createExercise": "Luo liike",
   "createdAt": "Luotu",
@@ -13,9 +15,12 @@
   "exerciseSearch": "Etsi liikkeitä",
   "exerciseUpdated": "Liike on päivitetty",
   "exercises": "Liikkeet",
+  "filterByMuscle": "Suodata lihaksen mukaan",
+  "filterExercises": "Suodata liikkeitä",
   "muscles": "Lihakset",
   "noExercises": "Et ole vielä luonut liikkeitä",
   "noExercisesFound": "Liikkeitä ei löytynyt",
-  "searchExercisesFromBelow": "Etsi liikkeitä alapuolelta",
-  "cancel": "Peruuta"
+  "searchByName": "Hae nimellä",
+  "searchExercises": "Hae liikkeitä...",
+  "searchExercisesFromBelow": "Etsi liikkeitä alapuolelta"
 }
