@@ -1,12 +1,20 @@
 {
   "addExercisesFromBelow": "Lisää liikkeitä alapuolelta",
+  "addToWorkout": "Lisää treeniin",
+  "confirmDeleteExercise": "Haluatko varmasti poistaa tämän liikkeen?",
+  "createExercise": "Luo liike",
   "createdAt": "Luotu",
   "dashboard": "Liikkeiden hallintasivu",
+  "deleteExercise": "Poista",
+  "editExercise": "Muokkaa",
   "exerciseAdded": "Liike on lisätty",
-  "exerciseUpdated": "Liike on päivitetty",
+  "exerciseDeletedSuccessfully": "Liike poistettu onnistuneesti",
   "exerciseName": "Liikkeen nimi",
-  "exercises": "Liikkeet",
   "exerciseSearch": "Etsi liikkeitä",
+  "exerciseUpdated": "Liike on päivitetty",
+  "exercises": "Liikkeet",
+  "muscles": "Lihakset",
   "noExercises": "Et ole vielä luonut liikkeitä",
+  "noExercisesFound": "Liikkeitä ei löytynyt",
   "searchExercisesFromBelow": "Etsi liikkeitä alapuolelta"
 }
