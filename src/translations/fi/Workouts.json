@@ -14,5 +14,7 @@
   "hideSets": "Piilota sarjat",
   "showSets": "Näytä sarjat",
   "noSets": "Ei sarjoja lisätty",
-  "removeExercise": "Poista liike"
+  "removeExercise": "Poista liike",
+  "exercisesNeedSets": "Seuraavat liikkeet tarvitsevat vähintään yhden sarjan",
+  "workoutAdded": "Treeni lisätty onnistuneesti"
 }

@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useTranslation } from "react-i18next";
 import ExerciseTable from "../../components/exercises/ExerciseTable";
-import {useDispatch} from 'react-redux';
-import {createWorkout} from '../../features/workouts/workoutSlice.js';
+import {useDispatch, useSelector} from 'react-redux';
+import {createWorkout, reset, selectWorkouts} from '../../features/workouts/workoutSlice.js';
 import GenericWorkoutInfo from '../../components/workouts/GenericWorkoutInfo.jsx';
 import WorkoutExerciseItem from '../../components/workouts/WorkoutExerciseItem.jsx';
+import { toast } from 'react-toastify';
+import Spinner from '../../components/common/Spinner';
 
 function AddWorkout() {
   const { t } = useTranslation("workouts");
@@ -12,13 +14,42 @@ function AddWorkout() {
   const [description, setDescription] = useState("");
   const [workoutExercises, setWorkoutExercises] = useState([]);
 
+  const { isLoading, isError, isSuccess, message } = useSelector(selectWorkouts);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+  }, [isError, message]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success(t('workoutAdded'));
+      clearFields();
+    }
+  }, [isSuccess, t]);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
+    // Validate that all exercises have at least one set
+    const exercisesWithEmptySets = workoutExercises.filter(exercise => exercise.sets.length === 0);
+    
+    if (exercisesWithEmptySets.length > 0) {
+      // Find the names of exercises with empty sets
+      const exerciseNames = exercisesWithEmptySets.map(ex => ex.name).join(', ');
+      toast.error(`${t('exercisesNeedSets')}: ${exerciseNames}`);
+      return;
+    }
+    
     dispatch(createWorkout({ name, description, workoutExercises }));
-    clearFields();
   };
 
   const clearFields = () => {
@@ -108,15 +139,16 @@ function AddWorkout() {
     );
   };
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+  
   return (
     <div className="mx-auto w-11/12 lg:w-3/4">
       <div className="mb-8 flex flex-col items-center py-0 font-bold">
         <h1 className="mb-2 text-4xl lg:text-5xl">{t("addWorkout")}</h1>
       </div>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        onSubmit(e);
-      }}>
+      <form onSubmit={onSubmit}>
         <GenericWorkoutInfo
           setName={setName}
           name={name}

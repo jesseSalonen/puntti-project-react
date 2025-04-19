@@ -14,5 +14,7 @@
   "hideSets": "Hide Sets",
   "showSets": "Show Sets",
   "noSets": "No sets added",
-  "removeExercise": "Remove Exercise"
+  "removeExercise": "Remove Exercise",
+  "exercisesNeedSets": "The following exercises need at least one set",
+  "workoutAdded": "Workout added successfully"
 }
