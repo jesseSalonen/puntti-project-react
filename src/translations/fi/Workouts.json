@@ -1,5 +1,18 @@
 {
-  "addWorkouts": "Lisää treeni",
-  "dashboard": "Treenin luominen",
-  "noWorkouts": "Et ole vielä luonut yhtään treeniä"
+  "addWorkout": "Lisää treeni",
+  "noWorkouts": "Et ole vielä luonut yhtään treeniä",
+  "workoutExercises": "Treenin liikkeet",
+  "availableExercises": "Saatavilla olevat liikkeet",
+  "noExercisesInWorkout": "Ei liikkeitä treenissä",
+  "sets": "Sarjat",
+  "addSet": "Lisää sarja",
+  "removeSet": "Poista sarja",
+  "reps": "Toistot",
+  "weight": "Paino",
+  "dropSet": "Pudotussarja",
+  "restPause": "Lepotauko",
+  "hideSets": "Piilota sarjat",
+  "showSets": "Näytä sarjat",
+  "noSets": "Ei sarjoja lisätty",
+  "removeExercise": "Poista liike"
 }

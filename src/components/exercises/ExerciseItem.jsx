@@ -4,7 +4,7 @@ import { FaEdit, FaPlus, FaTrash, FaUser, FaClock } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import CommonHelpers from '../../helpers/CommonHelpers';
 
-const ExerciseItem = ({ exercise, onDelete, showAddButton }) => {
+const ExerciseItem = ({ exercise, onDelete, onAddToWorkout, showAddButton }) => {
   const { t } = useTranslation('exercises');
   
   const handleDelete = () => {
@@ -32,7 +32,7 @@ const ExerciseItem = ({ exercise, onDelete, showAddButton }) => {
               {exercise.muscles.map((muscle) => (
                 <span 
                   key={muscle._id} 
-                  className="rounded-full bg-blue-100 px-2 py-1 text-xs text-blue-800 dark:bg-blue-900 dark:text-blue-100"
+                  className="rounded-full bg-green-100 px-2 py-1 text-xs text-green-800 dark:bg-green-900 dark:text-green-100"
                 >
                   {muscle.name}
                 </span>
@@ -108,6 +108,13 @@ const ExerciseItem = ({ exercise, onDelete, showAddButton }) => {
           )}
           {showAddButton && (
             <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (onAddToWorkout) {
+                  onAddToWorkout(exercise);
+                }
+              }}
               className="
                 flex
                 cursor-pointer 

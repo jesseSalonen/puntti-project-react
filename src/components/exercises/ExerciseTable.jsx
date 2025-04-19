@@ -18,7 +18,7 @@ import ExerciseItem from './ExerciseItem.jsx';
 import Modal from '../Modal';
 import { FaSearch } from 'react-icons/fa';
 
-const ExerciseTable = () => {
+const ExerciseTable = ({ onAddExercise }) => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [exerciseToDelete, setExerciseToDelete] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -35,13 +35,22 @@ const ExerciseTable = () => {
   const isAddWorkoutPage = location.pathname.includes('/workouts/add');
 
   useEffect(() => {
-    dispatch(getExercises());
-    dispatch(getMuscles());
-
+    // Only fetch exercises and muscles if they're not already loaded
+    if (!exercises.length) {
+      dispatch(getExercises());
+    }
+    if (!muscles.length) {
+      dispatch(getMuscles());
+    }
+  
+    // Disable any automatic Redux actions when in workout page
     return () => {
-      dispatch(reset());
+      // Never dispatch reset when in workout page to prevent unwanted API calls
+      if (!location.pathname.includes('/workouts')) {
+        dispatch(reset());
+      }
     };
-  }, [dispatch]);
+  }, [dispatch, exercises.length, muscles.length, location.pathname]);
 
   useEffect(() => {
     if (isError) {
@@ -50,15 +59,17 @@ const ExerciseTable = () => {
   }, [isError, message]);
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && exerciseToDelete) {
       toast.success(t('exerciseDeletedSuccessfully'));
       setDeleteModalOpen(false);
     }
-  }, [isSuccess, t]);
+  }, [isSuccess, exerciseToDelete, t]);
 
   const handleDeleteExercise = (id) => {
-    setExerciseToDelete(id);
-    setDeleteModalOpen(true);
+    if (!isAddWorkoutPage) {
+      setExerciseToDelete(id);
+      setDeleteModalOpen(true);
+    }
   };
   
   const confirmDeleteExercise = () => {
@@ -151,6 +162,7 @@ const ExerciseTable = () => {
             key={exercise._id} 
             exercise={exercise} 
             onDelete={handleDeleteExercise}
+            onAddToWorkout={isAddWorkoutPage ? onAddExercise : undefined}
             showAddButton={isAddWorkoutPage}
           />
         ))

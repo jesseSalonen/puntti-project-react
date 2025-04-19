@@ -1,5 +1,18 @@
 {
-  "addWorkouts": "Add workout",
-  "dashboard": "Create Workout",
-  "noWorkouts": "You have not created any workouts"
+  "addWorkout": "Add Workout",
+  "noWorkouts": "You haven't created any workouts yet",
+  "workoutExercises": "Workout Exercises",
+  "availableExercises": "Available Exercises",
+  "noExercisesInWorkout": "No exercises in workout",
+  "sets": "Sets",
+  "addSet": "Add Set",
+  "removeSet": "Remove Set",
+  "reps": "Reps",
+  "weight": "Weight",
+  "dropSet": "Drop Set",
+  "restPause": "Rest Pause",
+  "hideSets": "Hide Sets",
+  "showSets": "Show Sets",
+  "noSets": "No sets added",
+  "removeExercise": "Remove Exercise"
 }
