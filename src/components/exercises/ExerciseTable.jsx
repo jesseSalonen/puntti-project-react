@@ -118,9 +118,9 @@ const ExerciseTable = ({ onAddExercise }) => {
           <label htmlFor="searchQuery" className="mb-1 block text-sm font-medium">
             {t('searchByName')}
           </label>
-          <div className="relative">
+          <div className="relative group">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <FaSearch className="text-gray-500" />
+              <FaSearch className="text-green-500 dark:text-green-400" />
             </div>
             <input
               type="text"
@@ -128,8 +128,13 @@ const ExerciseTable = ({ onAddExercise }) => {
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder={t('searchExercises')}
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 pr-4 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 pr-4 text-gray-900 shadow-sm transition-all 
+                        focus:border-green-500 focus:ring-0 focus:shadow-md
+                        group-hover:border-green-300
+                        dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 
+                        dark:focus:border-green-500 dark:group-hover:border-green-700"
             />
+            <div className="absolute inset-0 rounded-lg pointer-events-none border border-transparent group-hover:border-green-300 dark:group-hover:border-green-700"></div>
           </div>
         </div>
         
@@ -142,7 +147,11 @@ const ExerciseTable = ({ onAddExercise }) => {
             id="muscleFilter"
             value={muscleFilter}
             onChange={handleMuscleFilterChange}
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm transition-all 
+                        focus:border-green-500 focus:ring-0 focus:shadow-md 
+                        hover:border-green-300
+                        dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 
+                        dark:focus:border-green-500 dark:hover:border-green-700"
           >
             <option value="">{t('allMuscles')}</option>
             {muscles.map((muscle) => (
