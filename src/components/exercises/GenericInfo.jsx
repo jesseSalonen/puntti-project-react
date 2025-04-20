@@ -23,7 +23,7 @@ function GenericInfo({ setName, name, setDescription, description }) {
       <div className="p-4">
         <div className="mb-3">
           <label className="mt-0 mr-0 mb-1 ml-1 block text-left" htmlFor="name">
-            {t("name")}
+            {t("name")} <span className="text-red-500">*</span>
           </label>
           <input
             className="w-full rounded-md border border-solid p-3 dark:border-gray-600 dark:bg-[#1b252e]"
@@ -31,6 +31,7 @@ function GenericInfo({ setName, name, setDescription, description }) {
             name="name"
             id="name"
             value={name}
+            required
             onChange={(e) => setName(e.target.value)}
           />
         </div>

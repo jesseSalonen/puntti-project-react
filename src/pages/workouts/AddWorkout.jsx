@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import Spinner from '../../components/common/Spinner';
 
 function AddWorkout() {
-  const { t } = useTranslation("workouts");
+  const { t } = useTranslation(["workouts", "common"]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [workoutExercises, setWorkoutExercises] = useState([]);
@@ -38,6 +38,12 @@ function AddWorkout() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    // Validate that name is provided
+    if (!name.trim()) {
+      toast.error(t('nameRequired', {ns: 'common'}));
+      return;
+    }
 
     // validate that workout has atleast one exercise
     if (workoutExercises.length === 0) {

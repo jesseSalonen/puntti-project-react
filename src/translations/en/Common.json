@@ -5,6 +5,7 @@
   "intlDateTime": "{{val, datetime}}",
   "login": "Login",
   "logout": "Logout",
+  "nameRequired": "Name is required",
   "notYetRegistered": "Don't have an account yet?",
   "of": "of",
   "page": "Page",

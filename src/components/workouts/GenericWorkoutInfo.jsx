@@ -19,7 +19,7 @@ function GenericWorkoutInfo({ setName, name, setDescription, description }) {
             className="block text-left font-medium mb-2 text-gray-700 dark:text-gray-300" 
             htmlFor="name"
           >
-            {t("name")}
+            {t("name")} <span className="text-red-500">*</span>
           </label>
           <div className="relative group">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -36,6 +36,7 @@ function GenericWorkoutInfo({ setName, name, setDescription, description }) {
               id="name"
               placeholder={t("enterWorkoutName")}
               value={name}
+              required
               onChange={(e) => setName(e.target.value)}
             />
             <div className="absolute inset-0 rounded-md pointer-events-none border border-transparent group-hover:border-green-300 dark:group-hover:border-green-700"></div>

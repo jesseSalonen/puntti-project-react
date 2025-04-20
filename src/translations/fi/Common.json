@@ -5,6 +5,7 @@
   "intlDateTime": "{{val, datetime}}",
   "login": "Kirjaudu",
   "logout": "Kirjaudu ulos",
+  "nameRequired": "Nimi vaaditaan",
   "notYetRegistered": "Eikö sinulla ole tunnuksia?",
   "of": "/ ",
   "page": "Sivu",

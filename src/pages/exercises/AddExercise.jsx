@@ -14,7 +14,7 @@ function AddExercise() {
   const [exerciseMuscles, setExerciseMuscles] = useState([]);
   const [addMuscleModalOpen, setAddMuscleModalOpen] = useState(false);
 
-  const { t } = useTranslation(['dashboard', 'exercises']);
+  const { t } = useTranslation(['dashboard', 'exercises', 'common']);
 
   const { isLoading, isError, isSuccess, message } = useSelector(selectExercises);
   const dispatch = useDispatch();
@@ -40,6 +40,12 @@ function AddExercise() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    // Validate that name is provided
+    if (!name.trim()) {
+      toast.error(t('nameRequired', {ns: 'common'}));
+      return;
+    }
 
     dispatch(createExercise({ name, description, exerciseMuscles }));
   };
