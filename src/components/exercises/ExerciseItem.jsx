@@ -4,12 +4,8 @@ import { FaEdit, FaPlus, FaTrash, FaUser, FaClock } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import CommonHelpers from '../../helpers/CommonHelpers';
 
-const ExerciseItem = ({ exercise, onDelete, onAddToWorkout, showAddButton }) => {
+const ExerciseItem = ({ exercise, onDelete, onAddToWorkout, allowModification }) => {
   const { t } = useTranslation('exercises');
-  
-  const handleDelete = () => {
-    onDelete(exercise._id);
-  };
   
   return (
     <div className="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
@@ -41,80 +37,10 @@ const ExerciseItem = ({ exercise, onDelete, onAddToWorkout, showAddButton }) => 
           </div>
         )}
         <div className="mt-2 flex flex-wrap gap-2">
-          {!showAddButton && (
-            <>
-              <Link to={`/exercises/${exercise._id}`}>
-                <button
-                  className="
-                    flex
-                    cursor-pointer 
-                    items-center 
-                    justify-center 
-                    rounded-md
-                    py-2
-                    px-4
-                    text-center 
-                    transition-colors
-                    duration-200
-                    bg-white 
-                    text-gray-800 
-                    border 
-                    border-green-200
-                    shadow-sm
-                    hover:bg-green-50 
-                    hover:text-green-700
-                    dark:border-none
-                    dark:bg-[#2A3540]
-                    dark:text-[#CFD7E5]
-                    dark:hover:bg-[#3A4549]
-                    dark:hover:text-green-400
-                  "
-                  aria-label={t('editExercise')}
-                >
-                  <FaEdit className="mr-1" /> {t('editExercise')}
-                </button>
-              </Link>
-              <button
-                onClick={handleDelete}
-                className="
-                  flex
-                  cursor-pointer 
-                  items-center 
-                  justify-center 
-                  rounded-md
-                  py-2
-                  px-4
-                  text-center 
-                  transition-colors
-                  duration-200
-                  bg-white 
-                  text-gray-800 
-                  border 
-                  border-red-200
-                  shadow-sm
-                  hover:bg-red-50 
-                  hover:text-red-700
-                  dark:border-none
-                  dark:bg-[#2A3540]
-                  dark:text-[#CFD7E5]
-                  dark:hover:bg-[#3A4549]
-                  dark:hover:text-red-400
-                "
-                aria-label={t('deleteExercise')}
-              >
-                <FaTrash className="mr-1" /> {t('deleteExercise')}
-              </button>
-            </>
-          )}
-          {showAddButton && (
+          {allowModification ? (
             <button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                if (onAddToWorkout) {
-                  onAddToWorkout(exercise);
-                }
-              }}
+              type="button"
+              onClick={() => onAddToWorkout(exercise)}
               className="
                 flex
                 cursor-pointer 
@@ -136,6 +62,70 @@ const ExerciseItem = ({ exercise, onDelete, onAddToWorkout, showAddButton }) => 
             >
               <FaPlus className="mr-1" /> {t('addToWorkout')}
             </button>
+          ) : (
+            <>
+              <Link to={`/exercises/${exercise._id}`}>
+                <button
+                  className="
+                    flex
+                    cursor-pointer
+                    items-center
+                    justify-center
+                    rounded-md
+                    py-2
+                    px-4
+                    text-center
+                    transition-colors
+                    duration-200
+                    bg-white
+                    text-gray-800
+                    border
+                    border-green-200
+                    shadow-sm
+                    hover:bg-green-50
+                    hover:text-green-700
+                    dark:border-none
+                    dark:bg-[#2A3540]
+                    dark:text-[#CFD7E5]
+                    dark:hover:bg-[#3A4549]
+                    dark:hover:text-green-400
+                  "
+                  aria-label={t('editExercise')}
+                >
+                  <FaEdit className="mr-1" /> {t('editExercise')}
+                </button>
+              </Link>
+              <button
+                onClick={() => onDelete(exercise._id)}
+                className="
+                  flex
+                  cursor-pointer
+                  items-center
+                  justify-center
+                  rounded-md
+                  py-2
+                  px-4
+                  text-center
+                  transition-colors
+                  duration-200
+                  bg-white
+                  text-gray-800
+                  border
+                  border-red-200
+                  shadow-sm
+                  hover:bg-red-50
+                  hover:text-red-700
+                  dark:border-none
+                  dark:bg-[#2A3540]
+                  dark:text-[#CFD7E5]
+                  dark:hover:bg-[#3A4549]
+                  dark:hover:text-red-400
+                "
+                aria-label={t('deleteExercise')}
+              >
+                <FaTrash className="mr-1" /> {t('deleteExercise')}
+              </button>
+            </>
           )}
         </div>
       </div>

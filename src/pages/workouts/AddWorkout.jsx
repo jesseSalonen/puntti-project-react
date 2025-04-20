@@ -62,8 +62,6 @@ function AddWorkout() {
     // Check if exercise already exists in workout
     const exists = workoutExercises.some(ex => ex._id === exercise._id);
     
-    console.log("Adding exercise to workout:", exercise);
-    
     if (!exists) {
       // Add exercise with empty sets array
       const updatedExercises = [
@@ -73,15 +71,7 @@ function AddWorkout() {
           sets: []
         }
       ];
-      console.log("Updated workout exercises:", updatedExercises);
       setWorkoutExercises(updatedExercises);
-      
-      // Force a re-render
-      setTimeout(() => {
-        console.log("Current workout exercises:", workoutExercises);
-      }, 100);
-    } else {
-      console.log("Exercise already exists in workout");
     }
   };
 
@@ -94,7 +84,6 @@ function AddWorkout() {
     setWorkoutExercises(prevExercises => 
       prevExercises.map(ex => {
         if (ex._id === exerciseId) {
-          console.log(`Adding set to exercise ${ex.name}`);
           return {
             ...ex,
             sets: [...ex.sets, { reps: 0, dropSet: false, restPause: false }]
@@ -110,7 +99,6 @@ function AddWorkout() {
     setWorkoutExercises(prevExercises => 
       prevExercises.map(ex => {
         if (ex._id === exerciseId) {
-          console.log(`Removing set ${setIndex} from exercise ${ex.name}`);
           return {
             ...ex,
             sets: ex.sets.filter((_, index) => index !== setIndex)
@@ -126,7 +114,6 @@ function AddWorkout() {
     setWorkoutExercises(prevExercises => 
       prevExercises.map(ex => {
         if (ex._id === exerciseId) {
-          console.log(`Updating set ${setIndex} for exercise ${ex.name}`);
           return {
             ...ex,
             sets: ex.sets.map((set, index) => 

@@ -30,38 +30,33 @@ const ExerciseTable = ({ onAddExercise }) => {
 
   const { exercises, isLoading, isError, isSuccess, message } =
     useSelector(selectExercises);
-  const { muscles, isLoading: musclesLoading } = useSelector(selectMuscles);
+  const { muscles, isLoading: musclesLoading, isError: musclesIsError, message: musclesMessage } = useSelector(selectMuscles);
     
   const isAddWorkoutPage = location.pathname.includes('/workouts/add');
 
   useEffect(() => {
-    // Only fetch exercises and muscles if they're not already loaded
-    if (!exercises.length) {
-      dispatch(getExercises());
-    }
-    if (!muscles.length) {
-      dispatch(getMuscles());
-    }
-  
-    // Disable any automatic Redux actions when in workout page
+    dispatch(getExercises());
+
+    dispatch(getMuscles());
+
     return () => {
-      // Never dispatch reset when in workout page to prevent unwanted API calls
-      if (!location.pathname.includes('/workouts')) {
-        dispatch(reset());
-      }
+      dispatch(reset());
     };
-  }, [dispatch, exercises.length, muscles.length, location.pathname]);
+  }, [dispatch]);
 
   useEffect(() => {
     if (isError) {
       toast.error(message);
     }
-  }, [isError, message]);
+    if (musclesIsError) {
+      toast.error(musclesMessage);
+    }
+  }, [isError, message, musclesIsError, musclesMessage]);
 
   useEffect(() => {
     if (isSuccess && exerciseToDelete) {
       toast.success(t('exerciseDeletedSuccessfully'));
-      setDeleteModalOpen(false);
+      closeDeleteModal();
     }
   }, [isSuccess, exerciseToDelete, t]);
 
@@ -171,8 +166,8 @@ const ExerciseTable = ({ onAddExercise }) => {
             key={exercise._id} 
             exercise={exercise} 
             onDelete={handleDeleteExercise}
-            onAddToWorkout={isAddWorkoutPage ? onAddExercise : undefined}
-            showAddButton={isAddWorkoutPage}
+            onAddToWorkout={onAddExercise}
+            allowModification={isAddWorkoutPage}
           />
         ))
       )}

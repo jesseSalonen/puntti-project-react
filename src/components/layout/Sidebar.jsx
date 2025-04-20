@@ -156,7 +156,6 @@ function Sidebar({
         {isLogged && (
           <div className="md:hidden">
             {navigationButton("/exercises", "exercises")}
-            {navigationButton("/exercises/add", "addExercise")}
             {navigationButton("/workouts", "workouts")}
           </div>
         )}

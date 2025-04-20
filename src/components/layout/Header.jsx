@@ -77,9 +77,6 @@ function Header({ darkMode, toggleDarkMode, onLogout, toggleSidebar }) {
               <Link to="/exercises">{linkButton("exercises")}</Link>
             </li>
             <li className="max-md:hidden">
-              <Link to="/exercises/add">{linkButton("addExercise")}</Link>
-            </li>
-            <li className="max-md:hidden">
               <Link to="/workouts">{linkButton("workouts")}</Link>
             </li>
           </>
