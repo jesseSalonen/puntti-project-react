@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import {FaPlus} from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
 import WorkoutList from '../../components/workouts/WorkoutList.jsx';
 
 function WorkoutSearch() {
@@ -15,6 +15,7 @@ function WorkoutSearch() {
           {t("searchWorkoutsFromBelow")}
         </p>
       </div>
+      
       <div className="mb-6 flex justify-end">
         <Link to="/workouts/add">
           <button className="
@@ -39,7 +40,7 @@ function WorkoutSearch() {
           </button>
         </Link>
       </div>
-
+      
       <WorkoutList />
     </div>
   );
