@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import CommonHelpers from '../../helpers/CommonHelpers';
 
 const ExerciseItem = ({ exercise, onDelete, onAddToWorkout, allowModification }) => {
-  const { t } = useTranslation('exercises');
+  const { t } = useTranslation(['exercises', 'common']);
   const [isAdded, setIsAdded] = useState(false);
   
   const handleAddToWorkout = (exercise) => {
@@ -76,9 +76,9 @@ const ExerciseItem = ({ exercise, onDelete, onAddToWorkout, allowModification })
                     dark:hover:bg-[#3A4549]
                     dark:hover:text-green-400
                   "
-                  aria-label={t('editExercise')}
+                  aria-label={t('edit', {ns: 'common'})}
                 >
-                  <FaEdit className="mr-1" /> {t('editExercise')}
+                  <FaEdit className="mr-1" /> {t('edit', {ns: 'common'})}
                 </button>
               </Link>
               <button
@@ -107,9 +107,9 @@ const ExerciseItem = ({ exercise, onDelete, onAddToWorkout, allowModification })
                   dark:hover:bg-[#3A4549]
                   dark:hover:text-red-400
                 "
-                aria-label={t('deleteExercise')}
+                aria-label={t('delete', {ns: 'common'})}
               >
-                <FaTrash className="mr-1" /> {t('deleteExercise')}
+                <FaTrash className="mr-1" /> {t('delete', {ns: 'common'})}
               </button>
             </>
           ) : (

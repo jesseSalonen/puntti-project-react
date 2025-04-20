@@ -1,10 +1,8 @@
 {
-  "add": "Lisää",
   "addExercise": "Lisää liike",
   "cancel": "Peruuta",
   "delete": "Poista",
   "edit": "Muokkaa",
-  "exercise": "Liike",
   "exercises": "Liikkeet",
   "goToPage": "Siirry sivulle",
   "intlDateTime": "{{val, datetime}}",
@@ -17,7 +15,7 @@
   "register": "Luo tunnukset",
   "rows": "riviä",
   "search": "Hae",
-  "searchByName": "Etsi nimellä",
+  "searchByName": "Hae nimellä",
   "show": "Näytä",
   "startWorkout": "Aloita treeni!",
   "workouts": "Treenit"

@@ -111,7 +111,7 @@ const ExerciseList = ({ onAddExercise }) => {
         {/* Search by name */}
         <div className="mb-4">
           <label htmlFor="searchQuery" className="mb-1 block text-sm font-medium">
-            {t('searchByName')}
+            {t('searchByName', {ns: 'common'})}
           </label>
           <div className="relative group">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -184,13 +184,13 @@ const ExerciseList = ({ onAddExercise }) => {
               onClick={closeDeleteModal}
               className="rounded bg-gray-300 px-4 py-2 text-gray-800 hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
             >
-              {t('cancel')}
+              {t('cancel', {ns: 'common'})}
             </button>
             <button
               onClick={confirmDeleteExercise}
               className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
             >
-              {t('deleteExercise')}
+              {t('delete', {ns: 'common'})}
             </button>
           </div>
         </div>
