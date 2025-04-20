@@ -3,6 +3,7 @@ import workoutService from "./workoutService";
 
 const initialState = {
   workouts: [],
+  currentWorkout: null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -66,6 +67,44 @@ export const deleteWorkout = createAsyncThunk(
   }
 );
 
+// Get single workout
+export const getWorkout = createAsyncThunk(
+  "workouts/getOne",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await workoutService.getWorkout(id, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Update workout
+export const updateWorkout = createAsyncThunk(
+  "workouts/update",
+  async ({ id, workoutData }, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await workoutService.updateWorkout(id, workoutData, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const workoutSlice = createSlice({
   name: "workout",
   initialState,
@@ -110,6 +149,31 @@ export const workoutSlice = createSlice({
         );
       })
       .addCase(deleteWorkout.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getWorkout.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getWorkout.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.currentWorkout = action.payload;
+      })
+      .addCase(getWorkout.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updateWorkout.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateWorkout.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.currentWorkout = action.payload;
+      })
+      .addCase(updateWorkout.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
