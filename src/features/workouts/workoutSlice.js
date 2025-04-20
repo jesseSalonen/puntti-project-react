@@ -92,7 +92,6 @@ export const workoutSlice = createSlice({
       })
       .addCase(getWorkouts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = true;
         state.workouts = action.payload;
       })
       .addCase(getWorkouts.rejected, (state, action) => {

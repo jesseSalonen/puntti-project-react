@@ -2,6 +2,7 @@
   "addWorkout": "Add Workout",
   "noWorkouts": "You haven't created any workouts yet",
   "workoutExercises": "Workout Exercises",
+  "workoutMustHaveExercises": "Workout must have at least one exercise",
   "availableExercises": "Available Exercises",
   "noExercisesInWorkout": "No exercises in workout",
   "sets": "Sets",

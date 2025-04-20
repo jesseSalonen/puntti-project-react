@@ -2,6 +2,7 @@
   "addWorkout": "Lisää treeni",
   "noWorkouts": "Et ole vielä luonut yhtään treeniä",
   "workoutExercises": "Treenin liikkeet",
+  "workoutMustHaveExercises": "Treenissä on oltava vähintään yksi liike",
   "availableExercises": "Saatavilla olevat liikkeet",
   "noExercisesInWorkout": "Ei liikkeitä treenissä",
   "sets": "Sarjat",

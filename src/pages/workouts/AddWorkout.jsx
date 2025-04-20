@@ -34,10 +34,16 @@ function AddWorkout() {
       toast.success(t('workoutAdded'));
       clearFields();
     }
-  }, [isSuccess, t]);
+  }, [isSuccess]);
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    // validate that workout has atleast one exercise
+    if (workoutExercises.length === 0) {
+      toast.error(t('workoutMustHaveExercises'));
+      return;
+    }
 
     // Validate that all exercises have at least one set
     const exercisesWithEmptySets = workoutExercises.filter(exercise => exercise.sets.length === 0);
