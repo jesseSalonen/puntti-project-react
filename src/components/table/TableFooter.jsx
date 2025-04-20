@@ -51,7 +51,7 @@ function TableFooter({ table }) {
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
               table.setPageIndex(page);
             }}
-            className="w-16 rounded border p-1"
+            className="w-16 rounded border p-1 dark:bg-[#1A242D] dark:border-[#2C3B48] dark:text-[#CFD7E5]"
           />
         </span>
         <select

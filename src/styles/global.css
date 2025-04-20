@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add this rule to handle Placeholder styling in dark mode */
+.dark [type='text']::placeholder,
+.dark [type='email']::placeholder,
+.dark [type='url']::placeholder,
+.dark [type='password']::placeholder,
+.dark [type='number']::placeholder,
+.dark [type='date']::placeholder,
+.dark [type='datetime-local']::placeholder,
+.dark [type='month']::placeholder,
+.dark [type='search']::placeholder,
+.dark [type='tel']::placeholder,
+.dark [type='time']::placeholder,
+.dark [type='week']::placeholder,
+.dark [multiple]::placeholder,
+.dark textarea::placeholder,
+.dark select::placeholder {
+  color: theme('colors.gray.400');
+}
+
+/* Hide default number input spinners */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

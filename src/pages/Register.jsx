@@ -76,7 +76,7 @@ function Register() {
           <div className="mb-3">
             <input
               type="text"
-              className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
+              className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3 dark:bg-[#1A242D] dark:border-[#2C3B48] dark:text-[#CFD7E5]"
               id="name"
               name="name"
               value={name}
@@ -87,7 +87,7 @@ function Register() {
           <div className="mb-3">
             <input
               type="email"
-              className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
+              className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3 dark:bg-[#1A242D] dark:border-[#2C3B48] dark:text-[#CFD7E5]"
               id="email"
               name="email"
               value={email}
@@ -98,7 +98,7 @@ function Register() {
           <div className="mb-3">
             <input
               type="password"
-              className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
+              className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3 dark:bg-[#1A242D] dark:border-[#2C3B48] dark:text-[#CFD7E5]"
               id="password"
               name="password"
               value={password}
@@ -109,7 +109,7 @@ function Register() {
           <div className="mb-3">
             <input
               type="password"
-              className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3"
+              className="mb-3 w-full rounded-md border border-solid border-gray-200 p-3 dark:bg-[#1A242D] dark:border-[#2C3B48] dark:text-[#CFD7E5]"
               id="password2"
               name="password2"
               value={password2}
@@ -128,16 +128,15 @@ function Register() {
                 items-center 
                 justify-center 
                 rounded-md 
-                border 
-                border-solid 
-                border-black 
-                bg-black 
+                bg-gradient-to-r
+                from-green-400
+                to-green-500
                 py-3 
                 px-5 
                 text-center 
                 text-base 
                 font-bold 
-                text-white
+                text-green-800
                 hover:scale-95
               "
             >

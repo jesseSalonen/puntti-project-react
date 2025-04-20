@@ -14,7 +14,7 @@ function AddExercise() {
   const [exerciseMuscles, setExerciseMuscles] = useState([]);
   const [addMuscleModalOpen, setAddMuscleModalOpen] = useState(false);
 
-  const { t } = useTranslation(['dashboard', 'exercises']);
+  const { t } = useTranslation(['dashboard', 'exercises', 'common']);
 
   const { isLoading, isError, isSuccess, message } = useSelector(selectExercises);
   const dispatch = useDispatch();
@@ -41,6 +41,12 @@ function AddExercise() {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    // Validate that name is provided
+    if (!name.trim()) {
+      toast.error(t('nameRequired', {ns: 'common'}));
+      return;
+    }
+
     dispatch(createExercise({ name, description, exerciseMuscles }));
   };
 
@@ -62,7 +68,7 @@ function AddExercise() {
     <div className="mx-auto w-3/4 max-sm:w-11/12">
       <div className="mb-12 flex flex-col items-center py-0 font-bold">
         <h1 className="mb-4 text-5xl max-sm:text-4xl">{t('addExercise')}</h1>
-        <p className="text-4xl text-gray-400 max-sm:text-2xl">
+        <p className="text-center text-4xl text-gray-400 max-sm:text-2xl">
           {t('addExercisesFromBelow', { ns: 'exercises' })}
         </p>
       </div>

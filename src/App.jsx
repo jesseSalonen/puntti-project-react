@@ -1,6 +1,4 @@
 import {
-  BrowserRouter as Router,
-  Routes,
   Route,
   RouterProvider,
   createBrowserRouter,
@@ -8,7 +6,6 @@ import {
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "./components/layout/Header";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -20,8 +17,9 @@ import Exercise from "./pages/exercises/Exercise";
 import AddExercise from "./pages/exercises/AddExercise";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SessionHelpers from "./helpers/SessionHelpers";
-import { SESSION, THEME_MODE } from "./helpers/constants";
+import { THEME_MODE } from "./helpers/constants";
 import Layout from "./components/layout/Layout";
+import Workout from './pages/workouts/Workout.jsx';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -57,6 +55,7 @@ export default function App() {
           </Route>
           <Route path="/workouts">
             <Route index element={<WorkoutSearch />} />
+            <Route path=":id" element={<Workout />} />
             <Route path="add" element={<AddWorkout />} />
           </Route>
         </Route>
@@ -82,7 +81,7 @@ export default function App() {
           w-full
           p-0
           text-gray-700
-          dark:text-gray-
+          dark:text-[#CFD7E5]
         `}
         >
           <RouterProvider router={router} />
