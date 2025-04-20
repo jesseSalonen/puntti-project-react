@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaEdit, FaPlus, FaTrash, FaUser, FaClock } from 'react-icons/fa';
+import { FaEdit, FaPlus, FaTrash, FaUser, FaClock, FaArrowUp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import CommonHelpers from '../../helpers/CommonHelpers';
 
 const ExerciseItem = ({ exercise, onDelete, onAddToWorkout, allowModification }) => {
   const { t } = useTranslation('exercises');
+  const [isAdded, setIsAdded] = useState(false);
+  
+  const handleAddToWorkout = (exercise) => {
+    onAddToWorkout(exercise);
+    setIsAdded(true);
+    
+    // Reset the state after 2 seconds
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 2000);
+  };
   
   return (
     <div className="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
@@ -38,31 +49,6 @@ const ExerciseItem = ({ exercise, onDelete, onAddToWorkout, allowModification })
         )}
         <div className="mt-2 flex flex-wrap gap-2">
           {allowModification ? (
-            <button
-              type="button"
-              onClick={() => onAddToWorkout(exercise)}
-              className="
-                flex
-                cursor-pointer 
-                items-center 
-                justify-center 
-                rounded-md
-                bg-gradient-to-r
-                from-green-500
-                to-green-100
-                py-2
-                px-4
-                text-center 
-                text-green-800
-                hover:from-green-600
-                hover:to-green-200
-                dark:hover:text-white
-              "
-              aria-label={t('addToWorkout')}
-            >
-              <FaPlus className="mr-1" /> {t('addToWorkout')}
-            </button>
-          ) : (
             <>
               <Link to={`/exercises/${exercise._id}`}>
                 <button
@@ -126,6 +112,64 @@ const ExerciseItem = ({ exercise, onDelete, onAddToWorkout, allowModification })
                 <FaTrash className="mr-1" /> {t('deleteExercise')}
               </button>
             </>
+          ) : (
+            <button
+              type="button"
+              onClick={() => handleAddToWorkout(exercise)}
+              className="
+                flex
+                cursor-pointer
+                items-center
+                justify-center
+                rounded-md
+                bg-gradient-to-r
+                from-green-500
+                to-green-100
+                py-2
+                px-4
+                text-center
+                text-green-800
+                hover:from-green-600
+                hover:to-green-200
+                dark:hover:text-white
+                transition-all
+                duration-300
+                overflow-hidden
+                relative
+                min-w-[140px]
+              "
+              aria-label={isAdded ? t('exerciseAdded') : t('addToWorkout')}
+            >
+              <div 
+                className={`
+                  flex 
+                  items-center 
+                  justify-center 
+                  w-full 
+                  transition-opacity 
+                  duration-500 
+                  absolute 
+                  ${isAdded ? 'opacity-100' : 'opacity-0'}
+                `}
+              >
+                <FaArrowUp className="mr-1" /> 
+                <span>{t('exerciseAdded')}</span>
+              </div>
+              <div 
+                className={`
+                  flex 
+                  items-center 
+                  justify-center 
+                  w-full 
+                  transition-opacity 
+                  duration-500 
+                  ${isAdded ? 'opacity-0' : 'opacity-100'}
+                `}
+              >
+                <FaPlus className="mr-1" /> 
+                <span>{t('addToWorkout')}</span>
+              </div>
+            </button>
           )}
         </div>
       </div>

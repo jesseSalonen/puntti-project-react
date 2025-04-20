@@ -167,7 +167,7 @@ const ExerciseTable = ({ onAddExercise }) => {
             exercise={exercise} 
             onDelete={handleDeleteExercise}
             onAddToWorkout={onAddExercise}
-            allowModification={isAddWorkoutPage}
+            allowModification={!isAddWorkoutPage}
           />
         ))
       )}
