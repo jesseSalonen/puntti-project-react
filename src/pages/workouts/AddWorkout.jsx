@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useTranslation } from "react-i18next";
-import ExerciseTable from "../../components/exercises/ExerciseTable";
+import ExerciseList from "../../components/exercises/ExerciseList.jsx";
 import {useDispatch, useSelector} from 'react-redux';
 import {createWorkout, reset, selectWorkouts} from '../../features/workouts/workoutSlice.js';
 import GenericWorkoutInfo from '../../components/workouts/GenericWorkoutInfo.jsx';
@@ -187,7 +187,7 @@ function AddWorkout() {
         
         <div className="mb-8">
           <h2 className="mb-4 text-2xl font-bold">{t("availableExercises")}</h2>
-          <ExerciseTable onAddExercise={handleAddExerciseToWorkout} />
+          <ExerciseList onAddExercise={handleAddExerciseToWorkout} />
         </div>
         
         <div className="mb-10 px-4 sm:px-10">

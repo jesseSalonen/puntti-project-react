@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import ExerciseTable from "../../components/exercises/ExerciseTable";
+import ExerciseList from "../../components/exercises/ExerciseList.jsx";
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 
@@ -41,7 +41,7 @@ function ExerciseSearch() {
         </Link>
       </div>
       
-      <ExerciseTable />
+      <ExerciseList />
     </div>
   );
 }

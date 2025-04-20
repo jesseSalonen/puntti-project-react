@@ -16,6 +16,8 @@
   "showSets": "Show Sets",
   "noSets": "No sets added",
   "removeExercise": "Remove Exercise",
+  "searchWorkoutsFromBelow": "Search workouts from below",
   "exercisesNeedSets": "The following exercises need at least one set",
-  "workoutAdded": "Workout added successfully"
+  "workoutAdded": "Workout added successfully",
+  "workouts": "Workouts"
 }

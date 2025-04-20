@@ -18,7 +18,7 @@ import ExerciseItem from './ExerciseItem.jsx';
 import Modal from '../Modal';
 import { FaSearch } from 'react-icons/fa';
 
-const ExerciseTable = ({ onAddExercise }) => {
+const ExerciseList = ({ onAddExercise }) => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [exerciseToDelete, setExerciseToDelete] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -199,4 +199,4 @@ const ExerciseTable = ({ onAddExercise }) => {
   );
 };
 
-export default ExerciseTable;
+export default ExerciseList;
