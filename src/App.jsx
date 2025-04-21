@@ -20,6 +20,9 @@ import SessionHelpers from "./helpers/SessionHelpers";
 import { THEME_MODE } from "./helpers/constants";
 import Layout from "./components/layout/Layout";
 import Workout from './pages/workouts/Workout.jsx';
+import ProgramSearch from './pages/programs/ProgramSearch.jsx';
+import AddProgram from './pages/programs/AddProgram.jsx';
+import Program from './pages/programs/Program.jsx';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -57,6 +60,11 @@ export default function App() {
             <Route index element={<WorkoutSearch />} />
             <Route path=":id" element={<Workout />} />
             <Route path="add" element={<AddWorkout />} />
+          </Route>
+          <Route path="/programs">
+            <Route index element={<ProgramSearch />} />
+            <Route path=":id" element={<Program />} />
+            <Route path="add" element={<AddProgram />} />
           </Route>
         </Route>
       </Route>

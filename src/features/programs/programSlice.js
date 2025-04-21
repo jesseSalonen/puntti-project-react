@@ -1,4 +1,3 @@
-// src/features/programs/programSlice.js
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import programService from "./programService";
 
