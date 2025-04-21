@@ -23,7 +23,9 @@
   "showSets": "Show Sets",
   "weight": "Weight",
   "workoutAdded": "Workout added successfully",
+  "workoutDeletedSuccessfully": "Workout deleted successfully",
   "workoutExercises": "Workout Exercises",
   "workoutMustHaveExercises": "Workout must have at least one exercise",
-  "workouts": "Workouts"
+  "workouts": "Workouts",
+  "workoutUpdated": "Workout updated successfully"
 }

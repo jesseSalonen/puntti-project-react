@@ -23,7 +23,9 @@
   "showSets": "Näytä sarjat",
   "weight": "Paino",
   "workoutAdded": "Treeni lisätty onnistuneesti",
+  "workoutDeletedSuccessfully": "Treeni poistettu onnistuneesti",
   "workoutExercises": "Treenin liikkeet",
   "workoutMustHaveExercises": "Treenissä on oltava vähintään yksi liike",
-  "workouts": "Treenit"
+  "workouts": "Treenit",
+  "workoutUpdated": "Treeni päivitetty onnistuneesti"
 }

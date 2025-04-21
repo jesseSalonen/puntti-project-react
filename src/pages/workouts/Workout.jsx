@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -208,32 +208,10 @@ function Workout() {
 
         <div className="mb-10 px-4 sm:px-10">
           <button
-            className="
-              mb-5
-              flex
-              w-full
-              cursor-pointer
-              items-center
-              justify-center
-              rounded-md
-              bg-gradient-to-r
-              from-blue-400
-              to-blue-500
-              py-4
-              px-5
-              text-center
-              text-lg
-              font-bold
-              text-blue-800
-              shadow-md
-              hover:shadow-lg
-              transition-all
-              hover:scale-[0.98]
-              dark:text-white
-            "
+            className="mb-5 flex w-full cursor-pointer items-center justify-center rounded-md bg-gradient-to-r from-green-400 to-green-500 py-3 px-5 text-center text-base font-bold text-green-800 hover:scale-95"
             type="submit"
           >
-            {t("updateWorkout")}
+            {t("editWorkout")}
           </button>
         </div>
       </form>
