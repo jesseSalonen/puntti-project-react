@@ -157,6 +157,7 @@ function Sidebar({
           <div className="md:hidden">
             {navigationButton("/exercises", "exercises")}
             {navigationButton("/workouts", "workouts")}
+            {navigationButton("/programs", "programs")}
           </div>
         )}
         

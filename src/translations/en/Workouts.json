@@ -6,12 +6,15 @@
   "deleteWorkout": "Delete Workout",
   "dropSet": "Drop Set",
   "editWorkout": "Edit Workout",
+  "enterWorkoutDesc": "Enter workout description",
+  "enterWorkoutName": "Enter workout name",
   "exercisesNeedSets": "The following exercises need at least one set",
   "filterWorkouts": "Filter Workouts",
   "hideSets": "Hide Sets",
   "noExercisesInWorkout": "No exercises in workout",
   "noSets": "No sets added",
   "noWorkouts": "You haven't created any workouts yet",
+  "noWorkoutsFound": "No workouts found",
   "removeExercise": "Remove Exercise",
   "removeSet": "Remove Set",
   "reps": "Reps",
@@ -23,7 +26,10 @@
   "showSets": "Show Sets",
   "weight": "Weight",
   "workoutAdded": "Workout added successfully",
+  "workoutDeletedSuccessfully": "Workout deleted successfully",
   "workoutExercises": "Workout Exercises",
+  "workoutInfo": "Workout Information",
   "workoutMustHaveExercises": "Workout must have at least one exercise",
-  "workouts": "Workouts"
+  "workouts": "Workouts",
+  "workoutUpdated": "Workout updated successfully"
 }
