@@ -15,7 +15,7 @@
   "noProgramsFound": "Ohjelmia ei löytynyt.",
   "noScheduleDays": "Aikataulussa ei ole päiviä",
   "programCreated": "Ohjelma luotu onnistuneesti",
-  "programDeleted": "Ohjelma poistettu onnistuneesti",
+  "programDeletedSuccessfully": "Ohjelma poistettu onnistuneesti",
   "programDescription": "Ohjelman Kuvaus",
   "programInfo": "Ohjelman tiedot",
   "programMustHaveDays": "Ohjelmassa on oltava vähintään yksi treenipäivä/lepopäivä",

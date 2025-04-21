@@ -15,7 +15,7 @@
   "noProgramsFound": "No programs found.",
   "noScheduleDays": "No schedule days",
   "programCreated": "Program created successfully",
-  "programDeleted": "Program deleted successfully",
+  "programDeletedSuccessfully": "Program deleted successfully",
   "programDescription": "Program Description",
   "programInfo": "Program information",
   "programMustHaveDays": "Program must have at least one workout day/rest day",

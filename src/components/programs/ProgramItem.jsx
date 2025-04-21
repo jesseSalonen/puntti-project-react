@@ -70,7 +70,7 @@ const ProgramItem = ({ program, onDelete }) => {
         )}
         
         <div className="mt-4 flex flex-wrap gap-2">
-          <Link to={`/programs/edit/${program._id}`}>
+          <Link to={`/programs/${program._id}`}>
             <button
               className="
                 flex
