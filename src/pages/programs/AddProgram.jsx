@@ -3,19 +3,19 @@ import { useTranslation } from "react-i18next";
 import {useDispatch, useSelector} from 'react-redux';
 import {createProgram, reset, selectPrograms} from '../../features/programs/programSlice.js';
 import { getWorkouts, selectWorkouts } from '../../features/workouts/workoutSlice';
-import GenericWorkoutInfo from '../../components/workouts/GenericWorkoutInfo.jsx';
 import { toast } from 'react-toastify';
 import Spinner from '../../components/common/Spinner';
 import { FaPlus, FaTrash, FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import GenericProgramInfo from '../../components/programs/GenericProgramInfo.jsx';
 
 function AddProgram() {
-  const { t } = useTranslation(["programs", "common"]);
+  const { t } = useTranslation(["programs", "common", "workouts"]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [schedule, setSchedule] = useState([]);
 
   const { isLoading, isError, isSuccess, message } = useSelector(selectPrograms);
-  const { workouts } = useSelector(selectWorkouts);
+  const { workouts, isLoading: workoutsLoading, isError: workoutsIsError, message: workoutsMessage } = useSelector(selectWorkouts);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +30,10 @@ function AddProgram() {
     if (isError) {
       toast.error(message);
     }
-  }, [isError, message]);
+    if (workoutsIsError) {
+      toast.error(workoutsMessage);
+    }
+  }, [isError, message, workoutsIsError, workoutsMessage]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -109,7 +112,7 @@ function AddProgram() {
     setSchedule(newSchedule);
   };
 
-  if (isLoading) {
+  if (isLoading || workoutsLoading) {
     return <Spinner />;
   }
   
@@ -119,7 +122,7 @@ function AddProgram() {
         <h1 className="mb-2 text-4xl lg:text-5xl">{t("createProgram")}</h1>
       </div>
       <form onSubmit={onSubmit}>
-        <GenericWorkoutInfo
+        <GenericProgramInfo
           setName={setName}
           name={name}
           setDescription={setDescription}
@@ -140,7 +143,7 @@ function AddProgram() {
               className="flex items-center justify-center rounded-md bg-green-100 py-2 px-4 text-green-800 hover:bg-green-200 dark:bg-green-900 dark:text-green-100 dark:hover:bg-green-800"
               onClick={handleAddWorkoutDay}
             >
-              <FaPlus className="mr-2" /> {t("addWorkout")}
+              <FaPlus className="mr-2" /> {t("addWorkout", {ns: 'workouts'})}
             </button>
             
             <button
@@ -215,7 +218,7 @@ function AddProgram() {
                                   dark:focus:border-green-500 dark:hover:border-green-700"
                         required
                       >
-                        <option value="">{t("selectWorkout", {ns: 'common'})}</option>
+                        <option value="">{t("selectWorkout")}</option>
                         {workouts.map(workout => (
                           <option key={workout._id} value={workout._id}>
                             {workout.name}
