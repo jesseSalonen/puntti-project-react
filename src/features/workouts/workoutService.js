@@ -3,7 +3,7 @@ import CommonHelpers from "../../helpers/CommonHelpers";
 
 const API_URL = "api/workouts/";
 
-// Create new workout
+// Create a new workout
 const createWorkout = async (workoutData, token) => {
   const config = CommonHelpers.getAuthHeader(token);
 
