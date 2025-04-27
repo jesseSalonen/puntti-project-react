@@ -1,0 +1,11 @@
+{
+  "recentSessions": "Viimeisimmät Harjoitukset",
+  "programSessions": "Ohjelmaharjoitukset",
+  "standaloneSessions": "Yksittäiset Harjoitukset",
+  "noRecentProgramSessions": "Ei viimeaikaisia ohjelmaharjoituksia",
+  "noRecentStandaloneSessions": "Ei viimeaikaisia yksittäisiä harjoituksia",
+  "viewDetails": "Näytä Tiedot",
+  "date": "Päivämäärä",
+  "duration": "Kesto",
+  "intensity": "Intensiteetti"
+}

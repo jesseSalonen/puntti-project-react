@@ -1,0 +1,11 @@
+{
+  "recentSessions": "Recent Sessions",
+  "programSessions": "Program Sessions",
+  "standaloneSessions": "Standalone Sessions",
+  "noRecentProgramSessions": "No recent program sessions found",
+  "noRecentStandaloneSessions": "No recent standalone sessions found",
+  "viewDetails": "View Details",
+  "date": "Date",
+  "duration": "Duration",
+  "intensity": "Intensity"
+}

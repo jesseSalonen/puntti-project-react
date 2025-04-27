@@ -131,7 +131,6 @@ function Program() {
     return <Spinner />;
   }
 
-  console.log(currentProgram);
   return (
     <div className="mx-auto w-11/12 lg:w-3/4">
       <div className="mb-8 flex flex-col items-center py-0 font-bold">
