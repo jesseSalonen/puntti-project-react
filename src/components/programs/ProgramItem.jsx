@@ -4,9 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { FaEdit, FaTrash, FaDumbbell, FaBed, FaUser, FaClock } from 'react-icons/fa';
 import CommonHelpers from '../../helpers/CommonHelpers';
 
-const ProgramItem = ({ program, onDelete }) => {
+const ProgramItem = ({ program, onDelete, startWorkoutSession }) => {
   const { t } = useTranslation(['programs', 'common', 'workouts', 'exercises']);
-  
+
+  const isStartWorkout = typeof startWorkoutSession === 'function';
+
   return (
     <div className="rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
       <div className="p-5">
@@ -46,20 +48,44 @@ const ProgramItem = ({ program, onDelete }) => {
                   key={index}
                   className="rounded-lg border border-gray-200 bg-white shadow-sm overflow-hidden dark:border-gray-700 dark:bg-gray-800"
                 >
-                  <div className="p-3 bg-gray-50 dark:bg-gray-700 flex justify-between items-center">
-                    <div className="flex items-center">
+                  <div className="min-h-[48px] bg-gray-50 dark:bg-gray-700 flex justify-between items-center px-3">
+                    <div className="w-full flex items-center justify-between">
                       {day.type === 'workout' ? (
                         <>
-                          <FaDumbbell className="text-green-500 mr-2" />
-                          <h4 className="font-semibold">
-                            {t('day')} {index + 1}: {day.workout?.name || t('selectWorkout', { ns: 'programs' })}
-                          </h4>
+                          <div className="flex items-center">
+                            <FaDumbbell className="text-green-500 mr-2" />
+                            <h4 className="font-semibold">
+                              {t('day')} {index + 1}: {day.workout?.name || t('selectWorkout', { ns: 'programs' })}
+                            </h4>
+                          </div>
+                          {isStartWorkout && (
+                            <button
+                              onClick={() => startWorkoutSession(program._id, day.workout._id, index)}
+                              className="
+                                cursor-pointer
+                                rounded-md
+                                bg-gradient-to-r
+                                from-green-500
+                                to-green-100
+                                py-1
+                                px-5
+                                max-md:py-1
+                                max-md:px-2
+                                text-green-800
+                                max-w-xs
+                                whitespace-nowrap
+                                ml-1
+                              "
+                            >
+                              {t('start', { ns: 'common' })}
+                            </button>
+                          )}
                         </>
                       ) : (
-                        <>
+                        <div className="flex items-center">
                           <FaBed className="text-blue-500 mr-2" />
                           <h4 className="font-semibold">{t('day')} {index + 1}: {t('restDay', { ns: 'programs' })}</h4>
-                        </>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -68,11 +94,12 @@ const ProgramItem = ({ program, onDelete }) => {
             </div>
           </div>
         )}
-        
-        <div className="mt-4 flex flex-wrap gap-2">
-          <Link to={`/programs/${program._id}`}>
-            <button
-              className="
+
+        {!isStartWorkout && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Link to={`/programs/${program._id}`}>
+              <button
+                className="
                 flex
                 cursor-pointer
                 items-center
@@ -96,14 +123,14 @@ const ProgramItem = ({ program, onDelete }) => {
                 dark:hover:bg-[#3A4549]
                 dark:hover:text-green-400
               "
-              aria-label={t('edit', { ns: 'common' })}
-            >
-              <FaEdit className="mr-1" /> {t('edit', { ns: 'common' })}
-            </button>
-          </Link>
-          <button
-            onClick={() => onDelete(program._id)}
-            className="
+                aria-label={t('edit', { ns: 'common' })}
+              >
+                <FaEdit className="mr-1" /> {t('edit', { ns: 'common' })}
+              </button>
+            </Link>
+            <button
+              onClick={() => onDelete(program._id)}
+              className="
               flex
               cursor-pointer
               items-center
@@ -131,7 +158,8 @@ const ProgramItem = ({ program, onDelete }) => {
             >
               <FaTrash className="mr-1" /> {t('delete', { ns: 'common' })}
             </button>
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

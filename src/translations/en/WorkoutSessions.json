@@ -1,11 +1,13 @@
 {
-  "recentSessions": "Recent Sessions",
-  "programSessions": "Program Sessions",
-  "standaloneSessions": "Standalone Sessions",
-  "noRecentProgramSessions": "No recent program sessions found",
-  "noRecentStandaloneSessions": "No recent standalone sessions found",
-  "viewDetails": "View Details",
+  "intensity": "Intensity",
   "date": "Date",
   "duration": "Duration",
-  "intensity": "Intensity"
+  "noRecentProgramSessions": "No recent program-related workouts",
+  "noRecentStandaloneSessions": "No recent standalone workouts",
+  "orTrySomethingNew": "Or try something new",
+  "programSessions": "Program-related workouts",
+  "recentSessions": "Recent workouts",
+  "searchOtherWorkoutsAndPrograms": "Search other workouts and programs",
+  "standaloneSessions": "Standalone workouts",
+  "viewDetails": "View Details"
 }

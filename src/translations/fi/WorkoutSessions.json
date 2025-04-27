@@ -1,11 +1,13 @@
 {
-  "recentSessions": "Viimeisimmät Harjoitukset",
-  "programSessions": "Ohjelmaharjoitukset",
-  "standaloneSessions": "Yksittäiset Harjoitukset",
-  "noRecentProgramSessions": "Ei viimeaikaisia ohjelmaharjoituksia",
-  "noRecentStandaloneSessions": "Ei viimeaikaisia yksittäisiä harjoituksia",
-  "viewDetails": "Näytä Tiedot",
+  "intensity": "Intensiteetti",
   "date": "Päivämäärä",
   "duration": "Kesto",
-  "intensity": "Intensiteetti"
+  "noRecentProgramSessions": "Ei viimeaikaisia ohjelmiin liittyviä treenejä",
+  "noRecentStandaloneSessions": "Ei viimeaikaisia yksittäisiä treenejä",
+  "orTrySomethingNew": "Tai kokeile jotain uutta",
+  "programSessions": "Ohjelmiin liittyvät treenit",
+  "recentSessions": "Viimeisimmät treenit",
+  "searchOtherWorkoutsAndPrograms": "Etsi muita treenejä ja ohjelmia",
+  "standaloneSessions": "Yksittäiset treenit",
+  "viewDetails": "Näytä Tiedot"
 }

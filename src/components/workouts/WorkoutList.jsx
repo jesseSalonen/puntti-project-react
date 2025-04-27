@@ -1,3 +1,4 @@
+// Modified WorkoutList.jsx component
 import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getWorkouts, deleteWorkout, reset, selectWorkouts } from '../../features/workouts/workoutSlice.js';
@@ -8,11 +9,11 @@ import WorkoutItem from './WorkoutItem.jsx';
 import Modal from '../Modal';
 import { FaSearch } from 'react-icons/fa';
 
-const WorkoutList = () => {
+const WorkoutList = ({ startWorkoutSession }) => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [workoutToDelete, setWorkoutToDelete] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-  
+
   const { t } = useTranslation(['workouts', 'common']);
   const dispatch = useDispatch();
   const { workouts, isLoading, isError, isSuccess, message } = useSelector(selectWorkouts);
@@ -42,13 +43,13 @@ const WorkoutList = () => {
     setWorkoutToDelete(id);
     setDeleteModalOpen(true);
   };
-  
+
   const confirmDeleteWorkout = () => {
     if (workoutToDelete) {
       dispatch(deleteWorkout(workoutToDelete));
     }
   };
-  
+
   const closeDeleteModal = () => {
     setDeleteModalOpen(false);
     setWorkoutToDelete(null);
@@ -72,7 +73,7 @@ const WorkoutList = () => {
     <div className="flex flex-col">
       <div className="mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <h3 className="mb-3 text-lg font-semibold">{t('filterWorkouts')}</h3>
-        
+
         {/* Search by name */}
         <div className="mb-4">
           <label htmlFor="searchQuery" className="mb-1 block text-sm font-medium">
@@ -88,10 +89,10 @@ const WorkoutList = () => {
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder={t('searchWorkouts')}
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 pr-4 text-gray-900 shadow-sm transition-all 
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 pr-4 text-gray-900 shadow-sm transition-all
                         focus:border-green-500 focus:ring-0 focus:shadow-md
                         group-hover:border-green-300
-                        dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 
+                        dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400
                         dark:focus:border-green-500 dark:group-hover:border-green-700"
             />
           </div>
@@ -103,15 +104,16 @@ const WorkoutList = () => {
       ) : (
         <div className="space-y-4">
           {filteredWorkouts.map((workout) => (
-            <WorkoutItem 
-              key={workout._id} 
-              workout={workout} 
-              onDelete={handleDeleteWorkout} 
+            <WorkoutItem
+              key={workout._id}
+              workout={workout}
+              onDelete={handleDeleteWorkout}
+              startWorkoutSession={startWorkoutSession}
             />
           ))}
         </div>
       )}
-      
+
       <Modal
         isOpen={deleteModalOpen}
         closeModal={closeDeleteModal}

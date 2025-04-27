@@ -1,5 +1,6 @@
 {
   "addExercise": "Lisää liike",
+  "back": "Takaisin",
   "cancel": "Peruuta",
   "delete": "Poista",
   "edit": "Muokkaa",
@@ -18,6 +19,7 @@
   "search": "Hae",
   "searchByName": "Hae nimellä",
   "show": "Näytä",
+  "start": "Aloita",
   "startWorkout": "Aloita treeni!",
   "workouts": "Treenit"
 }
