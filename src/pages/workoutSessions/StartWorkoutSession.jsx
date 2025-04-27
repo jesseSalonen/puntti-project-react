@@ -1,22 +1,41 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import RecentSessions from '../../components/workoutSessions/RecentSessions.jsx';
 import ProgramList from '../../components/programs/ProgramList.jsx';
 import WorkoutList from '../../components/workouts/WorkoutList.jsx';
 import {RiArrowGoBackFill} from 'react-icons/ri';
+import {createWorkoutSession, selectWorkoutSessions} from '../../features/workoutSessions/workoutSessionSlice.js';
+import {useDispatch, useSelector} from 'react-redux';
+import {toast} from 'react-toastify';
+import {useNavigate} from 'react-router-dom';
 
 const StartWorkoutSession = () => {
   const [workoutSearchOpen, setWorkoutSearchOpen] = useState(false);
   const [activeView, setActiveView] = useState('programs'); // 'programs' or 'workouts'
 
   const { t } = useTranslation(["workoutSessions", "workouts", "common"]);
+  const { workoutSessions, isLoading, isError, isSuccess, message } = useSelector(selectWorkoutSessions);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const startWorkoutSessionFromProgram = (programId, workoutId, index) => {
-
+    dispatch(createWorkoutSession({workoutId, programId, programDay: index}));
   };
 
-  const startWorkoutSessionFromWorkout = (workoutId) => {
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+  }, [isError, message]);
 
+  useEffect(() => {
+    if (isSuccess) {
+      navigate(`/workout-sessions/${workoutSessions[workoutSessions.length - 1]?._id}`);
+    }
+  }, [isSuccess]);
+
+  const startWorkoutSessionFromWorkout = (workoutId) => {
+    dispatch(createWorkoutSession({workoutId}));
   };
 
   const toggleView = (view) => {

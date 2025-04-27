@@ -24,6 +24,7 @@ import ProgramSearch from './pages/programs/ProgramSearch.jsx';
 import AddProgram from './pages/programs/AddProgram.jsx';
 import Program from './pages/programs/Program.jsx';
 import StartWorkoutSession from './pages/workoutSessions/StartWorkoutSession.jsx';
+import WorkoutSession from './pages/workoutSessions/WorkoutSession.jsx';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -69,6 +70,7 @@ export default function App() {
           </Route>
           <Route path="/workout-sessions">
             <Route path="start" element={<StartWorkoutSession />} />
+            <Route path=":id" element={<WorkoutSession />} />
           </Route>
         </Route>
       </Route>
