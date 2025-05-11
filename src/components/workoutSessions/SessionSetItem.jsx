@@ -6,11 +6,27 @@ const SessionSetItem = ({set, setIndex, exerciseIndex, exercisePerformances, set
   const { t } = useTranslation(['workoutSessions', 'common', 'dashboard', 'workouts']);
 
   const updateExercisePerformances = (value, name) => {
-    const updatedPerformances = exercisePerformances.map(exercisePerformance => {
+    // Create a deep copy of the exercise performances to avoid read-only errors
+    const updatedPerformances = exercisePerformances.map((performance, perfIndex) => {
+      if (perfIndex === exerciseIndex) {
+        // Create a copy of this exercise performance
+        const updatedSets = performance.sets.map((s, i) => {
+          if (i === setIndex) {
+            // Create a new set object with the updated property
+            return { ...s, [name]: value };
+          }
+          return { ...s };
+        });
 
-      return exercisePerformance;
+        return { ...performance, sets: updatedSets };
+      }
+      // For other performances, create a deep copy
+      return {
+        ...performance,
+        sets: performance.sets.map(s => ({ ...s }))
+      };
     });
-    updatedPerformances[exerciseIndex].sets[setIndex][name] = value;
+
     setExercisePerformances(updatedPerformances);
   };
 
@@ -39,7 +55,7 @@ const SessionSetItem = ({set, setIndex, exerciseIndex, exercisePerformances, set
 
   const handleWeightChange = (e) => {
     e.stopPropagation();
-    updateExercisePerformances(e.target.value, 'weight');
+    updateExercisePerformances(parseFloat(e.target.value) || 0, 'weight');
   };
 
   const handleWeightIncrement = (e) => {
@@ -55,15 +71,13 @@ const SessionSetItem = ({set, setIndex, exerciseIndex, exercisePerformances, set
 
   return (
     <div
-      className={`
-        bg-gray-50 dark:bg-gray-700 rounded-md p-3 shadow-sm border
-        ${set.completed ? 'border-green-200 dark:border-green-800' : 'border-gray-200 dark:border-gray-600'}
-      `}
+      className="bg-gray-50 dark:bg-gray-700 rounded-md p-3 shadow-sm border border-gray-200 dark:border-gray-600"
     >
       <div className="flex justify-between items-center mb-3">
         <div className="flex items-center">
           <span
-            className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-800 font-semibold text-sm dark:bg-green-900 dark:text-green-100 mr-2">
+            className="flex h-6 w-6 items-center justify-center rounded-full font-semibold text-sm mr-2 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100"
+          >
             {setIndex + 1}
           </span>
           <span className="font-medium">{t('setNumber', {number: setIndex + 1, ns: 'workouts'})}</span>

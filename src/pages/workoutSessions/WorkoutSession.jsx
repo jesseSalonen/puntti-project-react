@@ -67,26 +67,41 @@ const WorkoutSession = () => {
     dispatch(updateWorkoutSession({ id, workoutSessionData }));
   };
 
-  const handleCompleteWorkout = () => {
+  const handlePauseWorkout = () => {
     if (!currentWorkoutSession) return;
-
-    const allSetsCompleted = exercisePerformances.every(exercise =>
-      exercise.sets.every(set => set.completed)
-    );
-
-    if (!allSetsCompleted) {
-      const confirm = window.confirm(t('notAllSetsCompletedConfirm'));
-      if (!confirm) return;
-    }
 
     const workoutSessionData = {
       exercisePerformances,
+      notes,
+      status: 'paused'
+    };
+
+    dispatch(updateWorkoutSession({ id, workoutSessionData }));
+    navigate('/');
+  };
+
+  const handleCompleteWorkout = () => {
+    if (!currentWorkoutSession) return;
+
+    // Create a deep copy of exercisePerformances without modifying set completion status
+    const updatedExercisePerformances = exercisePerformances.map(exercisePerformance => {
+      return {
+        ...exercisePerformance,
+        sets: exercisePerformance.sets.map(set => ({
+          ...set
+        }))
+      };
+    });
+
+    const workoutSessionData = {
+      exercisePerformances: updatedExercisePerformances,
       notes,
       status: 'completed',
       completedAt: new Date().toISOString()
     };
 
     dispatch(updateWorkoutSession({ id, workoutSessionData }));
+    toast.success(t('workoutCompletedSuccessfully', { defaultValue: 'Workout completed successfully!' }));
     navigate('/');
   };
 
@@ -136,7 +151,7 @@ const WorkoutSession = () => {
             border
             border-green-500
           "
-          onClick={handleSave}
+          onClick={handlePauseWorkout}
         >
           <FaSave className="mr-2" /> {t('pauseWorkout')}
         </button>
@@ -259,6 +274,7 @@ const WorkoutSession = () => {
                     setIndex={setIndex}
                     exerciseIndex={currentExerciseIndex}
                     exercisePerformances={exercisePerformances}
+                    setExercisePerformances={setExercisePerformances}
                   />
                 ))}
               </div>
