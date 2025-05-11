@@ -50,18 +50,79 @@ const SessionSetItem = ({set, setIndex, exerciseIndex, exercisePerformances, set
   const handleWeightDecrement = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    updateExercisePerformances(Math.max((set.weight || 0) - 1, 0), 'weight');
+
+    // Don't do anything if weight is empty
+    if (set.weight === '' || set.weight === undefined || set.weight === null) {
+      return;
+    }
+
+    // Get current weight as float and handle potential string values with decimal points
+    let currentWeight = typeof set.weight === 'string' ? parseFloat(set.weight) : (set.weight || 0);
+    if (isNaN(currentWeight)) currentWeight = 0;
+
+    // Decrease by 0.25 kg and ensure it's not negative
+    let newWeight = Math.max(currentWeight - 0.25, 0);
+
+    // Format to 2 decimal places
+    newWeight = parseFloat(newWeight.toFixed(2));
+
+    updateExercisePerformances(newWeight, 'weight');
   };
 
   const handleWeightChange = (e) => {
     e.stopPropagation();
-    updateExercisePerformances(parseFloat(e.target.value) || 0, 'weight');
+
+    // Get the input value
+    let inputValue = e.target.value;
+
+    // Allow empty input
+    if (inputValue === '') {
+      updateExercisePerformances('', 'weight');
+      return;
+    }
+
+    // Replace comma with dot for decimal input
+    inputValue = inputValue.replace(',', '.');
+
+    // If it's just a decimal point, keep the input as is to allow further typing
+    if (inputValue === '.' || inputValue === '0.') {
+      updateExercisePerformances(inputValue, 'weight');
+      return;
+    }
+
+    // Parse the value as float
+    const numValue = parseFloat(inputValue);
+
+    // Update with the exact input value (to maintain decimals during typing)
+    // or empty string if invalid
+    if (!isNaN(numValue)) {
+      updateExercisePerformances(inputValue, 'weight');
+    } else {
+      updateExercisePerformances('', 'weight');
+    }
   };
 
   const handleWeightIncrement = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    updateExercisePerformances((set.weight || 0) + 1, 'weight')
+
+    // Set to 0.25 if weight is empty
+    if (set.weight === '' || set.weight === undefined || set.weight === null) {
+      updateExercisePerformances(0.25, 'weight');
+      return;
+    }
+
+    // Get current weight as float and handle potential string values with decimal points
+    let currentWeight = typeof set.weight === 'string' ? parseFloat(set.weight) : (set.weight || 0);
+    if (isNaN(currentWeight)) currentWeight = 0;
+
+    // Increase by 0.25 kg
+    let newWeight = currentWeight + 0.25;
+
+    // Format to 2 decimal places
+    newWeight = parseFloat(newWeight.toFixed(2));
+
+    updateExercisePerformances(newWeight, 'weight');
   };
 
   const handleNotesChange = (e) => {
@@ -119,13 +180,14 @@ const SessionSetItem = ({set, setIndex, exerciseIndex, exercisePerformances, set
             <input
               id={`set-${setIndex}-weight`}
               type="text"
-              inputMode="numeric"
-              pattern="[0-9]*"
+              inputMode="decimal"
+              pattern="[0-9]*[.,]?[0-9]{0,2}"
               min="0"
-              value={set.weight || 0}
+              step="0.25"
+              value={set.weight === undefined || set.weight === null ? '' : set.weight}
               onChange={handleWeightChange}
               onClick={(e) => e.stopPropagation()}
-              className="w-10 h-7 border-y border-gray-300 p-0 text-center dark:border-gray-600 dark:bg-gray-800 dark:text-white focus:outline-none"
+              className="w-14 h-7 border-y border-gray-300 p-0 text-center dark:border-gray-600 dark:bg-gray-800 dark:text-white focus:outline-none"
             />
             <button
               type="button"
