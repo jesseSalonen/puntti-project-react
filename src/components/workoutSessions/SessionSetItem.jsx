@@ -75,7 +75,7 @@ const SessionSetItem = ({set, setIndex, exerciseIndex, exercisePerformances, set
     // Get the input value
     let inputValue = e.target.value;
 
-    // Allow empty input
+    // Handle empty input
     if (inputValue === '') {
       updateExercisePerformances('', 'weight');
       return;
@@ -84,21 +84,39 @@ const SessionSetItem = ({set, setIndex, exerciseIndex, exercisePerformances, set
     // Replace comma with dot for decimal input
     inputValue = inputValue.replace(',', '.');
 
-    // If it's just a decimal point, keep the input as is to allow further typing
+    // Handle decimal point typing
     if (inputValue === '.' || inputValue === '0.') {
       updateExercisePerformances(inputValue, 'weight');
       return;
     }
 
-    // Parse the value as float
-    const numValue = parseFloat(inputValue);
+    // Restrict to maximum of two decimal places
+    if (inputValue.includes('.')) {
+      const parts = inputValue.split('.');
+      if (parts[1] && parts[1].length > 2) {
+        // Truncate to two decimal places
+        inputValue = `${parts[0]}.${parts[1].substring(0, 2)}`;
+      }
+    }
 
-    // Update with the exact input value (to maintain decimals during typing)
-    // or empty string if invalid
-    if (!isNaN(numValue)) {
+    // Convert to number and validate
+    let numValue = parseFloat(inputValue);
+
+    if (isNaN(numValue)) {
+      updateExercisePerformances('', 'weight');
+      return;
+    }
+
+    // Ensure non-negative values
+    numValue = Math.max(numValue, 0);
+
+    // Format to ensure consistent decimal precision but keep exact input during typing
+    if (inputValue.includes('.')) {
+      // Keep original input for decimal values to allow continued typing
       updateExercisePerformances(inputValue, 'weight');
     } else {
-      updateExercisePerformances('', 'weight');
+      // For whole numbers, use the parsed value
+      updateExercisePerformances(numValue, 'weight');
     }
   };
 
