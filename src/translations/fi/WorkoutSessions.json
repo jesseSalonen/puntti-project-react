@@ -1,0 +1,19 @@
+{
+  "intensity": "Intensiteetti",
+  "date": "Päivämäärä",
+  "duration": "Kesto",
+  "endWorkout": "Lopeta treeni",
+  "howDidTheExerciseGo": "Miten liike meni?",
+  "howDidTheSetGo": "Miten sarja meni?",
+  "noRecentProgramSessions": "Ei viimeaikaisia ohjelmiin liittyviä treenejä",
+  "noRecentStandaloneSessions": "Ei viimeaikaisia yksittäisiä treenejä",
+  "notes": "Muistiinpanot",
+  "orTrySomethingNew": "Tai kokeile jotain uutta",
+  "pauseWorkout": "Keskeytä treeni",
+  "programSessions": "Ohjelmiin liittyvät treenit",
+  "recentSessions": "Viimeisimmät treenit",
+  "searchOtherWorkoutsAndPrograms": "Etsi muita treenejä ja ohjelmia",
+  "standaloneSessions": "Yksittäiset treenit",
+  "viewDetails": "Näytä Tiedot",
+  "workoutNotes": "Liikkeen muistiinpanot"
+}

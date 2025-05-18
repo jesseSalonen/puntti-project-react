@@ -1,0 +1,19 @@
+{
+  "intensity": "Intensity",
+  "date": "Date",
+  "duration": "Duration",
+  "endWorkout": "End workout",
+  "howDidTheExerciseGo": "How did the exercise go?",
+  "howDidTheSetGo": "How did the set go?",
+  "noRecentProgramSessions": "No recent program-related workouts",
+  "noRecentStandaloneSessions": "No recent standalone workouts",
+  "notes": "Notes",
+  "orTrySomethingNew": "Or try something new",
+  "pauseWorkout": "Pause workout",
+  "programSessions": "Program-related workouts",
+  "recentSessions": "Recent workouts",
+  "searchOtherWorkoutsAndPrograms": "Search other workouts and programs",
+  "standaloneSessions": "Standalone workouts",
+  "viewDetails": "View Details",
+  "workoutNotes": "Exercise notes"
+}

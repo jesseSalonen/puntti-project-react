@@ -4,6 +4,7 @@ import exerciseReducer from "../features/exercises/exerciseSlice";
 import muscleReducer from "../features/muscles/muscleSlice";
 import workoutReducer from "../features/workouts/workoutSlice";
 import programReducer from "../features/programs/programSlice";
+import workoutSessionReducer from "../features/workoutSessions/workoutSessionSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     muscles: muscleReducer,
     workouts: workoutReducer,
     programs: programReducer,
+    workoutSessions: workoutSessionReducer
   },
 });

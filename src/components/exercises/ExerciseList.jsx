@@ -32,8 +32,6 @@ const ExerciseList = ({ onAddExercise }) => {
     useSelector(selectExercises);
   const { muscles, isLoading: musclesLoading, isError: musclesIsError, message: musclesMessage } = useSelector(selectMuscles);
     
-  const isAddWorkoutPage = location.pathname.includes('/workouts/add');
-
   useEffect(() => {
     dispatch(getExercises());
 
@@ -61,10 +59,8 @@ const ExerciseList = ({ onAddExercise }) => {
   }, [isSuccess, exerciseToDelete, t]);
 
   const handleDeleteExercise = (id) => {
-    if (!isAddWorkoutPage) {
-      setExerciseToDelete(id);
-      setDeleteModalOpen(true);
-    }
+    setExerciseToDelete(id);
+    setDeleteModalOpen(true);
   };
   
   const confirmDeleteExercise = () => {
@@ -162,12 +158,11 @@ const ExerciseList = ({ onAddExercise }) => {
         <p className="text-center text-lg">{t('noExercisesFound')}</p>
       ) : (
         filteredExercises.map((exercise) => (
-          <ExerciseItem 
+          <ExerciseItem
             key={exercise._id} 
             exercise={exercise} 
             onDelete={handleDeleteExercise}
             onAddToWorkout={onAddExercise}
-            allowModification={!isAddWorkoutPage}
           />
         ))
       )}

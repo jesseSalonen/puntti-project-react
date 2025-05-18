@@ -15,6 +15,8 @@ import workout_en from "./en/Workouts.json";
 import workout_fi from "./fi/Workouts.json";
 import programs_en from "./en/Programs.json";
 import programs_fi from "./fi/Programs.json";
+import workoutSessions_en from "./en/WorkoutSessions.json";
+import workoutSessions_fi from "./fi/WorkoutSessions.json";
 
 const translationResources = {
   en: {
@@ -25,7 +27,8 @@ const translationResources = {
     register: register_en,
     common: common_en,
     workouts: workout_en,
-    programs: programs_en
+    programs: programs_en,
+    workoutSessions: workoutSessions_en,
   },
   fi: {
     dashboard: dashboard_fi,
@@ -34,7 +37,8 @@ const translationResources = {
     register: register_fi,
     common: common_fi,
     workouts: workout_fi,
-    programs: programs_fi
+    programs: programs_fi,
+    workoutSessions: workoutSessions_fi,
   },
 };
 

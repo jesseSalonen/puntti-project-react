@@ -8,7 +8,7 @@ import ProgramItem from './ProgramItem.jsx';
 import Modal from '../Modal';
 import { FaSearch } from 'react-icons/fa';
 
-const ProgramList = () => {
+const ProgramList = ({startWorkoutSession}) => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [programToDelete, setProgramToDelete] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -106,7 +106,8 @@ const ProgramList = () => {
             <ProgramItem 
               key={program._id} 
               program={program} 
-              onDelete={handleDeleteProgram} 
+              onDelete={handleDeleteProgram}
+              startWorkoutSession={startWorkoutSession}
             />
           ))}
         </div>
