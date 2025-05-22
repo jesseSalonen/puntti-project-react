@@ -111,7 +111,7 @@ function Header({darkMode, toggleDarkMode, onLogout, toggleSidebar}) {
                   whitespace-nowrap
                 "
               >
-                {t('startWorkout')}
+                {t('startNewWorkout')}
               </button>
             </Link>
           </li>

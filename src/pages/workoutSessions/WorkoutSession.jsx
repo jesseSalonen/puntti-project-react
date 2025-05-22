@@ -24,13 +24,14 @@ const WorkoutSession = () => {
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [exercisePerformances, setExercisePerformances] = useState([]);
   const [notes, setNotes] = useState('');
+  const [isLeaving, setIsLeaving] = useState(false);
 
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation(['workoutSessions', 'common', 'dashboard', 'workouts']);
 
-  const { currentWorkoutSession, isLoading, isError, message } = useSelector(selectWorkoutSessions);
+  const { currentWorkoutSession, isLoading, isError, message, isSuccess } = useSelector(selectWorkoutSessions);
 
   // Fetch workout session
   useEffect(() => {
@@ -56,6 +57,13 @@ const WorkoutSession = () => {
     }
   }, [currentWorkoutSession]);
 
+  // Handle leaving the page
+  useEffect(() => {
+      if (isLeaving && isSuccess) {
+        navigate('/');
+      }
+  }, [isLeaving, isSuccess, navigate]);
+
   const handleSave = () => {
     if (!currentWorkoutSession) return;
 
@@ -76,8 +84,8 @@ const WorkoutSession = () => {
       status: 'paused'
     };
 
+    setIsLeaving(true);
     dispatch(updateWorkoutSession({ id, workoutSessionData }));
-    navigate('/');
   };
 
   const handleCompleteWorkout = () => {
@@ -100,9 +108,9 @@ const WorkoutSession = () => {
       completedAt: new Date().toISOString()
     };
 
+    setIsLeaving(true);
     dispatch(updateWorkoutSession({ id, workoutSessionData }));
     toast.success(t('workoutCompletedSuccessfully', { defaultValue: 'Workout completed successfully!' }));
-    navigate('/');
   };
 
   const goToNextExercise = () => {
