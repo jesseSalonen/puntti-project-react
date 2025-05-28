@@ -1,12 +1,13 @@
 {
-  "intensity": "Intensity",
+  "continueWorkout": "Continue workout",
   "date": "Date",
   "duration": "Duration",
   "endWorkout": "End workout",
   "howDidTheExerciseGo": "How did the exercise go?",
   "howDidTheSetGo": "How did the set go?",
-  "noRecentProgramSessions": "No recent program-related workouts",
-  "noRecentStandaloneSessions": "No recent standalone workouts",
+  "inProgress": "In progress",
+  "intensity": "Intensity",
+  "noRecentSessions": "No recent workouts",
   "notes": "Notes",
   "orTrySomethingNew": "Or try something new",
   "pauseWorkout": "Pause workout",
@@ -14,6 +15,8 @@
   "recentSessions": "Recent workouts",
   "searchOtherWorkoutsAndPrograms": "Search other workouts and programs",
   "standaloneSessions": "Standalone workouts",
+  "startNextWorkout": "Start next workout",
   "viewDetails": "View Details",
-  "workoutNotes": "Exercise notes"
+  "workoutNotes": "Exercise notes",
+  "youHaveEarnedRest": "You have earned a rest day!"
 }

@@ -562,15 +562,19 @@ function Dashboard() {
   }
 
   return (
-    <section className="mb-12 py-0 px-5 font-bold">
-      <h1 className="mb-4 text-5xl max-sm:text-4xl">
-        {t('welcome', {ns: 'dashboard', name: userName})}
-      </h1>
-      <p className="text-4xl text-gray-400 max-sm:text-2xl">
-        {t('isWorkoutDone', {ns: 'dashboard'})}
-      </p>
-      <RecentSessions workoutSessions={workoutSessions} />
-    </section>
+    <>
+      <section className="mb-12 py-0 px-5 font-bold">
+        <h1 className="mb-4 text-5xl max-sm:text-4xl">
+          {t('welcome', {ns: 'dashboard', name: userName})}
+        </h1>
+        <p className="text-4xl text-gray-400 max-sm:text-2xl">
+          {t('isWorkoutDone', {ns: 'dashboard'})}
+        </p>
+      </section>
+      <section className="py-0 px-5">
+        <RecentSessions workoutSessions={workoutSessions} />
+      </section>
+    </>
   );
 }
 

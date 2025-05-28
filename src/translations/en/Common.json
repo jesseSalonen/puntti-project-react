@@ -2,6 +2,7 @@
   "addExercise": "Add exercise",
   "back": "Back",
   "cancel": "Cancel",
+  "continue": "Continue",
   "delete": "Delete",
   "edit": "Edit",
   "exercise": "Exercise",
@@ -25,7 +26,9 @@
   "searchByName": "Search by Name",
   "show": "Show",
   "start": "Start",
+  "startAgain": "Start again",
   "startNewWorkout": "Start new workout",
   "startWorkout": "Start workout!",
+  "workout": "Workout",
   "workouts": "Workouts"
 }
