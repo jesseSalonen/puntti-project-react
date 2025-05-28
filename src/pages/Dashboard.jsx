@@ -2,7 +2,10 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 import {selectUserName} from '../features/auth/authSlice';
 import RecentSessions from '../components/workoutSessions/RecentSessions.jsx';
+import WorkoutStats from '../components/dashboard/WorkoutStats.jsx';
+import ExerciseStats from '../components/dashboard/ExerciseStats.jsx';
 import {getWorkoutSessions, reset, selectWorkoutSessions} from '../features/workoutSessions/workoutSessionSlice.js';
+import {getExercises, reset as resetExercises, selectExercises} from '../features/exercises/exerciseSlice.js';
 import React, {useEffect} from 'react';
 import {toast} from 'react-toastify';
 import Spinner from '../components/common/Spinner.jsx';
@@ -542,12 +545,15 @@ function Dashboard() {
   const userName = useSelector(selectUserName);
   const dispatch = useDispatch();
   const { workoutSessions, isLoading, isError, message } = useSelector(selectWorkoutSessions);
+  const { exercises, isLoading: exercisesLoading, isError: exercisesError, message: exercisesMessage } = useSelector(selectExercises);
 
   useEffect(() => {
     dispatch(getWorkoutSessions());
+    dispatch(getExercises());
 
     return () => {
       dispatch(reset());
+      dispatch(resetExercises());
     };
   }, [dispatch]);
 
@@ -555,9 +561,12 @@ function Dashboard() {
     if (isError) {
       toast.error(message);
     }
-  }, [isError, message]);
+    if (exercisesError) {
+      toast.error(exercisesMessage);
+    }
+  }, [isError, message, exercisesError, exercisesMessage]);
 
-  if (isLoading) {
+  if (isLoading || exercisesLoading) {
     return <Spinner />;
   }
 
@@ -571,8 +580,13 @@ function Dashboard() {
           {t('isWorkoutDone', {ns: 'dashboard'})}
         </p>
       </section>
-      <section className="py-0 px-5">
+      <section className="py-0 px-5 space-y-6">
         <RecentSessions workoutSessions={workoutSessions} />
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <WorkoutStats workoutSessions={workoutSessions} />
+          <ExerciseStats exercises={exercises} workoutSessions={workoutSessions} />
+        </div>
       </section>
     </>
   );
