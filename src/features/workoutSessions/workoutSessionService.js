@@ -21,15 +21,6 @@ const getWorkoutSessions = async (token) => {
   return response.data;
 };
 
-// Get recent sessions
-const getRecentWorkoutSessions = async (token) => {
-  const config = CommonHelpers.getAuthHeader(token);
-
-  const response = await axios.get(API_URL + 'recent', config);
-
-  return response.data;
-};
-
 // Get single workout session
 const getWorkoutSession = async (workoutSessionId, token) => {
   const config = CommonHelpers.getAuthHeader(token);
@@ -60,7 +51,6 @@ const deleteWorkoutSession = async (workoutSessionId, token) => {
 const workoutSessionService = {
   createWorkoutSession,
   getWorkoutSessions,
-  getRecentWorkoutSessions,
   getWorkoutSession,
   updateWorkoutSession,
   deleteWorkoutSession,

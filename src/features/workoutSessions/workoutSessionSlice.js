@@ -3,10 +3,6 @@ import workoutSessionService from "./workoutSessionService";
 
 const initialState = {
   workoutSessions: [],
-  recentSessions: {
-    programSessions: [],
-    standaloneSessions: []
-  },
   currentWorkoutSession: null,
   isError: false,
   isSuccess: false,
@@ -21,6 +17,25 @@ export const createWorkoutSession = createAsyncThunk(
     try {
       const token = thunkAPI.getState().auth.user.token;
       return await workoutSessionService.createWorkoutSession(workoutSessionData, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Get single workout session
+export const getWorkoutSession = createAsyncThunk(
+  "workoutSessions/getOne",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await workoutSessionService.getWorkoutSession(id, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -52,25 +67,6 @@ export const getWorkoutSessions = createAsyncThunk(
   }
 );
 
-// Get user's recent workout sessions (both program and standalone)
-export const getRecentWorkoutSessions = createAsyncThunk(
-  "workoutSessions/getRecent",
-  async (_, thunkAPI) => {
-    try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await workoutSessionService.getRecentWorkoutSessions(token);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
 // Delete workout session
 export const deleteWorkoutSession = createAsyncThunk(
   "workoutSessions/delete",
@@ -78,25 +74,6 @@ export const deleteWorkoutSession = createAsyncThunk(
     try {
       const token = thunkAPI.getState().auth.user.token;
       return await workoutSessionService.deleteWorkoutSession(id, token);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
-// Get single workout session
-export const getWorkoutSession = createAsyncThunk(
-  "workoutSessions/getOne",
-  async (id, thunkAPI) => {
-    try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await workoutSessionService.getWorkoutSession(id, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -157,18 +134,6 @@ export const workoutSessionSlice = createSlice({
         state.workoutSessions = action.payload;
       })
       .addCase(getWorkoutSessions.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-      })
-      .addCase(getRecentWorkoutSessions.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getRecentWorkoutSessions.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.recentSessions = action.payload;
-      })
-      .addCase(getRecentWorkoutSessions.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

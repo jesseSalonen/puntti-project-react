@@ -1,36 +1,27 @@
-import React, {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {useDispatch, useSelector} from 'react-redux';
-import {toast} from 'react-toastify';
-import Spinner from '../common/Spinner.jsx';
-import {
-  getRecentWorkoutSessions,
-  reset,
-  selectWorkoutSessions
-} from '../../features/workoutSessions/workoutSessionSlice.js';
+import {SESSION_STATUS} from '../../helpers/constants.js';
 
-const RecentSessions = () => {
-  const { t } = useTranslation(['workoutSessions', 'programs', 'common']);
-  const dispatch = useDispatch();
-  const { recentSessions, isLoading, isError, message } = useSelector(selectWorkoutSessions);
+const RecentSessions = ({workoutSessions}) => {
+  const [recentSessions, setRecentSessions] = useState({programSessions: [], standaloneSessions: []});
+  const {t} = useTranslation(['workoutSessions', 'programs', 'common']);
 
+  // Process sessions only when workoutSessions change
   useEffect(() => {
-    dispatch(getRecentWorkoutSessions());
+    if (workoutSessions && workoutSessions.length > 0) {
+      const programSessions = workoutSessions
+        .filter(session => session.program?._id)
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        .slice(0, 2);
 
-    return () => {
-      dispatch(reset());
-    };
-  }, [dispatch]);
+      const standaloneSessions = workoutSessions
+        .filter(session => !session.program?._id)
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        .slice(0, 2);
 
-  useEffect(() => {
-    if (isError) {
-      toast.error(message);
+      setRecentSessions({programSessions, standaloneSessions});
     }
-  }, [isError, message]);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
+  }, [workoutSessions]);
 
   return (
     <div>
@@ -45,13 +36,19 @@ const RecentSessions = () => {
               <li key={session._id} className="p-4 hover:bg-gray-50 transition duration-150">
                 <div className="flex justify-between items-center">
                   <div>
-                    <h4 className="font-medium">{session.programName}</h4>
+                    <h4 className="font-medium">{session.workout?.name}</h4>
                     <p className="text-sm text-gray-500">
-                      {session.date && new Date(session.date).toLocaleDateString()}
+                      {session.createdAt && new Date(session.createdAt).toLocaleDateString()}
                     </p>
                   </div>
                   <div className="flex items-center space-x-4">
-                    <span className="text-sm text-gray-600">{session.duration} {t('common:minutes')}</span>
+                    {session.status === SESSION_STATUS.completed && (
+                      <span className="text-sm text-gray-600">
+                      {session.completedAt && session.createdAt
+                        ? `${Math.round((new Date(session.completedAt) - new Date(session.createdAt)) / 60000)} ${t('minutes', {ns: 'common'})}`
+                        : t('noValue', {ns: 'common'})}
+                    </span>
+                    )}
                     <button
                       className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"
                     >
@@ -76,14 +73,18 @@ const RecentSessions = () => {
               <li key={session._id} className="p-4 hover:bg-gray-50 transition duration-150">
                 <div className="flex justify-between items-center">
                   <div>
-                    <h4 className="font-medium">{session.workoutName || t('common:workout')}</h4>
+                    <h4 className="font-medium">{session.workout?.name || t('common:workout')}</h4>
                     <p className="text-sm text-gray-500">
-                      {session.date && new Date(session.date).toLocaleDateString()}
+                      {session.createdAt && new Date(session.createdAt).toLocaleDateString()}
                     </p>
                   </div>
                   <div className="flex items-center space-x-4">
-                    {session.duration && (
-                      <span className="text-sm text-gray-600">{session.duration} {t('common:minutes')}</span>
+                    {session.status === SESSION_STATUS.completed && (
+                      <span className="text-sm text-gray-600">
+                        {session.completedAt && session.createdAt
+                          ? `${Math.round((new Date(session.completedAt) - new Date(session.createdAt)) / 60000)} ${t('minutes', {ns: 'common'})}`
+                          : t('noValue', {ns: 'common'})}
+                      </span>
                     )}
                     <button
                       className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"
