@@ -35,5 +35,10 @@
   "lowerBody": "Alavartalo",
   "pushing": "Työntävä",
   "pulling": "Vetävä",
-  "mostUsedExercises": "Eniten käytetyt liikkeet"
+  "mostUsedExercises": "Eniten käytetyt liikkeet",
+  "exerciseProgress": "Liikkeen kehitys",
+  "noProgressData": "Ei vielä liikkeen kehitystietoja saatavilla",
+  "selectExercise": "Valitse liike nähdäksesi kehityksen",
+  "avgWeight": "Keskimääräinen paino",
+  "totalReps": "Toistot yhteensä"
 }
