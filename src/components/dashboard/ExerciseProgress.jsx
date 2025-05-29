@@ -120,7 +120,7 @@ const ExerciseProgress = ({ workoutSessions, isDarkMode }) => {
   const chartOptions = {
     chart: {
       type: 'line',
-      height: 350,
+      height: window.innerWidth < 768 ? 250 : 350,
       toolbar: {
         show: false
       },
@@ -168,8 +168,10 @@ const ExerciseProgress = ({ workoutSessions, isDarkMode }) => {
       labels: {
         style: {
           colors: isDarkMode ? '#9CA3AF' : '#6B7280',
-          fontSize: '12px'
-        }
+          fontSize: window.innerWidth < 768 ? '10px' : '12px'
+        },
+        rotate: window.innerWidth < 768 ? -45 : 0,
+        maxHeight: window.innerWidth < 768 ? 60 : undefined
       },
       axisBorder: {
         show: false
@@ -181,33 +183,33 @@ const ExerciseProgress = ({ workoutSessions, isDarkMode }) => {
     yaxis: [
       {
         title: {
-          text: t('weight', { ns: 'common' }),
+          text: window.innerWidth < 768 ? '' : t('weight', { ns: 'common' }),
           style: {
             color: isDarkMode ? '#9CA3AF' : '#6B7280',
-            fontSize: '12px'
+            fontSize: window.innerWidth < 768 ? '10px' : '12px'
           }
         },
         labels: {
           style: {
             colors: isDarkMode ? '#9CA3AF' : '#6B7280',
-            fontSize: '12px'
+            fontSize: window.innerWidth < 768 ? '9px' : '12px'
           },
-          formatter: (value) => `${value} kg`
+          formatter: (value) => window.innerWidth < 768 ? `${value}kg` : `${value} kg`
         }
       },
       {
         opposite: true,
         title: {
-          text: t('reps', { ns: 'common' }),
+          text: window.innerWidth < 768 ? '' : t('reps', { ns: 'common' }),
           style: {
             color: isDarkMode ? '#9CA3AF' : '#6B7280',
-            fontSize: '12px'
+            fontSize: window.innerWidth < 768 ? '10px' : '12px'
           }
         },
         labels: {
           style: {
             colors: isDarkMode ? '#9CA3AF' : '#6B7280',
-            fontSize: '12px'
+            fontSize: window.innerWidth < 768 ? '9px' : '12px'
           }
         }
       }
@@ -267,25 +269,27 @@ const ExerciseProgress = ({ workoutSessions, isDarkMode }) => {
 
   return (
     <div className="w-full rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800 p-6">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
         <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 flex items-center">
           <IoTrendingUp className="mr-2 text-purple-500" />
-          {t('exerciseProgress', { ns: 'dashboard' })}
+          <span className="max-sm:text-base">{t('exerciseProgress', { ns: 'dashboard' })}</span>
         </h3>
-        
-        <div className="min-w-[200px]">
-          <Select
+        <div className="w-full sm:min-w-[200px] sm:max-w-[250px]">
+          <select
             value={selectedExercise}
             onChange={(e) => setSelectedExercise(e.target.value)}
-            input={<CustomSelect darkMode={isDarkMode} />}
-            displayEmpty
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm transition-all
+                        focus:border-green-500 focus:ring-0 focus:shadow-md
+                        hover:border-green-300
+                        dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400
+                        dark:focus:border-green-500 dark:hover:border-green-700"
           >
             {exerciseData.exerciseOptions.map((exercise) => (
-              <MenuItem key={exercise.id} value={exercise.id}>
+              <option key={exercise.id} value={exercise.id}>
                 {exercise.name} ({exercise.sessionCount})
-              </MenuItem>
+              </option>
             ))}
-          </Select>
+          </select>
         </div>
       </div>
 
@@ -294,7 +298,7 @@ const ExerciseProgress = ({ workoutSessions, isDarkMode }) => {
           <Chart
             options={chartOptions}
             series={exerciseData.chartData.series}
-            height={350}
+            height={window.innerWidth < 768 ? 250 : 350}
           />
         </div>
       ) : (
