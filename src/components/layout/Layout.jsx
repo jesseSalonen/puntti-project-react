@@ -39,7 +39,7 @@ function Layout({ darkMode, toggleDarkMode }) {
           max-md:pr-0
         "
       >
-        <Outlet />
+        <Outlet context={{ darkMode }} />
       </main>
       <Sidebar
         toggleSidebar={toggleSidebar}

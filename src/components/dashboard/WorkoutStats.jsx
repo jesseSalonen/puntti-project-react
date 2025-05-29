@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaDumbbell, FaClock, FaFire, FaCalendarWeek } from 'react-icons/fa';
 import { SESSION_STATUS } from '../../helpers/constants.js';
+import StatItem from '../common/StatItem.jsx';
 
 const WorkoutStats = ({ workoutSessions }) => {
   const { t } = useTranslation(['dashboard', 'common', 'workoutSessions']);
@@ -76,16 +77,6 @@ const WorkoutStats = ({ workoutSessions }) => {
     };
   }, [workoutSessions]);
 
-  const StatItem = ({ icon: Icon, label, value, color = "text-gray-600" }) => (
-    <div className="flex items-center space-x-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-700/50">
-      <Icon className={`text-xl ${color}`} />
-      <div>
-        <p className="text-sm text-gray-500 dark:text-gray-400">{label}</p>
-        <p className="font-semibold text-gray-900 dark:text-white">{value}</p>
-      </div>
-    </div>
-  );
-
   const WeeklyChart = ({ data }) => {
     const maxSessions = Math.max(...data.map(d => d.sessions), 1);
     
@@ -158,7 +149,7 @@ const WorkoutStats = ({ workoutSessions }) => {
         {t('workoutStatistics', { ns: 'dashboard' })}
       </h3>
       
-      <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className="flex w-full items-center gap-4 flex-wrap mb-6">
         <StatItem
           icon={FaDumbbell}
           label={t('totalWorkouts', { ns: 'dashboard' })}

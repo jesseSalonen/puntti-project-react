@@ -35,5 +35,10 @@
   "lowerBody": "Lower Body",
   "pushing": "Pushing",
   "pulling": "Pulling",
-  "mostUsedExercises": "Most Used Exercises"
+  "mostUsedExercises": "Most Used Exercises",
+  "exerciseProgress": "Exercise Progress",
+  "noProgressData": "No exercise progress data available yet",
+  "selectExercise": "Select an exercise to view progress",
+  "avgWeight": "Average Weight",
+  "totalReps": "Total Reps"
 }

@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRunning, FaUsers, FaArrowUp, FaArrowDown, FaWeight, FaBolt } from 'react-icons/fa';
+import StatItem from '../common/StatItem.jsx';
 
 const ExerciseStats = ({ exercises, workoutSessions }) => {
   const { t } = useTranslation(['dashboard', 'common', 'exercises']);
@@ -78,16 +79,6 @@ const ExerciseStats = ({ exercises, workoutSessions }) => {
       bodyPartStats
     };
   }, [exercises, workoutSessions]);
-
-  const StatItem = ({ icon: Icon, label, value, color = "text-gray-600" }) => (
-    <div className="flex items-center space-x-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-700/50">
-      <Icon className={`text-xl ${color}`} />
-      <div>
-        <p className="text-sm text-gray-500 dark:text-gray-400">{label}</p>
-        <p className="font-semibold text-gray-900 dark:text-white">{value}</p>
-      </div>
-    </div>
-  );
 
   const MuscleDistributionChart = ({ data }) => {
     const maxCount = Math.max(...data.map(item => item.count), 1);
@@ -247,7 +238,7 @@ const ExerciseStats = ({ exercises, workoutSessions }) => {
         {t('exerciseStatistics', { ns: 'dashboard' })}
       </h3>
       
-      <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className="flex w-full items-center gap-4 flex-wrap mb-6">
         <StatItem
           icon={FaRunning}
           label={t('totalExercises', { ns: 'dashboard' })}

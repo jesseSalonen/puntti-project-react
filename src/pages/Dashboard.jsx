@@ -1,9 +1,11 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
+import {useOutletContext} from 'react-router-dom';
 import {selectUserName} from '../features/auth/authSlice';
 import RecentSessions from '../components/workoutSessions/RecentSessions.jsx';
 import WorkoutStats from '../components/dashboard/WorkoutStats.jsx';
 import ExerciseStats from '../components/dashboard/ExerciseStats.jsx';
+import ExerciseProgress from '../components/dashboard/ExerciseProgress.jsx';
 import {getWorkoutSessions, reset, selectWorkoutSessions} from '../features/workoutSessions/workoutSessionSlice.js';
 import {getExercises, reset as resetExercises, selectExercises} from '../features/exercises/exerciseSlice.js';
 import React, {useEffect} from 'react';
@@ -544,6 +546,8 @@ function Dashboard() {
   const {t} = useTranslation(['workoutSessions', 'workouts', 'common', 'dashboard']);
   const userName = useSelector(selectUserName);
   const dispatch = useDispatch();
+  const context = useOutletContext() || {};
+  const { darkMode = false } = context;
   const { workoutSessions, isLoading, isError, message } = useSelector(selectWorkoutSessions);
   const { exercises, isLoading: exercisesLoading, isError: exercisesError, message: exercisesMessage } = useSelector(selectExercises);
 
@@ -587,6 +591,8 @@ function Dashboard() {
           <WorkoutStats workoutSessions={workoutSessions} />
           <ExerciseStats exercises={exercises} workoutSessions={workoutSessions} />
         </div>
+        
+        <ExerciseProgress workoutSessions={workoutSessions} isDarkMode={darkMode} />
       </section>
     </>
   );
