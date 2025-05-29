@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useNavigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
@@ -232,7 +232,8 @@ const RecentSessions = ({workoutSessions}) => {
         
         {/* Recent sessions list */}
         <div className="space-y-0">
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+          <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center">
+            <FaDumbbell className="mr-2 text-blue-500" />
             {t('recentSessions')}
           </h3>
           {recentSessions.map((session, index) => renderSessionItem(session, index))}

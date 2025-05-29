@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaDumbbell, FaClock, FaFire, FaCalendarWeek } from 'react-icons/fa';
 import { SESSION_STATUS } from '../../helpers/constants.js';
+import StatItem from '../common/StatItem.jsx';
 
 const WorkoutStats = ({ workoutSessions }) => {
   const { t } = useTranslation(['dashboard', 'common', 'workoutSessions']);
@@ -75,16 +76,6 @@ const WorkoutStats = ({ workoutSessions }) => {
       weeklyData
     };
   }, [workoutSessions]);
-
-  const StatItem = ({ icon: Icon, label, value, color = "text-gray-600" }) => (
-    <div className="flex flex-1 items-center space-x-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-700/50">
-      <Icon className={`text-xl ${color}`} />
-      <div className="whitespace-nowrap">
-        <p className="text-sm text-gray-500 dark:text-gray-400">{label}</p>
-        <p className="font-semibold text-gray-900 dark:text-white">{value}</p>
-      </div>
-    </div>
-  );
 
   const WeeklyChart = ({ data }) => {
     const maxSessions = Math.max(...data.map(d => d.sessions), 1);
