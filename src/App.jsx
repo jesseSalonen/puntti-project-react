@@ -100,7 +100,10 @@ export default function App() {
         >
           <RouterProvider router={router} />
         </div>
-        <ToastContainer />
+        <ToastContainer
+          autoClose={2000}
+          theme={darkMode ? "dark" : "light"}
+        />
       </div>
     </div>
   );
