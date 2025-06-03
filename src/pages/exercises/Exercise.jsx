@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ExerciseFormFields from '../../components/exercises/ExerciseFormFields';
 import Modal from '../../components/Modal';
 import { getExercise, reset, selectExercises, updateExercise } from '../../features/exercises/exerciseSlice';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Spinner from '../../components/common/Spinner';
 import MuscleForm from '../../components/exercises/MuscleForm';
@@ -18,6 +18,7 @@ function Exercise() {
   const { t } = useTranslation(['dashboard', 'exercises']);
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { currentExercise, isLoading, isError, isSuccess, message } = useSelector(selectExercises);
 
@@ -38,6 +39,7 @@ function Exercise() {
   useEffect(() => {
     if (isSuccess) {
       toast.success(t('exerciseUpdated', { ns: 'exercises' }));
+      navigate('/exercises');
     }
   }, [isSuccess]);
 

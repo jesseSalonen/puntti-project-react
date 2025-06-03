@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 import {useOutletContext} from 'react-router-dom';
 import {selectUserName} from '../features/auth/authSlice';
-import RecentSessions from '../components/workoutSessions/RecentSessions.jsx';
+import RecentSessions from '../components/dashboard/RecentSessions.jsx';
 import WorkoutStats from '../components/dashboard/WorkoutStats.jsx';
 import ExerciseStats from '../components/dashboard/ExerciseStats.jsx';
 import ExerciseProgress from '../components/dashboard/ExerciseProgress.jsx';

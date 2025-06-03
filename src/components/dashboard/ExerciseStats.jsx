@@ -196,7 +196,7 @@ const ExerciseStats = ({ exercises, workoutSessions }) => {
       </h4>
       <div className="space-y-2">
         {exercises.length > 0 ? exercises.map((exercise, index) => (
-          <div key={index} className="flex items-center justify-between p-2 rounded-md bg-gray-50 dark:bg-gray-700/50">
+          <div key={index} className="flex items-center justify-between p-2 rounded-md bg-gray-100 dark:bg-gray-700/50">
             <span className="text-sm text-gray-700 dark:text-gray-300 truncate">
               {exercise.name}
             </span>
