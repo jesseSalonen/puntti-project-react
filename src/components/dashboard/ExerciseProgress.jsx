@@ -34,7 +34,7 @@ const ExerciseProgress = ({ workoutSessions, isDarkMode }) => {
     const exerciseMap = new Map();
     completedSessions.forEach(session => {
       session.exercisePerformances.forEach(performance => {
-        if (performance.exercise && performance.sets && performance.sets.length > 0) {
+        if (performance.exercise && performance.sets && performance.sets.length > 0 && performance.sets.some(set => set.weight)) {
           const exerciseId = performance.exercise._id;
           const exerciseName = performance.exercise.name;
           
@@ -51,7 +51,7 @@ const ExerciseProgress = ({ workoutSessions, isDarkMode }) => {
           const sessionDate = new Date(session.completedAt || session.createdAt).toLocaleDateString();
           
           // Calculate average weight and total reps for this session
-          const validSets = performance.sets.filter(set => set.completed !== false);
+          const validSets = performance.sets.filter(set => set.weight);
           if (validSets.length > 0) {
             const avgWeight = validSets.reduce((sum, set) => sum + (set.weight || 0), 0) / validSets.length;
             const totalReps = validSets.reduce((sum, set) => sum + (set.reps || 0), 0);
