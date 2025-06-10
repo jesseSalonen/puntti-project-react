@@ -1,9 +1,21 @@
-import React from 'react';
-import {FaMinus, FaPlus} from 'react-icons/fa';
+import React, {useState} from 'react';
+import {FaMinus, FaPlus, FaChevronDown, FaChevronRight} from 'react-icons/fa';
 import {useTranslation} from 'react-i18next';
 
-const SessionSetItem = ({set, setIndex, exerciseIndex, exercisePerformances, setExercisePerformances}) => {
+const SessionSetItem = ({set, setIndex, exerciseIndex, exercisePerformances, setExercisePerformances, lastPerformance}) => {
   const { t } = useTranslation(['workoutSessions', 'common', 'dashboard', 'workouts']);
+  const [showLastPerformance, setShowLastPerformance] = useState(false);
+
+  // Get the last performance data for this specific set
+  const lastPerformanceSet = lastPerformance?.sets?.[setIndex];
+
+  const shouldShowLastPerformance = lastPerformanceSet && lastPerformanceSet.weight > 0;
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return '';
+    const date = new Date(dateStr);
+    return date.toLocaleDateString();
+  };
 
   const updateExercisePerformances = (value, name) => {
     // Create a deep copy of the exercise performances to avoid read-only errors
@@ -177,6 +189,49 @@ const SessionSetItem = ({set, setIndex, exerciseIndex, exercisePerformances, set
           </div>
         </div>
       </div>
+
+      {/* Last Performance Section */}
+      {shouldShowLastPerformance && (
+        <div className="mb-3">
+          <button
+            type="button"
+            onClick={() => setShowLastPerformance(!showLastPerformance)}
+            className="flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+          >
+            {showLastPerformance ? <FaChevronDown size={10} /> : <FaChevronRight size={10} />}
+            <span className="ml-1">{t('lastPerformance', {ns: 'workoutSessions'})}</span>
+          </button>
+          
+          {showLastPerformance && (
+            <div className="mt-2 p-2 bg-gray-100 dark:bg-gray-600 rounded text-sm">
+              <div className="flex justify-between items-center flex-wrap">
+                <span className="text-gray-600 dark:text-gray-300">
+                  {formatDate(lastPerformance.date)}
+                </span>
+                <div className="flex gap-4">
+                  <span className="text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                    <strong>{lastPerformanceSet.weight}kg</strong> × <strong>{lastPerformanceSet.reps}</strong>
+                  </span>
+                  {(lastPerformanceSet.dropSet || lastPerformanceSet.restPause) && (
+                    <div className="flex gap-1">
+                      {lastPerformanceSet.dropSet && (
+                        <span className="rounded bg-purple-100 px-1.5 py-0.5 text-xs text-purple-800 dark:bg-purple-900 dark:text-purple-300">
+                          {t('dropSet', {ns: 'workouts'})}
+                        </span>
+                      )}
+                      {lastPerformanceSet.restPause && (
+                        <span className="rounded bg-blue-100 px-1.5 py-0.5 text-xs text-blue-800 dark:bg-blue-900 dark:text-blue-300">
+                          {t('restPause', {ns: 'workouts'})}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="flex gap-4">
         {/* Weight input */}

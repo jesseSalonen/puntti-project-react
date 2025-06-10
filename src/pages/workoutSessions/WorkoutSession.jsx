@@ -283,6 +283,7 @@ const WorkoutSession = () => {
                     exerciseIndex={currentExerciseIndex}
                     exercisePerformances={exercisePerformances}
                     setExercisePerformances={setExercisePerformances}
+                    lastPerformance={currentExercise.lastPerformance}
                   />
                 ))}
               </div>
